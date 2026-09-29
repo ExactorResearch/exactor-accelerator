@@ -1,0 +1,295 @@
+/* ==========================================================================
+   EXACTOR × JEV — Cyber-Logic Glassmorphism Design System
+   Ref: stitch_exactor_accelerator_platform / DESIGN.md
+   ========================================================================== */
+
+:root {
+  --canvas-base: #07090e;
+  --surface-default: #111319;
+  --surface-low: #191c21;
+  --surface-mid: #1d2025;
+  --surface-high: #282a30;
+  --surface-highest: #33353b;
+  --on-surface: #e2e2ea;
+  --on-surface-variant: #b9cacb;
+  --outline: #849495;
+  --outline-variant: #3a494b;
+  
+  --accent-cyan: #00f2fe;
+  --accent-cyan-dim: #00dce6;
+  --accent-emerald: #58df8a;
+  --accent-emerald-dim: #03aa5c;
+  --accent-magenta: #d45bb6;
+  --accent-violet: #8a2be2;
+  --accent-amber: #ffb703;
+  --accent-rose: #ff477e;
+  --accent-error: #ffb4ab;
+  --accent-error-container: #93000a;
+}
+
+/* Background Ambient Lighting Field */
+body {
+  background-color: var(--surface-default);
+  background-image: 
+    radial-gradient(circle at 85% 10%, rgba(0, 242, 254, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 15% 90%, rgba(138, 43, 226, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(88, 223, 138, 0.02) 0%, transparent 60%);
+  background-attachment: fixed;
+  color: var(--on-surface);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Material Symbols configuration */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Glassmorphism Containers */
+.cyber-glass {
+  background: rgba(16, 22, 35, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+.cyber-glass-active {
+  background: rgba(23, 31, 48, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 0 rgba(0, 242, 254, 0.3), 0 8px 32px -4px rgba(0, 0, 0, 0.6);
+}
+
+/* Glow Utilities */
+.glow-cyan {
+  box-shadow: 0 0 16px rgba(0, 242, 254, 0.35);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 16px rgba(88, 223, 138, 0.35);
+}
+
+.glow-pink {
+  box-shadow: 0 0 16px rgba(255, 71, 126, 0.35);
+}
+
+.glow-violet {
+  box-shadow: 0 0 16px rgba(138, 43, 226, 0.35);
+}
+
+.glow-amber {
+  box-shadow: 0 0 16px rgba(255, 183, 3, 0.35);
+}
+
+/* Numeric alignment */
+.font-mono,
+.font-code,
+pre,
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(12, 14, 19, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(58, 73, 75, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 242, 254, 0.4);
+}
+
+/* Bit chips for B^32 inspector */
+.bit-chip {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-align: center;
+  transition: all 0.15s ease-in-out;
+  cursor: default;
+  border: 1px solid rgba(58, 73, 75, 0.4);
+}
+
+.bit-chip.bit-on {
+  background: rgba(88, 223, 138, 0.15);
+  border-color: rgba(88, 223, 138, 0.45);
+  color: #58df8a;
+  box-shadow: 0 0 8px rgba(88, 223, 138, 0.2);
+}
+
+.bit-chip.bit-off {
+  background: rgba(29, 32, 37, 0.6);
+  border-color: rgba(58, 73, 75, 0.3);
+  color: #849495;
+}
+
+.bit-chip .bit-name {
+  display: block;
+  font-size: 0.65rem;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.2rem;
+}
+
+/* Collapsible boxes */
+.collapsible-content {
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), opacity 0.25s ease;
+  overflow: hidden;
+}
+
+.collapsible-content.collapsed {
+  max-height: 120px;
+  position: relative;
+}
+
+.collapsible-content.collapsed::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, rgba(17, 19, 25, 0.95));
+  pointer-events: none;
+}
+
+.collapsible-content.expanded {
+  max-height: 2000px;
+}
+
+/* Mode toggling helpers */
+body.view-mode-business .tech-only {
+  display: none !important;
+}
+
+body.view-mode-tech .business-only {
+  display: none !important;
+}
+
+/* Pulse animation */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(0.97); }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
+
+/* Choice distribution bar */
+.choice-bar-row {
+  margin-bottom: 0.5rem;
+}
+
+.choice-bar-row .bar-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.choice-bar-row .bar-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(51, 53, 59, 0.5);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.choice-bar-row .bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.4s ease;
+}
+
+/* Circular Gauge Progress */
+.gauge-svg {
+  transform: rotate(-90deg);
+}
+
+.gauge-bg {
+  stroke: rgba(51, 53, 59, 0.5);
+  stroke-width: 8;
+  fill: transparent;
+}
+
+.gauge-progress {
+  stroke: #00f2fe;
+  stroke-width: 8;
+  stroke-dasharray: 314.15;
+  stroke-dashoffset: 314.15;
+  stroke-linecap: round;
+  fill: transparent;
+  transition: stroke-dashoffset 0.6s ease, stroke 0.4s ease;
+}
+
+/* Modal Processing Overlay */
+#modal-processing {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-in-out;
+}
+
+#modal-processing.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#modal-processing .modal-card {
+  transform: scale(0.94) translateY(12px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#modal-processing.active .modal-card {
+  transform: scale(1) translateY(0);
+}
+
+/* Floating Completion Toast */
+#toast-complete {
+  transform: translateY(100px) scale(0.95);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+#toast-complete.show {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Pulse radar ring */
+@keyframes radar-ping {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.animate-radar-ping {
+  animation: radar-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+

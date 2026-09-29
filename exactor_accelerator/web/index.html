@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Exactor Accelerator — Neuro-Symbolic Enterprise Platform</title>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN with Cyber-Logic Glassmorphism Config -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-low": "#191c21",
+            "on-primary-fixed": "#002022",
+            "error": "#ffb4ab",
+            "on-primary": "#00373a",
+            "on-secondary-fixed-variant": "#005229",
+            "surface-tint": "#00dce6",
+            "surface": "#111319",
+            "outline": "#849495",
+            "inverse-on-surface": "#2e3036",
+            "on-tertiary": "#5f0050",
+            "background": "#111319",
+            "on-secondary-container": "#003418",
+            "outline-variant": "#3a494b",
+            "secondary": "#58df8a",
+            "on-background": "#e2e2ea",
+            "secondary-fixed": "#77fca4",
+            "error-container": "#93000a",
+            "inverse-surface": "#e2e2ea",
+            "on-secondary-fixed": "#00210d",
+            "tertiary-container": "#ffcceb",
+            "surface-container-highest": "#33353b",
+            "surface-dim": "#111319",
+            "secondary-fixed-dim": "#58df8a",
+            "tertiary-fixed-dim": "#ffade4",
+            "surface-container-lowest": "#0c0e13",
+            "on-surface-variant": "#b9cacb",
+            "surface-variant": "#33353b",
+            "secondary-container": "#00a95b",
+            "tertiary": "#fff4f8",
+            "inverse-primary": "#00696f",
+            "on-tertiary-container": "#a22f89",
+            "on-tertiary-fixed-variant": "#830e6e",
+            "primary-container": "#00f2fe",
+            "on-tertiary-fixed": "#3a0030",
+            "on-primary-fixed-variant": "#004f53",
+            "on-surface": "#e2e2ea",
+            "primary-fixed-dim": "#00dce6",
+            "on-error": "#690005",
+            "tertiary-fixed": "#ffd7ee",
+            "surface-container": "#1d2025",
+            "surface-container-high": "#282a30",
+            "surface-bright": "#37393f",
+            "primary-fixed": "#6ff6ff",
+            "on-secondary": "#00391b",
+            "on-primary-container": "#006a70",
+            "on-error-container": "#ffdad6",
+            "primary": "#e0fdff"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem",
+          }
+        }
+      }
+    };
+  </script>
+  
+  <!-- Custom Cyber-Glass CSS Stylesheet -->
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="bg-background text-on-surface font-sans min-h-screen selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden antialiased view-mode-business">
+
+  <!-- =========================================================================
+       TOP NAVBAR: Brand, Live Telemetry & View Switcher
+       ========================================================================= -->
+  <header class="bg-surface-container-lowest/85 backdrop-blur-md text-primary border-b border-outline-variant/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)] fixed top-0 w-full z-50 h-14" id="top-nav">
+    <div class="flex justify-between items-center w-full px-4 md:px-6 h-full max-w-full">
+      
+      <!-- Brand & Architecture Subtitle -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-ping"></span>
+          <span class="text-lg md:text-xl font-bold tracking-tight text-primary">Exactor Accelerator</span>
+        </div>
+        <span class="hidden xl:inline-block text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-surface-container-high border border-outline-variant/40 text-on-surface-variant">
+          Neuro-Symbolic Core • Rust HPC + TypeSafe Jev
+        </span>
+      </div>
+
+      <!-- Center Pipeline Links -->
+      <nav class="hidden md:flex items-center gap-4 lg:gap-6 h-full text-xs font-medium">
+        <button type="button" class="tab-btn active h-full flex items-center gap-1.5 px-2 border-b-2 border-primary-container text-primary-container font-semibold transition-colors" data-tab="tab-fase-a" onclick="switchTab('tab-fase-a')">
+          <span class="material-symbols-outlined text-sm" data-icon="upload_file">upload_file</span>
+          1. Historial (Ingesta)
+        </button>
+        <button type="button" class="tab-btn h-full flex items-center gap-1.5 px-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors" data-tab="tab-jev-schema" onclick="switchTab('tab-jev-schema')">
+          <span class="material-symbols-outlined text-sm" data-icon="fact_check">fact_check</span>
+          2. Reglas (Jev)
+        </button>
+        <button type="button" class="tab-btn h-full flex items-center gap-1.5 px-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors" data-tab="tab-fase-b" onclick="switchTab('tab-fase-b')">
+          <span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+          3. Live Decision
+        </button>
+        <button type="button" class="tab-btn h-full flex items-center gap-1.5 px-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors" data-tab="tab-ledger" onclick="switchTab('tab-ledger')">
+          <span class="material-symbols-outlined text-sm" data-icon="history_toggle_off">history_toggle_off</span>
+          4. Live Memory (WAL)
+        </button>
+      </nav>
+
+      <!-- Right Trailing Controls & View Mode Switcher -->
+      <div class="flex items-center gap-3">
+        <!-- Dual View Mode Segmented Switcher -->
+        <div class="flex p-0.5 bg-surface-container-lowest border border-outline-variant/50 rounded-xl" id="view-mode-toggle">
+          <button type="button" class="mode-btn flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold transition-all bg-primary-container text-on-primary-container shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]" id="btn-mode-business" onclick="switchViewMode('business')" title="Simplified view for product and business leaders">
+            <span class="material-symbols-outlined text-xs" data-icon="business_center">business_center</span>
+            <span>Business View</span>
+          </button>
+          <button type="button" class="mode-btn flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container/30 transition-all" id="btn-mode-tech" onclick="switchViewMode('tech')" title="Detailed view with B^32 bitmasks, hypercubes, and formulas">
+            <span class="material-symbols-outlined text-xs" data-icon="science">science</span>
+            <span class="hidden sm:inline">Technical View</span>
+          </button>
+        </div>
+
+        <!-- Tokens Modal Trigger -->
+        <button type="button" class="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-surface-container-lowest border border-outline-variant/50 hover:border-primary-container/70 text-xs font-semibold text-on-surface-variant hover:text-primary transition-all shadow-sm" onclick="openTokenConfigModal()" title="Configure EXACTOR, Jev, and DeepSeek Tokens">
+          <span class="material-symbols-outlined text-xs text-primary-container" data-icon="key">key</span>
+          <span class="hidden sm:inline">Tokens API</span>
+        </button>
+
+        <div class="h-5 w-px bg-outline-variant/30 hidden sm:block"></div>
+
+        <!-- Quick Status Dot -->
+        <div class="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-lg bg-surface-container-high/60 border border-outline-variant/30 text-xs font-mono">
+          <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+          <span class="text-secondary font-bold" id="status-ledger-mode">SQLite WAL</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       SIDEBAR: Collapsible Navigation & Cryptographic State
+       ========================================================================= -->
+  <aside class="fixed top-14 left-0 bottom-0 flex flex-col justify-between w-64 p-4 bg-surface-container-low/90 backdrop-blur-md text-primary h-[calc(100vh-3.5rem)] z-40 border-r border-outline-variant/30 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] hidden lg:flex">
+    <div class="space-y-4">
+      <!-- Cryptographic Node Info -->
+      <div class="p-3 rounded-lg bg-surface-container-lowest/70 border border-outline-variant/20">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="w-3 h-3 rounded-full bg-primary-container/20 border border-primary-container flex items-center justify-center">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+          </span>
+          <span class="text-xs font-mono font-bold text-primary">NEURO-SYMBOLIC CORE</span>
+        </div>
+        <p class="text-[11px] font-mono text-on-surface-variant">SQLite WAL v4.19 · Sub-100ms</p>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="space-y-1">
+        <button type="button" class="step-card w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-on-surface-variant hover:text-on-surface hover:bg-surface-container/40 transition-all text-xs font-medium active" data-tab="tab-fase-a" onclick="switchTab('tab-fase-a')">
+          <span class="material-symbols-outlined text-outline text-base" data-icon="upload_file">upload_file</span>
+          <span>1. Sube tu Historial</span>
+        </button>
+        <button type="button" class="step-card w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-on-surface-variant hover:text-on-surface hover:bg-surface-container/40 transition-all text-xs font-medium" data-tab="tab-jev-schema" onclick="switchTab('tab-jev-schema')">
+          <span class="material-symbols-outlined text-outline text-base" data-icon="fact_check">fact_check</span>
+          <span>2. Revisa tus Reglas</span>
+        </button>
+        <button type="button" class="step-card w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-on-surface-variant hover:text-on-surface hover:bg-surface-container/40 transition-all text-xs font-medium" data-tab="tab-fase-b" onclick="switchTab('tab-fase-b')">
+          <span class="material-symbols-outlined text-primary-container text-base" data-icon="bolt">bolt</span>
+          <span>3. Live Evaluation</span>
+        </button>
+        <button type="button" class="step-card w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-on-surface-variant hover:text-on-surface hover:bg-surface-container/40 transition-all text-xs font-medium" data-tab="tab-ledger" onclick="switchTab('tab-ledger')">
+          <span class="material-symbols-outlined text-outline text-base" data-icon="history_toggle_off">history_toggle_off</span>
+          <span>4. Live Memory</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Quick CTA & Footers -->
+    <div class="space-y-3 pt-3 border-t border-outline-variant/30">
+      <button type="button" class="w-full py-2.5 px-3 rounded-lg border border-primary-container bg-primary-container/10 text-primary-container hover:bg-primary-container/20 text-xs font-mono font-semibold flex items-center justify-center gap-2 glow-cyan transition-all active:scale-95" onclick="switchTab('tab-fase-b'); submitLiveQuery();">
+        <span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+        <span>Simular Inferencia</span>
+      </button>
+      
+      <div class="space-y-1 font-mono text-[10px]">
+        <div class="flex items-center justify-between text-on-surface-variant px-1 py-1 rounded">
+          <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-xs text-secondary" data-icon="database">database</span> Estado WAL:</span>
+          <span class="text-secondary font-bold">SYNC (0.1ms)</span>
+        </div>
+        <div class="flex items-center justify-between text-on-surface-variant px-1 py-1 rounded">
+          <span class="flex items-center gap-1.5"><span class="material-symbols-outlined text-xs text-tertiary-container" data-icon="alt_route">alt_route</span> Espacio Binarizado:</span>
+          <span class="text-outline font-bold" id="status-engine-dim">B^32</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CANVAS CONTAINER (Offset by 64 on desktop)
+       ========================================================================= -->
+  <div class="lg:pl-64 pt-14 flex flex-col min-h-screen">
+
+    <!-- Global Telemetry Header Ribbon -->
+    <div class="bg-surface-container-low/60 border-b border-outline-variant/20 px-4 md:px-6 py-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 text-xs font-mono text-on-surface-variant">
+        <span class="inline-block w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+        <span class="font-bold text-on-surface">REAL-TIME TELEMETRY:</span>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 font-mono text-[11px]">
+        <span class="px-2.5 py-0.5 rounded bg-surface-container-high/80 border border-outline-variant/40 text-secondary flex items-center gap-1">
+          <span class="material-symbols-outlined text-xs" data-icon="speed">speed</span>
+          <span id="status-engine-name">EXACTOR Core</span>: 0.14ms (O(n))
+        </span>
+        <span class="px-2.5 py-0.5 rounded bg-surface-container-high/80 border border-outline-variant/40 text-primary-container flex items-center gap-1">
+          <span class="material-symbols-outlined text-xs" data-icon="model_training">model_training</span>
+          <span id="status-model-name">Jev (RLCD)</span>: Calibrado
+        </span>
+        <span class="px-2.5 py-0.5 rounded bg-surface-container-high/80 border border-outline-variant/40 text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined text-xs" data-icon="storage">storage</span>
+          WAL Zero Downtime
+        </span>
+        <span class="px-2.5 py-0.5 rounded bg-surface-container-high/80 border border-secondary/40 text-secondary flex items-center gap-1 font-bold">
+          <span class="material-symbols-outlined text-xs" data-icon="verified">verified</span>
+          Regla: <span id="status-rule-ver">v1</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 p-4 md:p-6 max-w-7xl w-full mx-auto space-y-6" id="main-content-container">
+
+
+
+      <!-- =======================================================================
+           TAB PANE 1: HISTORICAL INGESTION & RULE DISCOVERY (FASE A)
+           ======================================================================= -->
+      <section class="tab-pane space-y-6 active" id="tab-fase-a">
+        <!-- Business Explanation Banner -->
+        <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-outline-variant/30 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+                <h3 class="text-base font-bold text-primary">Step 1: Where do the logical rules come from?</h3>
+              </div>
+              <p class="text-xs text-on-surface-variant mt-1">Load historical transactions or select a test scenario preconfigurado. EXACTOR binariza y extrae las reglas canónicas en sub-milisegundos.</p>
+            </div>
+            <span class="text-[11px] font-mono text-secondary px-2.5 py-1 rounded bg-surface-container-high border border-secondary/30 self-start md:self-auto">
+              Rust Core • B^32 Hypercube
+            </span>
+          </div>
+
+          <!-- Presets Grid -->
+          <div>
+            <label class="block text-xs font-mono uppercase text-on-surface-variant mb-2">Selecciona un Dataset de Ejemplo:</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+              <button type="button" class="btn-preset-rich p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all active-preset group" id="btn-preset-fraud" onclick="loadSamplePreset('fraud')">
+                <div class="text-base mb-1">💳</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Fraude Financiero</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">is_fraud</div>
+              </button>
+
+              <button type="button" class="btn-preset-rich p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" id="btn-preset-sre" onclick="loadSamplePreset('sre')">
+                <div class="text-base mb-1">🖥️</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Alertas SRE</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">trigger_mitigation</div>
+              </button>
+
+              <button type="button" class="btn-preset-rich p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" id="btn-preset-churn" onclick="loadSamplePreset('churn')">
+                <div class="text-base mb-1">📉</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Churn B2B</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">churn</div>
+              </button>
+
+              <button type="button" class="btn-preset-rich p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" id="btn-preset-soc" onclick="loadSamplePreset('soc')">
+                <div class="text-base mb-1">🛡️</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Ataques SOC</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">block_ip</div>
+              </button>
+
+              <button type="button" class="btn-preset-rich p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" id="btn-preset-triage" onclick="loadSamplePreset('triage')">
+                <div class="text-base mb-1">🏥</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Triage UCI</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">urgent_icu</div>
+              </button>
+
+              <button type="button" class="btn-preset-rich p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" id="btn-preset-conversations" onclick="loadSamplePreset('conversations')">
+                <div class="text-base mb-1">💬</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Soporte Chat</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">escalate_sup</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- File Upload Drop Zone -->
+          <form id="form-upload-file" class="p-4 rounded-lg bg-surface-container-lowest/60 border border-dashed border-outline-variant/60 hover:border-primary-container transition-all" onsubmit="handleFileUpload(event)">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-3 w-full md:w-auto">
+                <div class="w-10 h-10 rounded-lg bg-primary-container/10 border border-primary-container/30 flex items-center justify-center text-primary-container shrink-0">
+                  <span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+                </div>
+                <div>
+                  <label for="input-dataset-file" class="text-xs font-bold text-on-surface block cursor-pointer hover:underline">Arrastra o selecciona un archivo CSV / JSON</label>
+                  <p class="text-[11px] text-on-surface-variant">Columns will be projected into boolean propositions discretas</p>
+                </div>
+              </div>
+              
+              <div class="flex flex-wrap items-center gap-3 w-full md:w-auto justify-end">
+                <input type="file" id="input-dataset-file" accept=".csv,.json" class="text-xs text-on-surface-variant file:mr-2 file:py-1 file:px-2.5 file:rounded file:border-0 file:text-xs file:bg-surface-container-high file:text-on-surface hover:file:bg-surface-container-highest cursor-pointer">
+                
+                <input type="text" id="input-target-col" value="is_fraud" placeholder="Columna objetivo" required class="bg-surface-container px-3 py-1.5 rounded-lg border border-outline-variant/40 text-xs font-mono text-on-surface w-36 focus:outline-none focus:border-primary-container">
+                
+                <input type="number" id="input-max-vars" value="32" min="4" max="64" class="bg-surface-container px-2.5 py-1.5 rounded-lg border border-outline-variant/40 text-xs font-mono text-on-surface w-16 focus:outline-none focus:border-primary-container" title="Máximo de variables booleanas">
+                
+                <button type="submit" class="px-4 py-2 rounded-lg bg-primary-container text-on-primary-container text-xs font-bold font-mono tracking-wide flex items-center gap-1.5 hover:opacity-90 active:scale-95 transition-all shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]" id="btn-run-discovery">
+                  <span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+                  <span>Descubrir Reglas</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- Natural Language Explanation Box -->
+        <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-secondary text-base" data-icon="translate">translate</span>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-secondary font-bold">Explanation in Natural Language Humano (Para Auditores y Negocio)</h4>
+            </div>
+            <button type="button" class="text-xs text-primary-container hover:underline font-mono flex items-center gap-1" id="btn-toggle-explanation" onclick="toggleExpand('explanation-container')">
+              <span class="material-symbols-outlined text-xs" data-icon="unfold_more">unfold_more</span> Expandir
+            </button>
+          </div>
+          <div class="collapsible-content collapsed" id="explanation-container" onclick="toggleExpandFromContent(this)">
+            <div class="p-4 rounded-lg bg-surface-container-lowest/80 border border-outline-variant/20 text-xs md:text-sm leading-relaxed text-on-surface font-sans" id="explanation-display">
+              Loading business model explanation...
+            </div>
+          </div>
+        </div>
+
+        <!-- Rust Engine HPC Telemetry Metrics -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div class="cyber-glass rounded-xl p-3 border border-outline-variant/30 text-center">
+            <span class="text-[10px] font-mono uppercase text-on-surface-variant block">Dimension K</span>
+            <span class="text-lg font-mono font-bold text-primary-container mt-1 block" id="metric-k">32 vars</span>
+          </div>
+          <div class="cyber-glass rounded-xl p-3 border border-outline-variant/30 text-center">
+            <span class="text-[10px] font-mono uppercase text-on-surface-variant block">Minterms Base</span>
+            <span class="text-lg font-mono font-bold text-secondary mt-1 block" id="metric-initial-minterms">-</span>
+          </div>
+          <div class="cyber-glass rounded-xl p-3 border border-outline-variant/30 text-center">
+            <span class="text-[10px] font-mono uppercase text-on-surface-variant block">Canonical Terms</span>
+            <span class="text-lg font-mono font-bold text-secondary mt-1 block" id="metric-final-terms">-</span>
+          </div>
+          <div class="cyber-glass rounded-xl p-3 border border-outline-variant/30 text-center">
+            <span class="text-[10px] font-mono uppercase text-on-surface-variant block">Logical Compression</span>
+            <span class="text-lg font-mono font-bold text-tertiary-container mt-1 block" id="metric-compression">-</span>
+          </div>
+          <div class="cyber-glass rounded-xl p-3 border border-outline-variant/30 text-center">
+            <span class="text-[10px] font-mono uppercase text-on-surface-variant block">XOR Clauses</span>
+            <span class="text-lg font-mono font-bold text-primary mt-1 block" id="metric-xor-count">0</span>
+          </div>
+          <div class="cyber-glass rounded-xl p-3 border border-outline-variant/30 text-center">
+            <span class="text-[10px] font-mono uppercase text-on-surface-variant block">Tiempo Rust HPC</span>
+            <span class="text-lg font-mono font-bold text-secondary mt-1 block" id="metric-exec-time">&lt; 0.5 ms</span>
+          </div>
+        </div>
+
+        <!-- Canonical Boolean Formula (Tech / Audit Mode) -->
+        <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-3" id="formulas">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary-container text-base" data-icon="functions">functions</span>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-primary font-bold">Canonical Logical Formula Exacta (DNF Minimizada)</h4>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-secondary/15 text-secondary border border-secondary/30" id="badge-audit-exact">100% DETERMINISTA</span>
+            </div>
+            <button type="button" class="text-xs text-primary-container hover:underline font-mono flex items-center gap-1" id="btn-toggle-formula" onclick="toggleExpand('formula-container')">
+              <span class="material-symbols-outlined text-xs" data-icon="unfold_more">unfold_more</span> Expandir
+            </button>
+          </div>
+          <div class="collapsible-content collapsed" id="formula-container" onclick="toggleExpandFromContent(this)">
+            <pre class="p-4 rounded-lg bg-surface-container-lowest/90 border border-outline-variant/30 text-xs font-mono text-secondary overflow-x-auto whitespace-pre-wrap leading-relaxed" id="formula-display">Cargando fórmula canónica...</pre>
+          </div>
+        </div>
+
+        <!-- Propositions Table -->
+        <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-3" id="bit-matrix">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary text-base" data-icon="grid_view">grid_view</span>
+              <h4 class="text-xs font-mono uppercase tracking-wider text-on-surface font-bold">Tabla de Proposiciones Binarizadas (Espacio B^32)</h4>
+            </div>
+            <span class="text-[11px] font-mono text-on-surface-variant">Optimal Threshold Criteria</span>
+          </div>
+          <div class="overflow-x-auto max-h-72">
+            <table class="w-full text-left font-mono text-xs border-collapse" id="table-propositions">
+              <thead>
+                <tr class="border-b border-outline-variant/40 text-on-surface-variant text-[11px] uppercase">
+                  <th class="py-2 px-3">Bit</th>
+                  <th class="py-2 px-3">Proposition Name</th>
+                  <th class="py-2 px-3">Columna Origen</th>
+                  <th class="py-2 px-3">Mathematical Condition</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-outline-variant/20 text-on-surface" id="tbody-propositions">
+                <tr><td colspan="4" class="py-3 text-center text-on-surface-variant">Cargando proposiciones...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           TAB PANE 2: JEV TYPED SCHEMA (STEP 2)
+           ======================================================================= -->
+      <section class="tab-pane space-y-6 hidden" id="tab-jev-schema">
+        <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4">
+          <div class="border-b border-outline-variant/30 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+              <h3 class="text-base font-bold text-primary">Paso 2: Contrato Tipado Jev (System One)</h3>
+            </div>
+            <p class="text-xs text-on-surface-variant mt-1">Garantiza cero alucinaciones mediante contratos formales: lógica booleana Noul, clasificación categórica Choice y certeza calibrada Score.</p>
+          </div>
+
+          <!-- Primitives Preview Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Noul Primitive -->
+            <div class="cyber-glass rounded-xl p-4 border border-outline-variant/30 space-y-2 relative overflow-hidden">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-secondary uppercase flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+                  Noul (Gobernanza EXACTOR)
+                </span>
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-secondary/15 text-secondary border border-secondary/30 font-mono">RESERVADO</span>
+              </div>
+              <p class="text-xs text-on-surface-variant font-medium">Hypothesis of exact rule satisfaction in B^32 (Gobernanza causal)</p>
+              <div class="p-3 rounded bg-surface-container-lowest/80 border border-outline-variant/20 text-[11px] font-mono text-on-surface overflow-y-auto max-h-36" id="preview-noul-instructions">
+                Cargando instrucciones Noul...
+              </div>
+            </div>
+
+            <!-- Choice Primitive -->
+            <div class="cyber-glass rounded-xl p-4 border border-primary-container/40 space-y-2 relative">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-primary-container uppercase flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-sm" data-icon="edit_note">edit_note</span>
+                  Choice (Acciones de Negocio)
+                </span>
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-primary-container/20 text-primary-container border border-primary-container/30 font-mono font-bold">PERSONALIZABLE</span>
+              </div>
+              <p class="text-xs text-on-surface-variant font-medium">Operational decision catalog ejecutables por Jev</p>
+              <div class="p-3 rounded bg-surface-container-lowest/80 border border-outline-variant/20 text-[11px] font-mono text-on-surface overflow-y-auto max-h-36" id="preview-choice-criteria">
+                Cargando criterios Choice...
+              </div>
+            </div>
+
+            <!-- Score Primitive -->
+            <div class="cyber-glass rounded-xl p-4 border border-outline-variant/30 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-tertiary-container uppercase flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-sm" data-icon="tune">tune</span>
+                  Score (Severidad)
+                </span>
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-tertiary-container/15 text-tertiary-container border border-tertiary-container/30 font-mono">CALIBRABLE</span>
+              </div>
+              <p class="text-xs text-on-surface-variant font-medium">RLCD Probabilistic Calibration [0.0 - 1.0]</p>
+              <div class="p-3 rounded bg-surface-container-lowest/80 border border-outline-variant/20 text-[11px] font-mono text-on-surface overflow-y-auto max-h-36" id="preview-score-criteria">
+                Loading Score calibration...
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Choice Actions Customizer for User -->
+          <div class="p-4 rounded-xl bg-surface-container-lowest/90 border border-primary-container/30 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-outline-variant/30 pb-2">
+              <div>
+                <h4 class="text-xs font-bold text-primary flex items-center gap-2">
+                  <span class="material-symbols-outlined text-sm text-primary-container" data-icon="category">category</span>
+                  Choice Options Customization for Jev
+                </h4>
+                <p class="text-[11px] text-on-surface-variant font-sans">Configura qué opciones y políticas de mitigación puede elegir Jev para tus eventos:</p>
+              </div>
+              <button type="button" class="px-2.5 py-1 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-mono font-semibold text-primary-container flex items-center gap-1 self-start sm:self-auto transition-all" onclick="addCustomChoiceRow()">
+                <span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+                <span>Add Option</span>
+              </button>
+            </div>
+
+            <!-- Choices Form List -->
+            <div class="space-y-2 font-mono text-xs" id="custom-choices-form-list">
+              <!-- Dynamically populated rows -->
+            </div>
+
+            <div class="flex items-center justify-between pt-2 border-t border-outline-variant/20">
+              <span class="text-[11px] text-secondary font-sans" id="custom-choices-save-msg"></span>
+              <div class="flex items-center gap-2">
+                <button type="button" class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-mono text-on-surface transition-colors" onclick="resetDefaultChoices()">
+                  Reset Predeterminados
+                </button>
+                <button type="button" class="px-4 py-1.5 rounded-lg bg-primary-container hover:bg-primary-container/90 text-on-primary-container text-xs font-semibold flex items-center gap-1.5 glow-cyan transition-all shadow-md" onclick="saveCustomChoices()">
+                  <span class="material-symbols-outlined text-sm" data-icon="save">save</span>
+                  <span>Save Options Choice</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payload Preview Collapsible -->
+          <div class="space-y-2 pt-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-on-surface-variant uppercase">Payload JSON Generado para Jev Runtime:</span>
+              <div class="flex items-center gap-2">
+                <button type="button" class="text-xs text-primary-container hover:underline font-mono flex items-center gap-1" onclick="copyPayloadJson()">
+                  <span class="material-symbols-outlined text-xs" data-icon="content_copy">content_copy</span> Copiar JSON
+                </button>
+                <button type="button" class="text-xs text-primary-container hover:underline font-mono flex items-center gap-1" id="btn-toggle-jev-json" onclick="toggleExpand('jev-json-container')">
+                  <span class="material-symbols-outlined text-xs" data-icon="unfold_more">unfold_more</span> Expandir
+                </button>
+              </div>
+            </div>
+            <div class="collapsible-content collapsed" id="jev-json-container" onclick="toggleExpandFromContent(this)">
+              <pre class="p-4 rounded-lg bg-surface-container-lowest/90 border border-outline-variant/30 text-xs font-mono text-on-surface overflow-x-auto leading-relaxed" id="jev-payload-preview">// Cargando payload...</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =======================================================================
+           TAB PANE 3: REAL-TIME DECISION & LIVE EVALUATION (STEP 3)
+           ======================================================================= -->
+      <section class="tab-pane space-y-6 hidden" id="tab-fase-b">
+
+        <!-- Natural Language Summary Banner -->
+        <div class="cyber-glass-active rounded-xl p-5 border-l-4 border-l-primary-container border-y border-r border-outline-variant/30 relative" id="banner-autonomous-status">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 text-[10px] font-mono font-bold rounded bg-surface-container-high text-primary-container border border-primary-container/30 uppercase tracking-wider" id="banner-icon">
+                  REAL-TIME DIAGNOSIS
+                </span>
+                <span class="text-xs font-mono text-on-surface-variant">Inferencia Determinista v<span id="decision-rule-ver">1</span></span>
+              </div>
+              <h3 class="text-lg md:text-xl font-bold text-primary tracking-tight" id="banner-title">
+                Listo para evaluar transacciones en caliente
+              </h3>
+              <p class="text-xs md:text-sm text-on-surface-variant" id="banner-desc">
+                Presiona "Simulate Live Evaluation" para disparar la inferencia en Jev (RLCD) y verificar la deducción formal en EXACTOR Core (Rust).
+              </p>
+            </div>
+
+            <div class="shrink-0 flex items-center gap-3">
+              <div class="text-right">
+                <p class="text-[11px] font-mono text-on-surface-variant">Latencia Medida</p>
+                <p class="text-xl font-mono font-bold text-secondary" id="decision-latency">82 ms</p>
+              </div>
+              <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center border border-outline-variant/50">
+                <span class="material-symbols-outlined text-secondary text-2xl animate-pulse" data-icon="bolt">bolt</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Executive Decision Cards (Stitch Design) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="executive-result-trio">
+          <!-- Card 1: Case Diagnosis -->
+          <div class="cyber-glass rounded-xl p-4 border-t-2 border-t-error border-x border-b border-outline-variant/30 flex flex-col justify-between group hover:border-error/50 transition-all" id="card-exec-diagnosis">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-error text-sm" id="exec-diag-header-icon" data-icon="traffic">traffic</span>
+                  1. Case Diagnosis
+                </span>
+                <span class="w-2.5 h-2.5 rounded-full bg-error animate-ping" id="exec-diagnosis-icon"></span>
+              </div>
+              <div class="py-1">
+                <div class="text-xl font-bold text-error tracking-tight" id="exec-diagnosis-val">
+                  CRITICAL
+                </div>
+                <p class="text-xs text-on-surface-variant mt-0.5" id="exec-diagnosis-sub">Immediate Liquidation Risk</p>
+              </div>
+              <div class="p-3 rounded bg-surface-container-lowest/80 border border-outline-variant/20 space-y-1.5 font-mono text-xs">
+                <div class="flex justify-between">
+                  <span class="text-on-surface-variant">Certeza Calibrada RLCD</span>
+                  <span class="text-secondary font-bold" id="detail-noul-val">99.4%</span>
+                </div>
+                <!-- Progress bar -->
+                <div class="w-full bg-surface-container-highest rounded-full h-1.5 overflow-hidden">
+                  <div class="bg-secondary h-1.5 rounded-full transition-all duration-500" style="width: 99.4%" id="bar-certeza-progress"></div>
+                </div>
+                <div class="flex justify-between text-[11px] pt-1">
+                  <span class="text-on-surface-variant">Time Guarantee</span>
+                  <span class="text-on-surface">&lt; 100ms SLA</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs text-on-surface-variant font-mono">
+              <span>SLA: &lt;100ms</span>
+              <span class="text-secondary flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span> Cumplido
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 2: Autonomous Action -->
+          <div class="cyber-glass rounded-xl p-4 border-t-2 border-t-error border-x border-b border-outline-variant/30 flex flex-col justify-between group hover:border-error/50 transition-all" id="card-exec-action">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-error text-sm" id="exec-act-header-icon" data-icon="bolt">bolt</span>
+                  2. Autonomous Action
+                </span>
+                <span class="text-[10px] font-mono text-primary-container" id="exec-touch-mode">ZERO HUMAN TOUCH</span>
+              </div>
+              <div class="py-1">
+                <span class="inline-block px-3 py-1 rounded bg-error/15 border border-error text-error font-mono font-bold text-xs tracking-wide glow-pink" id="exec-action-val">
+                  BLOQUEAR_TRANSACCION
+                </span>
+                <p class="text-xs text-on-surface-variant mt-2" id="exec-action-sub">
+                  Automated immediate execution with no manual intervention required.
+                </p>
+              </div>
+              <div class="p-3 rounded bg-surface-container-lowest/80 border border-outline-variant/20 space-y-1 font-mono text-xs">
+                <div class="text-on-surface-variant text-[11px]">Endpoint Ejecutado:</div>
+                <div class="text-primary-container truncate font-medium" id="exec-endpoint-val">POST api.gateway/v1/freeze</div>
+                <div class="text-secondary text-[10px] flex items-center gap-1">
+                  <span class="material-symbols-outlined text-xs" data-icon="done_all">done_all</span> Payload Inmutable en WAL
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs text-on-surface-variant font-mono">
+              <span>Impacto / Estado</span>
+              <span class="text-primary font-bold" id="exec-impact-val">Riesgo Mitigado</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Causal Justification -->
+          <div class="cyber-glass rounded-xl p-4 border-t-2 border-t-primary-container border-x border-b border-outline-variant/30 flex flex-col justify-between group hover:border-primary-container/50 transition-all" id="card-exec-reason">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono uppercase tracking-wider text-on-surface-variant flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-primary-container text-sm" data-icon="search_insights">search_insights</span>
+                  3. Causal Justification
+                </span>
+                <span class="text-xs font-mono text-secondary" id="exec-cond-status">CONDICIONES ACTIVAS</span>
+              </div>
+              <div class="py-1 text-xs text-on-surface-variant leading-relaxed" id="exec-reason-val">
+                EXACTOR evaluó con resultado exacto [CUMPLE LA REGLA] con 100% de consistencia causal sin margen de duda.
+              </div>
+              <div class="p-3 rounded bg-surface-container-lowest/80 border border-outline-variant/20 font-mono text-xs space-y-1">
+                <div class="flex justify-between">
+                  <span class="text-on-surface-variant">Minterm B^32:</span>
+                  <span class="text-primary-container font-bold" id="detail-minterm-val">0x2F (47)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-on-surface-variant">Exact Evaluation:</span>
+                  <span class="text-secondary font-bold" id="detail-exact-val">1 (CUMPLE)</span>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs text-on-surface-variant font-mono">
+              <span>Formal Resolution</span>
+              <span class="text-primary-container" id="exec-formal-res">Verified Disjunction (100%)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DeepSeek Neuro-Symbolic Audit Explainer Card -->
+        <section class="cyber-glass rounded-xl p-5 border border-primary/40 bg-gradient-to-br from-surface-container-high/60 via-surface-container-low/40 to-primary-container/5 space-y-4 shadow-xl relative overflow-hidden" id="section-deepseek-explainer">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-outline-variant/30 pb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-primary-container/20 border border-primary/40 flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary-container text-lg" data-icon="psychology">psychology</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-sm font-bold text-on-surface font-mono tracking-wide">Explicabilidad Causal DeepSeek-V3</h3>
+                  <span class="px-2 py-0.2 text-[9px] font-mono font-bold rounded bg-primary-container/30 text-primary-container border border-primary-container/40 uppercase">LLM Grounded on B^32</span>
+                </div>
+                <p class="text-[11px] text-on-surface-variant">Traducción semántica a lenguaje natural de las proposiciones booleanas activas y la certeza RLCD.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="px-3 py-1.5 rounded-lg bg-primary-container/20 hover:bg-primary-container/40 border border-primary/40 text-primary text-xs font-mono font-semibold flex items-center gap-1.5 transition-all shadow-sm" id="btn-request-deepseek" onclick="requestDeepSeekExplanation()">
+                <span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+                <span>Generate Audit Explanation</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- DeepSeek Output Box -->
+          <div class="p-4 rounded-lg bg-surface-container-lowest/90 border border-outline-variant/30 text-xs font-mono leading-relaxed text-on-surface space-y-2 relative" id="box-deepseek-content">
+            <div class="flex items-center gap-2 text-on-surface-variant" id="deepseek-placeholder">
+              <span class="material-symbols-outlined text-sm text-primary-container animate-pulse" data-icon="info">info</span>
+              <span>Presiona <strong>"Generate Audit Explanation"</strong> o evalúa una transacción para obtener el informe detallado de DeepSeek basado en las premisas activas.</span>
+            </div>
+            <div class="hidden text-xs text-on-surface space-y-2.5 whitespace-pre-line font-sans" id="deepseek-text-body"></div>
+            <div class="flex items-center justify-between text-[10px] font-mono text-on-surface-variant/70 pt-2 border-t border-outline-variant/20 hidden" id="deepseek-meta-bar">
+              <span id="deepseek-model-tag">Modelo: deepseek-chat</span>
+              <span id="deepseek-latency-tag">Latencia: - ms</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interactive Live Simulation Console -->
+        <section class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border-b border-outline-variant/30 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+                <h3 class="text-base font-bold text-on-surface">Simulador de Decisiones en Caliente</h3>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container-high text-secondary border border-secondary/30">Sub-100ms Garantizado</span>
+              </div>
+              <p class="text-xs text-on-surface-variant mt-0.5">Selecciona un escenario de negocio o simula una transacción en caliente sin tocar código ni esquemas JSON.</p>
+            </div>
+            <div class="flex items-center gap-2 font-mono text-xs">
+              <span class="px-2.5 py-1 rounded-lg bg-surface-container-high text-secondary border border-secondary/20 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-xs" data-icon="verified_user">verified_user</span> 0% Alucinaciones
+              </span>
+              <span class="px-2.5 py-1 rounded-lg bg-surface-container-high text-primary-container border border-primary-container/20 flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-xs" data-icon="speed">speed</span> SLA &lt;100ms
+              </span>
+            </div>
+          </div>
+
+          <!-- 3 Quick Scenario Selector Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <!-- Critical Case -->
+            <div class="p-3 rounded-lg bg-error/10 border border-error/40 hover:border-error cursor-pointer transition-all flex flex-col justify-between group" onclick="fillLiveEventPreset('fraud_high'); submitLiveQuery();">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono font-bold text-error uppercase">Critical Case</span>
+                <span class="material-symbols-outlined text-error text-base" data-icon="warning">warning</span>
+              </div>
+              <p class="text-xs font-semibold text-on-surface">Transferencia $3,450 USD</p>
+              <p class="text-[11px] text-on-surface-variant mt-0.5">3 intentos · IP no autorizada · Dispositivo nuevo</p>
+              <div class="mt-3 pt-2 border-t border-error/20 flex items-center justify-between text-xs text-error font-semibold font-mono">
+                <span>Resultado: Bloqueo Inmediato</span>
+                <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+              </div>
+            </div>
+
+            <!-- Manual Review -->
+            <div class="p-3 rounded-lg bg-surface-container-high/40 border border-outline-variant/30 hover:border-outline cursor-pointer transition-all flex flex-col justify-between group" onclick="fillLiveEventPreset('edge_case'); submitLiveQuery();">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono font-bold text-on-surface-variant uppercase">Manual Review</span>
+                <span class="material-symbols-outlined text-outline text-base" data-icon="person_search">person_search</span>
+              </div>
+              <p class="text-xs font-semibold text-on-surface">Compra B2B $720 USD</p>
+              <p class="text-[11px] text-on-surface-variant mt-0.5">Dispositivo nuevo · Riesgo medio</p>
+              <div class="mt-3 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs text-on-surface-variant font-semibold font-mono">
+                <span>Result: Dual Approval</span>
+                <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+              </div>
+            </div>
+
+            <!-- Safe Transaction -->
+            <div class="p-3 rounded-lg bg-secondary/10 border border-secondary/30 hover:border-secondary cursor-pointer transition-all flex flex-col justify-between group" onclick="fillLiveEventPreset('fraud_safe'); submitLiveQuery();">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-mono font-bold text-secondary uppercase">Safe Transaction</span>
+                <span class="material-symbols-outlined text-secondary text-base" data-icon="verified">verified</span>
+              </div>
+              <p class="text-xs font-semibold text-on-surface">Cobro Habitual $28.50 USD</p>
+              <p class="text-[11px] text-on-surface-variant mt-0.5">Dispositivo verificado · Sin fallos</p>
+              <div class="mt-3 pt-2 border-t border-secondary/20 flex items-center justify-between text-xs text-secondary font-semibold font-mono">
+                <span>Resultado: Aprobada</span>
+                <span class="material-symbols-outlined text-xs group-hover:translate-x-0.5 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom JSON Payload Editor & Threshold Controls -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start pt-2">
+            <!-- Textarea Column -->
+            <div class="lg:col-span-8 space-y-2">
+              <div class="flex items-center justify-between">
+                <label for="textarea-event-state" class="text-xs font-mono uppercase text-on-surface-variant flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-xs text-primary-container" data-icon="data_object">data_object</span>
+                  Estado del Evento en Caliente (JSON):
+                </label>
+                <div class="flex items-center gap-2">
+                  <button type="button" class="text-[11px] text-on-surface-variant hover:text-primary-container font-mono" onclick="fillLiveEventPreset('fraud_high')">Fraude</button>
+                  <span class="text-outline-variant">·</span>
+                  <button type="button" class="text-[11px] text-on-surface-variant hover:text-primary-container font-mono" onclick="fillLiveEventPreset('sre_incident')">SRE</button>
+                  <span class="text-outline-variant">·</span>
+                  <button type="button" class="text-[11px] text-on-surface-variant hover:text-primary-container font-mono" onclick="fillLiveEventPreset('churn_risk')">Churn</button>
+                  <span class="text-outline-variant">·</span>
+                  <button type="button" class="text-[11px] text-on-surface-variant hover:text-primary-container font-mono" onclick="fillLiveEventPreset('soc_attack')">SOC</button>
+                  <span class="text-outline-variant">·</span>
+                  <button type="button" class="text-[11px] text-primary-container hover:underline font-mono" id="btn-toggle-textarea" onclick="toggleTextareaExpand('textarea-event-state')">Expandir</button>
+                </div>
+              </div>
+              <textarea id="textarea-event-state" rows="6" class="w-full p-3 rounded-lg bg-surface-container-lowest/90 border border-outline-variant/40 text-xs font-mono text-primary focus:outline-none focus:border-primary-container" spellcheck="false"></textarea>
+            </div>
+
+            <!-- Controls Column -->
+            <div class="lg:col-span-4 space-y-3">
+              <!-- Threshold Slider -->
+              <div class="p-3 rounded-lg bg-surface-container-lowest/80 border border-outline-variant/30 space-y-2">
+                <div class="flex items-center justify-between text-xs font-mono">
+                  <span class="text-on-surface-variant">Umbral Seguridad:</span>
+                  <span class="text-primary-container font-bold" id="lbl-threshold">80%</span>
+                </div>
+                <input type="range" id="range-threshold" min="50" max="99" value="80" oninput="updateThresholdLabel(this.value)" class="w-full accent-primary-container cursor-pointer">
+                <p class="text-[10px] text-on-surface-variant">Por encima del umbral se dispara la acción autónoma irrevocable sin tocar humanos.</p>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="button" class="w-full py-3.5 px-4 rounded-xl bg-primary-container text-on-primary-container font-mono text-xs font-bold tracking-wide flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-[inset_0_1px_0_0_rgba(255,255,255,0.12)]" id="btn-submit-live-query" onclick="submitLiveQuery()">
+                <span class="material-symbols-outlined text-base" data-icon="bolt">bolt</span>
+                <span>Evaluar Inferencia en Caliente</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Technical Deep Audit View (Visible in Tech Mode or Collapsible) -->
+        <section class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-5 tech-only" id="section-tech-view">
+          <div class="border-b border-outline-variant/30 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary-container" data-icon="biotech">biotech</span>
+              <h3 class="text-base font-bold text-on-surface">Technical Inspection of B^32 Hypercube</h3>
+            </div>
+            <p class="text-xs text-on-surface-variant mt-0.5">Bit-by-bit audit de las proposiciones activadas para esta transacción en EXACTOR.</p>
+          </div>
+
+          <!-- Circular Gauge & Primitives Breakdown -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+            <div class="md:col-span-4 flex flex-col items-center justify-center p-4 rounded-lg bg-surface-container-lowest/80 border border-outline-variant/30">
+              <div class="relative w-28 h-28 flex items-center justify-center">
+                <svg class="gauge-svg w-28 h-28" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="50" class="gauge-bg"></circle>
+                  <circle cx="60" cy="60" r="50" class="gauge-progress" id="gauge-circle"></circle>
+                </svg>
+                <span class="absolute font-mono font-bold text-lg text-on-surface" id="gauge-percent">0%</span>
+              </div>
+              <span class="text-xs font-mono text-on-surface-variant mt-2">Probabilidad Noul (Jev)</span>
+            </div>
+
+            <!-- Choice Distribution Bars -->
+            <div class="md:col-span-8 space-y-2">
+              <span class="text-xs font-mono uppercase text-on-surface-variant block mb-1">Distribución Categórica Choice (RLCD):</span>
+              <div class="p-3 rounded-lg bg-surface-container-lowest/80 border border-outline-variant/30 space-y-2" id="choice-bars-list">
+                <div class="text-xs text-on-surface-variant font-mono">Esperando inferencia...</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- B^32 Bitmask Chips Grid -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono uppercase text-on-surface-variant">Rejilla de Proposiciones Evaluadas (Bits b0 a b31):</span>
+              <span class="text-[11px] font-mono text-secondary">Verde = 1 (Activo) · Gris = 0 (Inactivo)</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2" id="bitmask-chips-grid">
+              <div class="bit-chip bit-off">b0: 0</div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- =======================================================================
+           TAB PANE 4: LIVE MEMORY & DIFFERENTIAL HOT UPDATE (STEP 4)
+           ======================================================================= -->
+      <section class="tab-pane space-y-6 hidden" id="tab-ledger">
+        <!-- Differential Hot Update Controller -->
+        <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-outline-variant/30 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-tertiary-container" data-icon="autorenew">autorenew</span>
+                <h3 class="text-base font-bold text-on-surface">Step 4: Live Memory and Differential Minimization</h3>
+              </div>
+              <p class="text-xs text-on-surface-variant mt-0.5">Evoluciona las reglas en caliente según las consultas auditadas en SQLite WAL sin reiniciar el servicio ni incurrir en downtime.</p>
+            </div>
+            <span class="text-[11px] font-mono text-secondary px-2.5 py-1 rounded bg-surface-container-high border border-secondary/30 self-start md:self-auto">
+              Zero Downtime • Rust Hot Update
+            </span>
+          </div>
+
+          <!-- Window Size & Trigger Button -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+            <div class="md:col-span-8 p-3 rounded-lg bg-surface-container-lowest/80 border border-outline-variant/30 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="text-on-surface-variant">Sliding Window Size (N Transactions):</span>
+                <span class="text-primary-container font-bold" id="lbl-window-size">30 consultas</span>
+              </div>
+              <input type="range" id="range-window-size" min="10" max="100" value="30" oninput="document.getElementById('lbl-window-size').textContent = this.value + ' consultas'" class="w-full accent-primary-container cursor-pointer">
+            </div>
+
+            <div class="md:col-span-4">
+              <button type="button" class="w-full py-3 px-4 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-tertiary-container/50 text-tertiary-container font-mono text-xs font-bold tracking-wide flex items-center justify-center gap-2 glow-violet transition-all active:scale-95" id="btn-trigger-differential" onclick="triggerDifferentialUpdate()">
+                <span class="material-symbols-outlined text-base" data-icon="sync">sync</span>
+                <span>Evolucionar Reglas (Rust HPC)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Diff Comparison Box -->
+          <div class="p-4 rounded-lg bg-surface-container-lowest/90 border border-outline-variant/30 space-y-3" id="diff-comparison-box" style="display: none;">
+            <span class="text-xs font-mono uppercase text-secondary font-bold block">Logical Formula Comparison:</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <span class="text-[11px] font-mono text-on-surface-variant block mb-1">Previous Formula (v<span id="diff-old-ver">-</span>):</span>
+                <pre class="p-3 rounded bg-surface-container border border-outline-variant/30 text-xs font-mono text-on-surface-variant overflow-x-auto whitespace-pre-wrap" id="diff-old-formula">-</pre>
+              </div>
+              <div>
+                <span class="text-[11px] font-mono text-secondary block mb-1">New Evolved Formula (v<span id="diff-new-ver">-</span>):</span>
+                <pre class="p-3 rounded bg-surface-container border border-secondary/40 text-xs font-mono text-secondary overflow-x-auto whitespace-pre-wrap" id="diff-new-formula">-</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Feed: Live Memory Ledger (SQLite WAL) -->
+        <section class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4" id="wal-ledger">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-outline-variant/30 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary" data-icon="receipt_long">receipt_long</span>
+                <h3 class="text-base font-bold text-on-surface">Registro Inmutable de Decisiones (Memoria Viva SQLite WAL)</h3>
+              </div>
+              <p class="text-xs text-on-surface-variant mt-0.5">Cryptographic traceability de cada transacción auditada con resolución determinista garantizada.</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button type="button" class="px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/40 text-on-surface-variant hover:text-on-surface text-xs font-mono flex items-center gap-1.5 transition-all" onclick="refreshLedgerTable()">
+                <span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+                <span>Refrescar</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left font-mono text-xs border-collapse" id="table-ledger">
+              <thead>
+                <tr class="border-b border-outline-variant/40 text-on-surface-variant text-[11px] uppercase">
+                  <th class="py-2.5 px-3">Query ID</th>
+                  <th class="py-2.5 px-3">Hora UTC</th>
+                  <th class="py-2.5 px-3">Minterm B^32</th>
+                  <th class="py-2.5 px-3">Noul Prob</th>
+                  <th class="py-2.5 px-3">Triggered Action</th>
+                  <th class="py-2.5 px-3">Certeza</th>
+                  <th class="py-2.5 px-3">Execution Mode</th>
+                  <th class="py-2.5 px-3">Audit / Feedback</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-outline-variant/20 text-on-surface" id="tbody-ledger">
+                <tr><td colspan="8" class="py-3 text-center text-on-surface-variant">Cargando registros del ledger WAL...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+    </main>
+
+    <!-- Footer System Status -->
+    <footer class="mt-auto border-t border-outline-variant/20 bg-surface-container-lowest/80 py-4 px-6 text-center text-xs font-mono text-on-surface-variant">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <p>© 2025 Exactor Accelerator — Arquitectura Híbrida Neuro-Simbólica. SQLite WAL v4.19 / Rust HPC Core.</p>
+        <div class="flex items-center gap-4 text-xs">
+          <span class="text-secondary flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-secondary"></span> 100% Deterministic Guarantee
+          </span>
+          <span class="text-primary-container">Sub-100ms Latency SLA Verified</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: Live Evaluation Processing Window (Ventana de Inferencia)
+       ========================================================================= -->
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md" id="modal-processing">
+    <div class="modal-card cyber-glass-active rounded-2xl p-6 md:p-8 max-w-lg w-full mx-4 border border-primary-container/40 shadow-2xl space-y-6 relative overflow-hidden">
+      <!-- Glow ambient header -->
+      <div class="absolute -top-12 -right-12 w-36 h-36 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -left-12 w-36 h-36 bg-secondary/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Header with Radar Spinner -->
+      <div class="flex items-center gap-4 border-b border-outline-variant/30 pb-4">
+        <div class="relative flex items-center justify-center w-14 h-14 rounded-2xl bg-surface-container-high border border-primary-container/50 text-primary-container shrink-0">
+          <span class="absolute inset-0 rounded-2xl border border-primary-container animate-radar-ping"></span>
+          <span class="material-symbols-outlined text-3xl animate-spin" data-icon="sync">sync</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+            <h3 class="text-base md:text-lg font-bold text-primary font-sans">Evaluando Inferencia en Tiempo Real</h3>
+          </div>
+          <p class="text-xs text-on-surface-variant font-mono mt-0.5">EXACTOR Rust HPC × TypeSafe Jev (System One)</p>
+        </div>
+      </div>
+
+      <!-- Live Pipeline Step Checklist -->
+      <div class="space-y-3 font-mono text-xs">
+        <!-- Step 1 -->
+        <div class="p-3 rounded-lg bg-surface-container-lowest/80 border border-outline-variant/30 flex items-center justify-between" id="proc-step-row-1">
+          <div class="flex items-center gap-2.5">
+            <span class="text-primary-container material-symbols-outlined text-sm" id="proc-step-icon-1" data-icon="grid_view">grid_view</span>
+            <span class="text-on-surface font-medium">1. Binarization to B^32 Hypercube</span>
+          </div>
+          <span class="text-[11px] font-bold text-secondary flex items-center gap-1" id="proc-step-status-1">
+            <span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span> Listo
+          </span>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-3 rounded-lg bg-surface-container-lowest/80 border border-primary-container/40 flex items-center justify-between" id="proc-step-row-2">
+          <div class="flex items-center gap-2.5">
+            <span class="text-primary-container material-symbols-outlined text-sm animate-spin" id="proc-step-icon-2" data-icon="sync">sync</span>
+            <span class="text-primary font-semibold">2. Inferencia TypeSafe AI Jev</span>
+          </div>
+          <span class="text-[11px] font-bold text-primary-container animate-pulse" id="proc-step-status-2">
+            Procesando...
+          </span>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-3 rounded-lg bg-surface-container-lowest/60 border border-outline-variant/20 flex items-center justify-between opacity-60" id="proc-step-row-3">
+          <div class="flex items-center gap-2.5">
+            <span class="text-outline material-symbols-outlined text-sm" id="proc-step-icon-3" data-icon="verified_user">verified_user</span>
+            <span class="text-on-surface-variant">3. Causal Deduction & SQLite WAL</span>
+          </div>
+          <span class="text-[11px] text-on-surface-variant font-mono" id="proc-step-status-3">
+            En espera
+          </span>
+        </div>
+      </div>
+
+      <!-- Elapsed Timer & SLA Guarantee -->
+      <div class="pt-2 border-t border-outline-variant/30 flex items-center justify-between font-mono text-xs">
+        <div class="flex items-center gap-1.5 text-on-surface-variant">
+          <span class="material-symbols-outlined text-sm text-secondary" data-icon="timer">timer</span>
+          <span>Tiempo Transcurrido:</span>
+          <span class="text-secondary font-bold" id="proc-timer">0 ms</span>
+        </div>
+        <span class="text-[10px] text-primary-container px-2 py-0.5 rounded bg-surface-container border border-primary-container/30">
+          0% Alucinaciones
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       TOAST: Completion Notice
+       ========================================================================= -->
+  <div class="fixed bottom-6 right-6 z-50 max-w-md w-full" id="toast-complete">
+    <div class="cyber-glass-active rounded-xl p-4 border-2 border-secondary shadow-2xl space-y-2 glow-emerald transition-all" id="toast-complete-box">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-secondary/20 border border-secondary flex items-center justify-center text-secondary shrink-0" id="toast-icon-wrapper">
+            <span class="material-symbols-outlined text-lg" id="toast-icon" data-icon="task_alt">task_alt</span>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-on-surface uppercase tracking-wide" id="toast-title">Live Inference Completed!</h4>
+            <p class="text-[11px] font-mono text-on-surface-variant mt-0.5" id="toast-subtitle">Evaluada con 100% de consistencia causal</p>
+          </div>
+        </div>
+        <button type="button" class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container transition-colors" onclick="dismissToast()" title="Close">
+          <span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+        </button>
+      </div>
+
+      <div class="p-2.5 rounded bg-surface-container-lowest/90 border border-outline-variant/30 flex items-center justify-between font-mono text-xs">
+        <div>
+          <span class="text-on-surface-variant text-[10px] block">Action Determined:</span>
+          <span class="text-secondary font-bold text-xs" id="toast-action">BLOQUEAR_TRANSACCION</span>
+        </div>
+        <div class="text-right">
+          <span class="text-on-surface-variant text-[10px] block">Latencia Total:</span>
+          <span class="text-primary-container font-bold text-xs" id="toast-latency">84 ms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: API Tokens Configuration (EXACTOR, JEV, DEEPSEEK)
+       ========================================================================= -->
+  <div class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 transition-opacity hidden" id="modal-tokens-config">
+    <div class="cyber-glass-active rounded-2xl max-w-xl w-full p-6 border border-primary-container/40 shadow-2xl space-y-5 animate-scale-in">
+      <div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-primary-container/20 border border-primary-container flex items-center justify-center text-primary-container">
+            <span class="material-symbols-outlined text-lg" data-icon="vpn_key">vpn_key</span>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-primary">Tokens & Connectors Configuration</h3>
+            <p class="text-xs text-on-surface-variant font-mono">Credential management for EXACTOR Cloud, TypeSafe Jev, and DeepSeek</p>
+          </div>
+        </div>
+        <button type="button" class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container transition-colors" onclick="closeTokenConfigModal()" title="Close">
+          <span class="material-symbols-outlined text-lg" data-icon="close">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs font-mono">
+        <!-- EXACTOR Token Card -->
+        <div class="p-3.5 rounded-xl bg-surface-container-lowest/90 border border-outline-variant/40 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-on-surface flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm text-secondary" data-icon="cloud">cloud</span>
+              1. Token EXACTOR Cloud (http://exactor.tech)
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-surface-container font-mono text-secondary" id="token-status-exactor">Cargando...</span>
+          </div>
+          <p class="text-[11px] text-on-surface-variant font-sans">Token de autenticación de tu cuenta de EXACTOR para ejecutar simplificaciones booleanas en la nube:</p>
+          <div class="relative">
+            <input type="password" id="input-token-exactor" placeholder="ek_... o Bearer token (deja vacío para auto-token)" class="w-full bg-surface-container-high/60 border border-outline-variant/50 rounded-lg px-3 py-2 text-xs font-mono text-on-surface focus:border-primary-container focus:outline-none transition-colors" />
+            <button type="button" class="absolute right-2 top-2 text-on-surface-variant hover:text-on-surface" onclick="togglePasswordVisibility('input-token-exactor')">
+              <span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+            </button>
+          </div>
+          <div class="flex items-center gap-3 pt-1 text-[11px]">
+            <label class="flex items-center gap-1.5 cursor-pointer text-on-surface-variant hover:text-on-surface">
+              <input type="checkbox" id="chk-use-cloud-exactor" class="rounded bg-surface-container border-outline-variant text-primary-container focus:ring-0" />
+              <span>Forzar Cloud API (http://exactor.tech)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- JEV Token Card -->
+        <div class="p-3.5 rounded-xl bg-surface-container-lowest/90 border border-outline-variant/40 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-on-surface flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm text-primary-container" data-icon="psychology">psychology</span>
+              2. Token TypeSafe AI Jev
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-surface-container font-mono text-primary-container" id="token-status-jev">Cargando...</span>
+          </div>
+          <p class="text-[11px] text-on-surface-variant font-sans">Clave de API para invocar el motor probabilístico System One (RLCD) de TypeSafe:</p>
+          <div class="relative">
+            <input type="password" id="input-token-jev" placeholder="apikey_2136... (o TYPESAFE_API_KEY)" class="w-full bg-surface-container-high/60 border border-outline-variant/50 rounded-lg px-3 py-2 text-xs font-mono text-on-surface focus:border-primary-container focus:outline-none transition-colors" />
+            <button type="button" class="absolute right-2 top-2 text-on-surface-variant hover:text-on-surface" onclick="togglePasswordVisibility('input-token-jev')">
+              <span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- DeepSeek Token Card -->
+        <div class="p-3.5 rounded-xl bg-surface-container-lowest/90 border border-outline-variant/40 space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="font-bold text-on-surface flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-sm text-tertiary-container" data-icon="smart_toy">smart_toy</span>
+              3. Token DeepSeek (Explicabilidad Ejecutiva)
+            </span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-surface-container font-mono text-tertiary-container" id="token-status-deepseek">Cargando...</span>
+          </div>
+          <p class="text-[11px] text-on-surface-variant font-sans">Clave de DeepSeek para traducir la deducción causal matemática en lenguaje claro para directores:</p>
+          <div class="relative">
+            <input type="password" id="input-token-deepseek" placeholder="sk-..." class="w-full bg-surface-container-high/60 border border-outline-variant/50 rounded-lg px-3 py-2 text-xs font-mono text-on-surface focus:border-primary-container focus:outline-none transition-colors" />
+            <button type="button" class="absolute right-2 top-2 text-on-surface-variant hover:text-on-surface" onclick="togglePasswordVisibility('input-token-deepseek')">
+              <span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="pt-3 border-t border-outline-variant/30 flex items-center justify-between">
+        <span class="text-[11px] text-on-surface-variant font-sans" id="tokens-save-msg"></span>
+        <div class="flex items-center gap-2">
+          <button type="button" class="px-4 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-xs font-semibold text-on-surface transition-colors" onclick="closeTokenConfigModal()">
+            Cancel
+          </button>
+          <button type="button" class="px-4 py-2 rounded-lg bg-primary-container hover:bg-primary-container/90 text-on-primary-container text-xs font-semibold flex items-center gap-1.5 glow-cyan transition-all shadow-md" onclick="saveTokensConfiguration()">
+            <span class="material-symbols-outlined text-sm" data-icon="save">save</span>
+            <span>Save Credentials</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Frontend Logic -->
+  <script src="/static/app.js?v=20260919_1630"></script>
+</body>
+</html>

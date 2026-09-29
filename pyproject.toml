@@ -1,0 +1,102 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exactor-accelerator"
+version = "2.0.7"
+authors = [
+  { name = "Exactor Research", email = "contact@exactor.tech" },
+]
+description = "High-speed boolean logic accelerator for TypeSafe AI (Jev) decisions - powered by the EXACTOR engine"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+keywords = ["boolean-minimization", "explainable-ai", "typesafe", "jev", "exactor", "decision-engine"]
+dependencies = [
+    "pandas>=1.3.0",
+    "numpy>=1.21.0",
+    "scikit-learn>=1.0.0",
+    "scipy>=1.7.0",
+    "requests>=2.25.0",
+    "pydantic>=1.10.0",
+]
+
+[project.optional-dependencies]
+server = [
+    "fastapi>=0.95.0",
+    "uvicorn>=0.20.0",
+    "python-multipart>=0.0.6",
+]
+dotenv = ["python-dotenv>=1.0.0"]
+dev = [
+    "pytest>=7.0",
+    "black>=23.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0",
+    "build>=1.0",
+    "twine>=4.0",
+]
+all = [
+    "exactor-accelerator[server,dotenv,dev]",
+]
+
+[project.scripts]
+exactor-accelerator = "exactor_accelerator.api.server:main"
+
+[project.urls]
+Homepage = "https://exactor.tech"
+Documentation = "https://exactor.tech/docs"
+Repository = "https://github.com/ExactorResearch/exactor-accelerator"
+Issues = "https://github.com/ExactorResearch/exactor-accelerator/issues"
+Changelog = "https://github.com/ExactorResearch/exactor-accelerator/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["exactor_accelerator*"]
+exclude = ["tests*", "examples*", "docs*", "build*"]
+
+[tool.setuptools.package-data]
+exactor_accelerator = [
+    "web/*.html",
+    "web/*.css",
+    "web/*.js",
+    "data/*.csv",
+    "data/*.json",
+    "py.typed",
+]
+
+[tool.black]
+line-length = 120
+target-version = ["py38"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py38"
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]

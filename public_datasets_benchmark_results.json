@@ -1,0 +1,77 @@
+[
+  {
+    "dataset": "Banking77",
+    "model": "Exactor Accelerator",
+    "train_time_s": 19.543870210647583,
+    "inference_time_s": 10.147832155227661,
+    "avg_latency_ms": 50.54422616958618,
+    "p95_latency_ms": 89.00477886199947,
+    "throughput_tps": 19.784653476438557,
+    "accuracy": 0.085,
+    "precision_macro": 0.11054135224217192,
+    "recall_macro": 0.08657407407407407,
+    "f1_macro": 0.07844742063492063,
+    "num_classes": 70,
+    "train_samples": 500,
+    "test_samples": 200
+  },
+  {
+    "dataset": "Banking77",
+    "model": "Jev Pure",
+    "avg_latency_ms": 1326.0700543721516,
+    "p95_latency_ms": 1480.1284790039062,
+    "accuracy": 0.0,
+    "num_classes": 70,
+    "test_samples": 30
+  },
+  {
+    "dataset": "SST-2",
+    "model": "Exactor Accelerator",
+    "train_time_s": 0.2578887939453125,
+    "inference_time_s": 0.5104305744171143,
+    "avg_latency_ms": 2.37984299659729,
+    "p95_latency_ms": 3.8724303245544425,
+    "throughput_tps": 420.19578662533803,
+    "accuracy": 0.54,
+    "precision_macro": 0.5212561102058955,
+    "recall_macro": 0.5144671841919548,
+    "f1_macro": 0.4837840870833801,
+    "num_classes": 2,
+    "train_samples": 500,
+    "test_samples": 200
+  },
+  {
+    "dataset": "SST-2",
+    "model": "Jev Pure",
+    "avg_latency_ms": 1553.649401664734,
+    "p95_latency_ms": 3250.447320938105,
+    "accuracy": 0.0,
+    "num_classes": 2,
+    "test_samples": 30
+  },
+  {
+    "dataset": "AG News",
+    "model": "Exactor Accelerator",
+    "train_time_s": 2.4885997772216797,
+    "inference_time_s": 1.4688477516174316,
+    "avg_latency_ms": 7.159333229064941,
+    "p95_latency_ms": 10.286438465118403,
+    "throughput_tps": 139.67781188620646,
+    "accuracy": 0.225,
+    "precision_macro": 0.2675489574528036,
+    "recall_macro": 0.25108176289762096,
+    "f1_macro": 0.15883559657443105,
+    "num_classes": 4,
+    "train_samples": 500,
+    "test_samples": 200
+  },
+  {
+    "dataset": "AG News",
+    "model": "Jev Pure",
+    "avg_latency_ms": 1271.1699803670247,
+    "p95_latency_ms": 1355.1504492759702,
+    "accuracy": 0.0,
+    "num_classes": 4,
+    "test_samples": 30
+  }
+]

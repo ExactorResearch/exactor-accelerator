@@ -1,0 +1,501 @@
+conversation_id,channel,customer_tier,turn_count,account_age_months,pending_invoices,response_wait_min,sentiment_score,user_message,escalate_to_supervisor
+conv-1000,CHAT_WEB,FREE,5,10,0,76.9,0.1,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1001,WHATSAPP,FREE,2,4,0,9.2,0.8,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1002,CHAT_WEB,FREE,3,39,0,7.6,0.95,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1003,WHATSAPP,PREMIUM,3,45,0,10.8,0.7,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1004,EMAIL,PREMIUM,1,23,0,23.5,0.84,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1005,EMAIL,PREMIUM,6,18,0,161.4,0.05,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1006,EMAIL,FREE,1,40,0,20.0,0.86,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1007,WHATSAPP,STANDARD,5,7,1,93.6,0.16,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1008,CHAT_WEB,FREE,2,24,0,7.5,0.95,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1009,EMAIL,FREE,3,37,1,16.2,0.76,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1010,CHAT_WEB,STANDARD,2,39,0,22.7,0.74,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1011,CHAT_WEB,FREE,5,31,0,24.4,0.12,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1012,EMAIL,FREE,3,11,0,3.3,0.97,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1013,EMAIL,STANDARD,3,14,0,138.2,0.21,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1014,WHATSAPP,PREMIUM,1,28,0,21.5,0.72,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1015,EMAIL,STANDARD,1,47,0,9.5,0.84,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1016,CHAT_WEB,STANDARD,3,5,0,158.2,0.16,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1017,CHAT_WEB,STANDARD,3,33,0,15.3,0.79,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1018,EMAIL,FREE,6,17,0,122.6,0.3,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1019,WHATSAPP,STANDARD,1,39,0,2.3,0.89,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1020,CHAT_WEB,FREE,1,10,0,9.4,0.89,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1021,CHAT_WEB,PREMIUM,4,33,1,66.2,0.14,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1022,CHAT_WEB,STANDARD,3,25,0,13.7,0.69,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1023,CHAT_WEB,VIP,2,11,0,167.7,0.29,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1024,PHONE,ENTERPRISE,5,3,1,96.2,0.27,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1025,CHAT_WEB,FREE,6,1,0,62.2,0.12,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1026,EMAIL,VIP,6,17,2,30.9,0.27,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1027,CHAT_WEB,PREMIUM,3,25,0,24.2,0.92,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1028,WHATSAPP,PREMIUM,5,1,3,89.4,0.28,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1029,CHAT_WEB,STANDARD,1,36,0,13.6,0.72,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1030,CHAT_WEB,FREE,5,27,3,93.5,0.23,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1031,WHATSAPP,STANDARD,3,11,1,160.1,0.19,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1032,CHAT_WEB,STANDARD,3,10,0,16.8,0.69,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1033,PHONE,STANDARD,2,19,0,64.5,0.34,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1034,CHAT_WEB,FREE,3,14,0,7.9,0.98,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1035,EMAIL,STANDARD,1,14,0,1.8,0.69,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1036,EMAIL,ENTERPRISE,6,17,0,111.1,0.34,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1037,PHONE,PREMIUM,3,35,0,161.8,0.34,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1038,EMAIL,FREE,3,29,1,15.8,0.97,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1039,WHATSAPP,FREE,1,11,0,17.5,0.89,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1040,CHAT_WEB,STANDARD,3,8,0,5.4,0.65,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1041,CHAT_WEB,STANDARD,2,35,0,7.6,0.66,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1042,EMAIL,STANDARD,3,31,1,172.9,0.3,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1043,PHONE,STANDARD,1,18,0,20.0,0.83,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1044,CHAT_WEB,FREE,2,17,0,5.4,0.96,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1045,WHATSAPP,PREMIUM,3,19,0,3.2,0.76,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1046,WHATSAPP,FREE,3,2,0,21.3,0.69,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1047,WHATSAPP,STANDARD,3,35,0,4.8,0.91,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1048,EMAIL,PREMIUM,3,13,0,126.0,0.18,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1049,CHAT_WEB,STANDARD,3,33,1,47.4,0.27,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1050,EMAIL,STANDARD,2,18,3,68.0,0.23,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1051,EMAIL,PREMIUM,3,23,0,9.2,0.94,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1052,WHATSAPP,VIP,2,1,0,92.2,0.12,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1053,CHAT_WEB,STANDARD,2,17,2,139.4,0.32,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1054,PHONE,STANDARD,2,46,0,10.0,0.87,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1055,WHATSAPP,VIP,3,17,0,13.2,0.96,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1056,EMAIL,ENTERPRISE,3,38,0,15.2,0.81,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1057,CHAT_WEB,FREE,1,14,0,2.6,0.89,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1058,PHONE,ENTERPRISE,2,18,0,20.8,0.93,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1059,CHAT_WEB,PREMIUM,2,12,0,171.6,0.09,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1060,CHAT_WEB,PREMIUM,3,35,0,15.4,0.76,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1061,CHAT_WEB,PREMIUM,3,29,0,164.3,0.15,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1062,CHAT_WEB,FREE,3,33,0,23.9,0.94,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1063,CHAT_WEB,STANDARD,4,3,1,124.1,0.31,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1064,WHATSAPP,VIP,3,7,0,89.3,0.26,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1065,WHATSAPP,FREE,5,16,0,111.8,0.35,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1066,WHATSAPP,STANDARD,2,6,0,8.1,0.82,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1067,CHAT_WEB,FREE,6,32,0,123.8,0.18,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1068,EMAIL,FREE,6,29,0,50.4,0.23,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1069,CHAT_WEB,FREE,4,15,1,90.3,0.07,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1070,PHONE,STANDARD,2,16,0,143.8,0.09,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1071,EMAIL,PREMIUM,2,27,0,11.5,0.69,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1072,WHATSAPP,STANDARD,1,36,0,20.1,0.77,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1073,WHATSAPP,ENTERPRISE,3,28,1,51.7,0.27,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1074,WHATSAPP,FREE,1,12,0,14.4,0.67,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1075,EMAIL,FREE,3,2,0,7.7,0.67,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1076,EMAIL,STANDARD,4,26,3,174.8,0.16,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1077,CHAT_WEB,VIP,2,19,3,27.9,0.23,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1078,EMAIL,ENTERPRISE,2,19,1,177.6,0.1,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1079,EMAIL,FREE,2,44,0,11.2,0.72,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1080,PHONE,STANDARD,2,25,0,4.2,0.84,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1081,WHATSAPP,STANDARD,6,16,0,144.3,0.12,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1082,WHATSAPP,STANDARD,5,1,1,130.7,0.13,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1083,CHAT_WEB,PREMIUM,4,8,0,108.9,0.32,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1084,CHAT_WEB,STANDARD,3,29,0,18.4,0.76,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1085,WHATSAPP,FREE,1,32,0,10.7,0.79,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1086,EMAIL,PREMIUM,4,34,0,164.7,0.14,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1087,EMAIL,PREMIUM,1,32,0,2.1,0.91,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1088,EMAIL,VIP,6,15,0,148.1,0.25,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1089,WHATSAPP,STANDARD,4,14,0,30.5,0.3,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1090,WHATSAPP,STANDARD,1,14,0,15.2,0.66,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1091,EMAIL,VIP,3,16,1,17.6,0.71,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1092,EMAIL,PREMIUM,3,12,0,158.5,0.3,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1093,EMAIL,PREMIUM,2,34,0,24.1,0.69,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1094,WHATSAPP,PREMIUM,2,20,0,24.2,0.9,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1095,CHAT_WEB,PREMIUM,5,30,1,47.8,0.18,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1096,CHAT_WEB,STANDARD,3,34,0,18.8,0.74,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1097,CHAT_WEB,ENTERPRISE,2,31,1,6.3,0.9,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1098,CHAT_WEB,FREE,6,31,0,156.2,0.07,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1099,EMAIL,ENTERPRISE,6,1,1,151.8,0.22,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1100,CHAT_WEB,PREMIUM,3,39,0,21.4,0.78,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1101,PHONE,FREE,1,15,0,15.6,0.94,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1102,PHONE,STANDARD,3,41,0,16.7,0.79,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1103,WHATSAPP,FREE,3,47,0,21.3,0.89,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1104,WHATSAPP,PREMIUM,1,18,0,13.2,0.85,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1105,EMAIL,PREMIUM,4,25,1,19.2,0.24,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1106,PHONE,FREE,4,16,0,167.2,0.17,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1107,EMAIL,STANDARD,1,35,1,23.6,0.97,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1108,WHATSAPP,STANDARD,3,25,0,5.7,0.97,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1109,CHAT_WEB,FREE,3,27,0,15.2,0.79,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1110,CHAT_WEB,PREMIUM,2,15,0,8.2,0.68,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1111,CHAT_WEB,STANDARD,6,8,1,59.5,0.31,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1112,EMAIL,VIP,6,22,0,112.8,0.21,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1113,PHONE,VIP,3,34,0,61.1,0.28,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1114,WHATSAPP,STANDARD,6,17,0,150.6,0.06,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1115,CHAT_WEB,STANDARD,4,32,0,71.8,0.11,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1116,CHAT_WEB,FREE,2,2,1,17.6,0.97,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1117,WHATSAPP,STANDARD,3,24,1,114.8,0.11,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1118,CHAT_WEB,FREE,2,13,0,133.7,0.1,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1119,WHATSAPP,ENTERPRISE,3,11,1,1.4,0.72,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1120,CHAT_WEB,STANDARD,3,14,1,16.1,0.81,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1121,PHONE,STANDARD,3,45,0,22.4,0.91,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1122,CHAT_WEB,STANDARD,6,31,0,16.6,0.15,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1123,CHAT_WEB,VIP,2,19,0,7.7,0.78,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1124,CHAT_WEB,STANDARD,2,35,0,9.0,0.97,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1125,EMAIL,VIP,4,27,0,66.5,0.15,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1126,CHAT_WEB,STANDARD,2,33,0,18.3,0.7,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1127,CHAT_WEB,PREMIUM,1,16,0,12.0,0.96,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1128,EMAIL,PREMIUM,4,35,0,170.4,0.13,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1129,CHAT_WEB,ENTERPRISE,2,12,0,16.1,0.76,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1130,CHAT_WEB,FREE,3,8,2,68.7,0.33,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1131,EMAIL,FREE,2,47,0,6.7,0.77,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1132,CHAT_WEB,STANDARD,2,20,0,7.0,0.72,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1133,WHATSAPP,STANDARD,6,33,0,67.3,0.19,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1134,EMAIL,PREMIUM,2,14,0,23.8,0.87,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1135,CHAT_WEB,PREMIUM,2,44,0,22.8,0.85,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1136,CHAT_WEB,PREMIUM,6,10,2,107.7,0.18,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1137,PHONE,FREE,3,18,0,17.6,0.83,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1138,EMAIL,PREMIUM,6,19,1,56.3,0.09,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1139,EMAIL,FREE,3,14,1,7.9,0.79,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1140,CHAT_WEB,STANDARD,1,14,0,10.8,0.84,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1141,CHAT_WEB,VIP,2,14,0,26.7,0.14,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1142,CHAT_WEB,STANDARD,4,2,0,25.0,0.33,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1143,CHAT_WEB,STANDARD,2,47,1,6.9,0.94,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1144,CHAT_WEB,STANDARD,2,24,1,98.2,0.09,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1145,CHAT_WEB,STANDARD,3,11,0,21.6,0.93,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1146,CHAT_WEB,STANDARD,2,25,1,64.3,0.3,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1147,EMAIL,STANDARD,2,30,1,15.9,0.1,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1148,EMAIL,FREE,5,30,1,162.9,0.34,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1149,CHAT_WEB,STANDARD,2,45,0,4.4,0.77,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1150,EMAIL,FREE,1,37,0,4.0,0.7,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1151,PHONE,PREMIUM,1,40,0,12.9,0.89,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1152,PHONE,PREMIUM,2,10,1,152.7,0.06,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1153,EMAIL,STANDARD,3,44,0,3.1,0.95,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1154,EMAIL,VIP,3,32,0,7.2,0.69,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1155,PHONE,VIP,2,14,0,10.5,0.75,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1156,EMAIL,FREE,3,40,0,11.9,0.96,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1157,CHAT_WEB,STANDARD,6,34,0,177.5,0.17,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1158,CHAT_WEB,FREE,2,11,2,53.5,0.11,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1159,EMAIL,VIP,1,7,0,9.0,0.83,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1160,EMAIL,FREE,4,12,0,71.8,0.15,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1161,EMAIL,PREMIUM,3,7,1,23.8,0.81,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1162,EMAIL,STANDARD,1,38,0,19.3,0.98,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1163,CHAT_WEB,STANDARD,3,21,0,18.6,0.76,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1164,WHATSAPP,PREMIUM,6,12,1,170.4,0.2,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1165,CHAT_WEB,FREE,2,14,0,22.4,0.79,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1166,WHATSAPP,STANDARD,6,21,0,145.7,0.18,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1167,EMAIL,FREE,3,8,0,7.0,0.94,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1168,WHATSAPP,FREE,2,30,1,77.1,0.32,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1169,CHAT_WEB,PREMIUM,3,23,0,6.8,0.75,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1170,EMAIL,PREMIUM,2,13,0,177.6,0.23,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1171,EMAIL,PREMIUM,1,13,0,2.1,0.98,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1172,EMAIL,STANDARD,4,20,2,155.8,0.26,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1173,WHATSAPP,STANDARD,3,23,0,9.9,0.7,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1174,EMAIL,FREE,2,27,0,118.0,0.12,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1175,CHAT_WEB,FREE,1,17,0,19.6,0.95,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1176,CHAT_WEB,FREE,3,38,0,5.4,0.71,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1177,CHAT_WEB,PREMIUM,3,44,0,2.3,0.95,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1178,CHAT_WEB,FREE,1,37,1,20.2,0.77,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1179,CHAT_WEB,FREE,3,4,1,81.2,0.07,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1180,EMAIL,VIP,1,46,0,20.2,0.72,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1181,WHATSAPP,FREE,4,13,0,140.6,0.28,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1182,WHATSAPP,STANDARD,5,25,0,39.3,0.28,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1183,CHAT_WEB,PREMIUM,2,27,2,67.7,0.05,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1184,CHAT_WEB,PREMIUM,2,34,1,53.4,0.06,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1185,EMAIL,FREE,2,17,0,4.8,0.65,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1186,CHAT_WEB,STANDARD,4,32,0,104.4,0.2,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1187,EMAIL,STANDARD,1,8,0,16.3,0.73,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1188,EMAIL,ENTERPRISE,2,9,0,10.0,0.9,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1189,CHAT_WEB,VIP,3,35,0,5.5,0.94,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1190,CHAT_WEB,STANDARD,2,20,0,3.8,0.83,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1191,EMAIL,FREE,2,5,3,54.8,0.17,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1192,CHAT_WEB,STANDARD,5,22,0,31.2,0.12,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1193,EMAIL,FREE,2,11,0,153.8,0.15,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1194,CHAT_WEB,STANDARD,1,16,0,17.7,0.78,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1195,CHAT_WEB,STANDARD,6,7,0,36.9,0.11,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1196,PHONE,PREMIUM,5,22,0,119.6,0.17,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1197,CHAT_WEB,STANDARD,5,3,0,72.5,0.25,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1198,CHAT_WEB,VIP,1,30,0,23.5,0.92,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1199,EMAIL,ENTERPRISE,1,38,0,8.7,0.66,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1200,WHATSAPP,STANDARD,5,5,0,67.7,0.34,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1201,EMAIL,FREE,1,24,0,16.2,0.79,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1202,EMAIL,FREE,3,35,0,5.8,0.82,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1203,WHATSAPP,VIP,3,28,3,135.0,0.31,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1204,CHAT_WEB,STANDARD,1,43,0,22.3,0.68,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1205,CHAT_WEB,STANDARD,1,30,0,3.9,0.68,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1206,CHAT_WEB,FREE,2,4,2,118.4,0.11,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1207,CHAT_WEB,PREMIUM,3,44,0,8.6,0.74,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1208,EMAIL,FREE,3,30,0,51.9,0.32,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1209,WHATSAPP,PREMIUM,2,35,0,115.4,0.2,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1210,CHAT_WEB,FREE,3,1,0,58.4,0.3,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1211,CHAT_WEB,FREE,4,14,0,109.4,0.08,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1212,EMAIL,FREE,1,21,0,17.0,0.75,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1213,CHAT_WEB,STANDARD,2,35,0,5.1,0.67,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1214,CHAT_WEB,FREE,2,17,2,126.2,0.07,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1215,CHAT_WEB,STANDARD,1,44,0,9.7,0.92,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1216,WHATSAPP,FREE,5,23,0,32.6,0.35,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1217,CHAT_WEB,STANDARD,1,18,0,18.2,0.93,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1218,CHAT_WEB,STANDARD,1,42,0,9.5,0.86,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1219,CHAT_WEB,VIP,2,42,0,5.4,0.66,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1220,WHATSAPP,STANDARD,3,6,3,72.8,0.32,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1221,CHAT_WEB,STANDARD,1,14,0,19.6,0.98,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1222,CHAT_WEB,STANDARD,2,38,0,15.7,0.83,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1223,PHONE,PREMIUM,5,33,0,138.1,0.09,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1224,CHAT_WEB,PREMIUM,6,7,0,162.5,0.08,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1225,WHATSAPP,STANDARD,1,34,0,3.4,0.89,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1226,CHAT_WEB,STANDARD,5,18,0,95.9,0.19,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1227,PHONE,STANDARD,2,18,1,43.3,0.1,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1228,WHATSAPP,STANDARD,4,31,3,74.7,0.32,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1229,WHATSAPP,STANDARD,1,25,0,12.8,0.76,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1230,CHAT_WEB,PREMIUM,2,34,1,104.8,0.28,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1231,EMAIL,FREE,5,18,1,121.8,0.21,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1232,CHAT_WEB,VIP,3,24,0,5.3,0.7,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1233,WHATSAPP,STANDARD,4,21,0,94.0,0.19,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1234,CHAT_WEB,STANDARD,3,30,0,18.5,0.08,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1235,CHAT_WEB,PREMIUM,2,36,0,23.2,0.91,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1236,WHATSAPP,STANDARD,1,26,0,24.1,0.97,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1237,EMAIL,STANDARD,4,10,0,83.3,0.21,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1238,EMAIL,STANDARD,1,24,0,22.3,0.85,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1239,CHAT_WEB,ENTERPRISE,3,7,0,157.8,0.1,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1240,WHATSAPP,STANDARD,1,40,0,18.1,0.77,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1241,WHATSAPP,FREE,2,34,0,160.8,0.21,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1242,EMAIL,FREE,5,30,0,122.7,0.1,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1243,CHAT_WEB,PREMIUM,2,10,2,61.9,0.17,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1244,CHAT_WEB,FREE,5,23,0,94.4,0.06,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1245,WHATSAPP,STANDARD,3,36,0,18.6,0.83,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1246,CHAT_WEB,FREE,2,27,0,15.2,0.78,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1247,EMAIL,VIP,3,30,0,92.2,0.13,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1248,CHAT_WEB,PREMIUM,2,17,0,19.4,0.73,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1249,PHONE,FREE,2,41,0,6.1,0.69,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1250,WHATSAPP,VIP,5,20,0,32.2,0.07,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1251,EMAIL,FREE,4,18,1,157.5,0.08,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1252,WHATSAPP,STANDARD,3,12,0,10.7,0.84,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1253,WHATSAPP,STANDARD,2,43,0,13.6,0.71,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1254,CHAT_WEB,FREE,2,47,0,24.9,0.75,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1255,CHAT_WEB,STANDARD,5,28,1,109.6,0.32,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1256,EMAIL,VIP,1,11,0,16.7,0.76,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1257,WHATSAPP,VIP,1,29,0,12.3,0.89,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1258,WHATSAPP,STANDARD,5,11,3,157.2,0.21,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1259,CHAT_WEB,PREMIUM,2,29,0,15.1,0.18,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1260,WHATSAPP,VIP,1,5,0,22.7,0.76,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1261,CHAT_WEB,PREMIUM,2,31,1,69.6,0.15,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1262,CHAT_WEB,STANDARD,3,5,0,4.0,0.94,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1263,CHAT_WEB,FREE,1,22,0,12.7,0.73,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1264,WHATSAPP,STANDARD,1,8,0,16.1,0.76,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1265,EMAIL,PREMIUM,2,16,0,140.3,0.1,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1266,WHATSAPP,STANDARD,5,28,1,85.3,0.19,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1267,CHAT_WEB,FREE,3,4,0,52.0,0.3,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1268,CHAT_WEB,STANDARD,3,8,0,17.0,0.68,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1269,CHAT_WEB,FREE,1,41,0,9.9,0.95,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1270,EMAIL,STANDARD,4,3,0,98.1,0.13,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1271,CHAT_WEB,FREE,3,23,0,134.1,0.29,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1272,EMAIL,ENTERPRISE,6,4,1,34.3,0.3,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1273,CHAT_WEB,STANDARD,1,36,0,22.4,0.93,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1274,WHATSAPP,FREE,1,2,0,18.9,0.83,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1275,CHAT_WEB,ENTERPRISE,5,28,1,117.9,0.27,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1276,EMAIL,FREE,2,14,1,85.3,0.06,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1277,CHAT_WEB,STANDARD,2,22,0,1.7,0.85,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1278,WHATSAPP,STANDARD,3,22,0,4.1,0.68,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1279,EMAIL,PREMIUM,2,4,0,18.6,0.76,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1280,EMAIL,FREE,3,11,0,43.3,0.19,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1281,CHAT_WEB,STANDARD,2,44,0,12.1,0.9,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1282,WHATSAPP,FREE,2,9,0,73.3,0.22,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1283,CHAT_WEB,PREMIUM,6,31,3,58.0,0.35,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1284,WHATSAPP,ENTERPRISE,5,1,0,150.6,0.33,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1285,EMAIL,FREE,5,28,0,152.9,0.31,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1286,EMAIL,PREMIUM,3,5,0,119.4,0.13,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1287,WHATSAPP,PREMIUM,1,45,0,7.9,0.85,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1288,CHAT_WEB,STANDARD,4,34,2,85.4,0.13,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1289,WHATSAPP,PREMIUM,2,35,0,81.5,0.32,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1290,CHAT_WEB,FREE,3,16,0,1.4,0.87,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1291,WHATSAPP,STANDARD,5,32,0,128.7,0.35,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1292,WHATSAPP,FREE,2,21,0,8.8,0.86,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1293,CHAT_WEB,FREE,6,3,1,37.2,0.2,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1294,WHATSAPP,PREMIUM,3,8,1,129.0,0.3,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1295,EMAIL,STANDARD,2,1,0,66.4,0.17,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1296,CHAT_WEB,STANDARD,2,34,0,11.3,0.95,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1297,EMAIL,FREE,2,35,2,173.2,0.2,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1298,PHONE,STANDARD,2,24,0,60.6,0.18,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1299,WHATSAPP,VIP,2,10,0,15.0,0.74,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1300,EMAIL,FREE,2,18,0,13.7,0.92,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1301,WHATSAPP,FREE,5,8,1,127.6,0.09,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1302,WHATSAPP,PREMIUM,3,1,0,18.0,0.78,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1303,EMAIL,ENTERPRISE,3,45,0,4.7,0.95,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1304,CHAT_WEB,VIP,5,35,0,62.6,0.08,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1305,EMAIL,FREE,4,19,2,76.4,0.3,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1306,WHATSAPP,STANDARD,3,27,0,76.7,0.21,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1307,EMAIL,STANDARD,2,30,1,130.0,0.17,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1308,EMAIL,STANDARD,2,35,0,30.6,0.32,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1309,WHATSAPP,PREMIUM,3,25,1,10.3,0.67,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1310,EMAIL,STANDARD,4,8,1,109.0,0.08,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1311,EMAIL,PREMIUM,1,46,0,17.3,0.65,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1312,CHAT_WEB,FREE,1,24,0,24.9,0.78,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1313,CHAT_WEB,PREMIUM,2,26,0,13.0,0.91,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1314,PHONE,STANDARD,1,14,0,7.5,0.8,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1315,WHATSAPP,FREE,5,2,0,86.5,0.19,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1316,WHATSAPP,FREE,1,8,0,15.3,0.73,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1317,CHAT_WEB,STANDARD,3,5,0,10.8,0.93,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1318,CHAT_WEB,FREE,3,2,0,7.1,0.68,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1319,EMAIL,PREMIUM,6,31,2,162.8,0.17,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1320,CHAT_WEB,VIP,2,39,1,3.8,0.83,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1321,CHAT_WEB,STANDARD,4,1,0,81.4,0.15,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1322,WHATSAPP,ENTERPRISE,5,11,0,15.1,0.13,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1323,CHAT_WEB,STANDARD,5,13,0,82.9,0.1,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1324,EMAIL,ENTERPRISE,3,24,0,4.7,0.96,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1325,PHONE,STANDARD,3,26,0,2.7,0.77,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1326,CHAT_WEB,STANDARD,5,16,0,49.7,0.11,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1327,EMAIL,FREE,3,24,0,22.0,0.97,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1328,WHATSAPP,VIP,5,33,0,174.0,0.17,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1329,PHONE,PREMIUM,5,12,0,150.4,0.08,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1330,WHATSAPP,STANDARD,1,41,0,6.0,0.76,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1331,WHATSAPP,STANDARD,3,7,2,77.9,0.21,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1332,EMAIL,FREE,1,15,0,4.1,0.87,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1333,EMAIL,VIP,6,33,1,98.9,0.23,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1334,CHAT_WEB,PREMIUM,5,12,0,24.9,0.14,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1335,WHATSAPP,PREMIUM,3,41,0,1.1,0.75,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1336,CHAT_WEB,STANDARD,1,24,0,23.5,0.89,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1337,WHATSAPP,PREMIUM,3,4,0,2.4,0.66,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1338,CHAT_WEB,FREE,1,24,0,10.8,0.78,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1339,WHATSAPP,STANDARD,2,23,0,3.7,0.66,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1340,EMAIL,FREE,1,37,0,13.3,0.82,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1341,CHAT_WEB,FREE,3,36,0,1.7,0.76,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1342,CHAT_WEB,PREMIUM,2,17,0,4.0,0.83,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1343,WHATSAPP,FREE,6,32,3,155.7,0.25,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1344,EMAIL,FREE,1,18,0,10.0,0.74,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1345,EMAIL,STANDARD,6,25,0,65.3,0.13,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1346,CHAT_WEB,FREE,3,16,0,6.7,0.77,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1347,EMAIL,FREE,1,6,0,18.1,0.76,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1348,EMAIL,PREMIUM,2,33,0,21.6,0.79,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1349,EMAIL,STANDARD,3,10,0,9.1,0.72,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1350,EMAIL,STANDARD,5,33,0,57.0,0.26,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1351,EMAIL,FREE,3,43,0,12.0,0.76,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1352,EMAIL,PREMIUM,2,5,3,66.6,0.35,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1353,PHONE,FREE,6,15,1,158.7,0.22,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1354,CHAT_WEB,FREE,6,27,0,150.4,0.14,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1355,WHATSAPP,STANDARD,2,24,0,6.7,0.74,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1356,CHAT_WEB,VIP,3,10,1,77.9,0.09,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1357,CHAT_WEB,STANDARD,2,27,1,20.3,0.8,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1358,CHAT_WEB,VIP,3,11,0,17.4,0.91,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1359,CHAT_WEB,PREMIUM,2,15,0,21.9,0.65,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1360,CHAT_WEB,PREMIUM,4,14,1,101.2,0.34,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1361,EMAIL,FREE,6,2,0,80.3,0.29,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1362,CHAT_WEB,STANDARD,5,1,0,131.4,0.06,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1363,EMAIL,STANDARD,1,22,0,1.1,0.69,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1364,CHAT_WEB,FREE,1,20,0,15.5,0.89,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1365,CHAT_WEB,FREE,3,45,0,24.7,0.94,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1366,CHAT_WEB,PREMIUM,1,38,0,4.5,0.83,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1367,CHAT_WEB,STANDARD,3,20,1,5.8,0.73,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1368,PHONE,VIP,3,13,2,105.7,0.24,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1369,WHATSAPP,STANDARD,3,16,1,21.6,0.69,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1370,WHATSAPP,VIP,3,28,0,19.0,0.96,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1371,CHAT_WEB,FREE,3,28,1,141.7,0.17,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1372,CHAT_WEB,PREMIUM,2,39,0,24.4,0.7,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1373,CHAT_WEB,VIP,2,2,0,80.7,0.22,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1374,EMAIL,PREMIUM,2,7,0,6.8,0.88,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1375,WHATSAPP,STANDARD,5,7,0,101.6,0.13,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1376,EMAIL,PREMIUM,2,28,3,39.8,0.17,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1377,EMAIL,STANDARD,2,10,1,57.9,0.32,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1378,CHAT_WEB,FREE,3,38,0,9.0,0.66,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1379,CHAT_WEB,STANDARD,1,32,0,20.5,0.76,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1380,EMAIL,ENTERPRISE,2,13,0,59.9,0.23,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1381,CHAT_WEB,PREMIUM,2,34,0,10.9,0.79,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1382,EMAIL,STANDARD,1,7,0,17.8,0.83,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1383,PHONE,PREMIUM,1,46,0,24.1,0.79,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1384,EMAIL,PREMIUM,3,24,0,14.6,0.73,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1385,EMAIL,FREE,3,35,0,18.9,0.75,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1386,CHAT_WEB,STANDARD,3,21,0,19.3,0.93,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1387,WHATSAPP,VIP,6,29,0,39.8,0.09,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1388,CHAT_WEB,FREE,3,10,0,12.2,0.93,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1389,EMAIL,ENTERPRISE,2,2,0,6.3,0.81,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1390,CHAT_WEB,STANDARD,3,7,0,21.3,0.71,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1391,CHAT_WEB,FREE,6,18,0,138.1,0.17,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1392,CHAT_WEB,PREMIUM,2,21,0,13.6,0.92,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1393,WHATSAPP,FREE,1,36,0,23.8,0.72,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1394,WHATSAPP,FREE,3,34,0,40.7,0.15,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1395,CHAT_WEB,STANDARD,3,16,1,2.5,0.89,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1396,EMAIL,ENTERPRISE,6,23,1,102.9,0.22,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1397,WHATSAPP,PREMIUM,6,3,2,65.8,0.22,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1398,CHAT_WEB,VIP,2,24,1,156.5,0.14,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1399,CHAT_WEB,FREE,4,28,2,152.6,0.1,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1400,CHAT_WEB,VIP,3,37,0,21.1,0.86,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1401,CHAT_WEB,STANDARD,3,42,0,5.7,0.82,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1402,CHAT_WEB,FREE,3,28,0,87.3,0.18,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1403,PHONE,VIP,6,23,1,77.5,0.23,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1404,CHAT_WEB,STANDARD,4,3,1,109.8,0.34,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1405,CHAT_WEB,STANDARD,1,42,0,6.0,0.71,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1406,CHAT_WEB,STANDARD,1,42,0,16.2,0.83,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1407,PHONE,PREMIUM,1,9,0,7.1,0.78,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1408,WHATSAPP,VIP,2,35,2,129.1,0.29,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1409,CHAT_WEB,STANDARD,1,27,1,8.0,0.79,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1410,CHAT_WEB,FREE,4,3,0,24.1,0.15,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1411,EMAIL,FREE,2,14,2,59.0,0.33,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1412,CHAT_WEB,FREE,4,6,0,102.0,0.31,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1413,CHAT_WEB,STANDARD,2,3,1,114.8,0.07,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1414,EMAIL,FREE,3,34,0,14.1,0.79,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1415,CHAT_WEB,FREE,2,31,0,13.4,0.69,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1416,EMAIL,PREMIUM,2,37,0,1.8,0.67,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1417,CHAT_WEB,FREE,6,17,2,165.9,0.2,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1418,WHATSAPP,PREMIUM,6,28,2,171.8,0.17,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1419,EMAIL,FREE,4,3,0,135.4,0.14,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1420,CHAT_WEB,FREE,3,45,0,3.7,0.97,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1421,CHAT_WEB,STANDARD,4,1,2,129.6,0.07,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1422,WHATSAPP,STANDARD,5,19,1,89.8,0.31,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1423,EMAIL,STANDARD,3,36,0,20.1,0.66,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1424,CHAT_WEB,STANDARD,2,9,0,13.0,0.91,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1425,EMAIL,FREE,1,14,0,19.3,0.69,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1426,EMAIL,VIP,3,13,1,64.7,0.18,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1427,EMAIL,STANDARD,2,10,0,24.5,0.83,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1428,CHAT_WEB,VIP,5,32,1,82.6,0.35,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1429,EMAIL,STANDARD,4,22,3,107.6,0.29,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1430,EMAIL,STANDARD,3,14,0,9.2,0.92,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1431,EMAIL,STANDARD,4,17,0,167.0,0.16,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1432,EMAIL,STANDARD,2,17,0,1.3,0.74,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1433,WHATSAPP,FREE,3,1,0,59.6,0.24,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1434,WHATSAPP,STANDARD,2,30,0,150.7,0.28,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1435,EMAIL,FREE,1,32,0,23.3,0.78,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1436,CHAT_WEB,PREMIUM,4,27,0,171.1,0.17,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1437,EMAIL,STANDARD,3,7,0,29.3,0.33,Unauthorized charge on my card for $180.00. I did not authorize this charge and demand an immediate refund. This is unacceptable!,1
+conv-1438,EMAIL,STANDARD,4,27,1,65.6,0.25,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1439,EMAIL,FREE,1,33,0,4.1,0.75,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1440,EMAIL,VIP,3,24,0,21.0,0.78,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1441,WHATSAPP,STANDARD,1,3,0,10.7,0.74,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1442,CHAT_WEB,FREE,5,13,0,35.6,0.24,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1443,CHAT_WEB,FREE,4,1,3,95.4,0.2,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1444,CHAT_WEB,ENTERPRISE,1,43,0,16.2,0.76,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1445,CHAT_WEB,PREMIUM,2,9,3,119.4,0.1,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1446,CHAT_WEB,VIP,1,14,0,7.6,0.93,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1447,CHAT_WEB,STANDARD,4,34,1,101.4,0.31,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1448,CHAT_WEB,FREE,3,40,0,11.0,0.97,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1449,EMAIL,PREMIUM,6,24,0,140.8,0.18,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1450,EMAIL,PREMIUM,3,29,0,18.0,0.81,"Hello, I just wanted to confirm if you will be answering live chat inquiries next Monday during the holiday. Thanks!",0
+conv-1451,EMAIL,STANDARD,6,22,2,106.5,0.33,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1452,CHAT_WEB,VIP,3,41,0,10.7,0.89,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1453,WHATSAPP,VIP,1,27,0,5.0,0.97,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1454,CHAT_WEB,STANDARD,6,6,0,22.2,0.11,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1455,CHAT_WEB,STANDARD,3,12,0,24.3,0.65,"Good morning, I received the monthly invoice correctly. Do you have automated bank direct debit available? Best regards.",0
+conv-1456,CHAT_WEB,STANDARD,5,6,0,139.8,0.34,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1457,CHAT_WEB,STANDARD,3,18,0,3.0,0.89,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1458,WHATSAPP,STANDARD,2,34,0,20.7,0.66,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1459,WHATSAPP,FREE,3,23,1,23.0,0.27,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1460,EMAIL,PREMIUM,2,6,3,142.6,0.12,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1461,CHAT_WEB,STANDARD,5,26,0,27.3,0.14,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1462,EMAIL,STANDARD,1,23,0,9.5,0.94,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1463,PHONE,STANDARD,3,23,0,144.4,0.23,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1464,CHAT_WEB,PREMIUM,3,32,0,6.2,0.66,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1465,EMAIL,ENTERPRISE,3,5,0,17.4,0.78,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1466,EMAIL,FREE,3,25,0,10.3,0.67,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1467,WHATSAPP,STANDARD,1,30,0,18.8,0.72,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1468,CHAT_WEB,VIP,3,9,0,21.9,0.94,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1469,EMAIL,STANDARD,2,15,2,36.0,0.2,"The system is completely down, returning error 500 when trying to invoice my clients. This is critical, our business operations are completely halted right now!",1
+conv-1470,CHAT_WEB,STANDARD,2,11,0,63.1,0.2,This is the third time I contact support regarding the same bug on the main dashboard. Nobody gives a clear answer and I still cannot work. I demand to speak with a supervisor.,1
+conv-1471,CHAT_WEB,PREMIUM,1,24,0,7.7,0.88,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1472,CHAT_WEB,FREE,2,26,0,2.6,0.75,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1473,EMAIL,VIP,2,3,0,23.7,0.86,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1474,EMAIL,VIP,5,18,1,86.2,0.08,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1475,EMAIL,STANDARD,3,30,3,85.0,0.19,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1476,CHAT_WEB,PREMIUM,1,2,0,2.0,0.71,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1477,CHAT_WEB,STANDARD,4,31,1,56.0,0.26,Critical server error. All orders today were duplicated. I need an immediate solution before they are dispatched.,1
+conv-1478,CHAT_WEB,FREE,2,13,0,18.5,0.92,"Hello, good morning. Could you please tell me what payment methods are available and your phone support hours? Thank you very much.",0
+conv-1479,EMAIL,STANDARD,2,6,0,9.7,0.71,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1480,WHATSAPP,PREMIUM,2,35,0,7.4,0.8,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1481,CHAT_WEB,STANDARD,3,26,0,19.5,0.25,"I was charged twice for the subscription this month on my credit card and nobody is answering my emails. This is a scam, cancel my account and refund my money immediately or I will take legal action.",1
+conv-1482,EMAIL,STANDARD,3,39,0,20.7,0.96,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1483,CHAT_WEB,VIP,5,29,1,27.5,0.08,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1484,CHAT_WEB,FREE,2,18,0,14.1,0.88,"Good afternoon, I would like to update the email address associated with my user. Which section in the dashboard can I do this in?",0
+conv-1485,WHATSAPP,STANDARD,1,6,0,19.7,0.95,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1486,EMAIL,FREE,1,41,0,10.5,0.74,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0
+conv-1487,CHAT_WEB,PREMIUM,4,10,0,153.7,0.21,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1488,WHATSAPP,STANDARD,3,21,0,99.6,0.12,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1489,PHONE,FREE,3,31,1,23.7,0.1,"Nobody is answering on chat and my access is still blocked since yesterday. This service is awful, I demand to speak with a manager right now!",1
+conv-1490,CHAT_WEB,FREE,5,21,0,142.4,0.31,"My subscription fee was changed without prior notice and I was charged double. You are scammers, cancel everything and I want my money back.",1
+conv-1491,WHATSAPP,FREE,6,31,0,137.8,0.34,Terrible customer service. My account has been blocked for 3 days without reason. If you do not resolve it today I will initiate legal action with my lawyer.,1
+conv-1492,EMAIL,STANDARD,4,7,1,74.7,0.32,I want to cancel the service immediately. The support is terrible and I have been waiting a week for someone to resolve a billing issue.,1
+conv-1493,WHATSAPP,FREE,2,4,0,24.4,0.89,"Good afternoon, could you please send me a copy of last month's payment receipt for our accounting department? Thank you very much.",0
+conv-1494,CHAT_WEB,STANDARD,1,20,0,11.6,0.69,"Thank you so much for the quick help, everything is resolved and the system works great. Best regards.",0
+conv-1495,PHONE,FREE,6,16,0,17.2,0.09,"The platform crashes every 5 minutes and we lost all session data. This is critical, we are in the middle of an urgent accounting close!",1
+conv-1496,CHAT_WEB,STANDARD,1,18,1,16.3,0.96,"Thank you very much for the support received on the previous ticket, the agent was very kind and resolved my inquiry quickly.",0
+conv-1497,PHONE,STANDARD,3,41,0,3.6,0.78,"Hello, how can I invite another member of my team to access the admin panel? Thanks in advance.",0
+conv-1498,CHAT_WEB,VIP,1,1,1,5.9,0.95,"Dear team, I wanted to congratulate you on the new dashboards feature, it has been extremely helpful for our team.",0
+conv-1499,WHATSAPP,STANDARD,2,11,1,14.4,0.89,Hello! I wanted to inquire if you have a guide to export reports into Excel or PDF format. Looking forward to your response.,0

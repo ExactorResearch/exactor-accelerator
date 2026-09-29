@@ -1,0 +1,97 @@
+# Changelog
+
+All notable changes to Exactor Accelerator will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [2.0.7] - 2026-09-28
+
+### Added
+- **Domain Feature Engine**: Added `exactor_accelerator.feature_engine` with specialized engines (`FraudFeatureEngine`, `MedicalFeatureEngine`, `ForexFeatureEngine`, `ManufacturingFeatureEngine`, `SecurityFeatureEngine`, `DomainFeatureEngine`) and `get_feature_engine()` factory function.
+- **Top-level Exports**: Exported `get_feature_engine`, `DomainFeatureEngine`, `get_regime_detector`, and `DomainRegimeDetector` in `exactor_accelerator.__init__`.
+- **Test Coverage**: Added comprehensive test suite `tests/test_feature_engine.py` covering feature calculations, edge cases, missing columns, and immutability across all domains.
+
+## [2.0.6] - 2026-09-28
+
+### Changed
+- **Packaging Maintenance**: Clean distribution release artifact build ensuring complete Python 3.8+ universal wheel compatibility.
+- **Dependency Optimization**: Validated lower-bound dependency constraints for legacy runtime stability.
+
+## [2.0.5] - 2026-09-28
+
+### Changed
+- **Python Compatibility Lowered**: Lowered `requires-python` from `>=3.9` to `>=3.8` to enable installations on Python 3.8 environments.
+- **Classification & Targets**: Added Python 3.8 trove classifier and updated tool configurations (`black`, `ruff`, `mypy`).
+
+## [2.0.4] - 2026-09-28
+
+### Changed
+- **Release Maintenance**: Clean release build with updated package metadata for PyPI and local distribution.
+- **Packaging Integrity**: Verified wheel and source distribution packaging reproducibility under Python 3.9 through 3.14.
+
+## [2.0.3] - 2026-09-28
+
+### Changed
+- **Name Standardization**: Completely removed any legacy `exactor-jev` occurrences in favor of `exactor-accelerator` and `Exactor Accelerator`.
+- **Internationalization**: Full English translation of all documentation, docstrings, examples, test suites, and web UI dashboard.
+- **Scikit-Learn Interface**: Standardized `ExactorAcceleratorClassifier` and `ExactorAcceleratorMultiLabelClassifier` naming and pipeline export.
+- **SDK Compatibility**: Added canonical English keys (`exact_boolean_evaluation`, `autonomous_action_executed`) with backward-compatible aliases.
+
+### Fixed
+- Fixed email domain and package metadata URLs across documentation and pyproject configuration.
+- Fixed boolean evaluation key access in persistence and regression test suites.
+
+## [2.0.1] - 2026-09-28
+
+### Fixed
+- Fixed metadata compliance for PyPI legacy upload
+- Sanitized ASCII characters in package description
+- Standardized PEP 621 license table specification
+
+## [2.0.0] - 2026-09-28
+
+### ⚠ BREAKING CHANGES
+- **Standardized package name**: `exactor-accelerator`
+- **Import path standardized**: `import exactor_accelerator`
+- **Standardized class names**:
+  - `ExactorAcceleratorClassifier`
+  - `ExactorAcceleratorMultiLabelClassifier`
+  - `ExactorAccelerator`
+- `setup.py` removed; `pyproject.toml` is the single source of truth
+- Minimum Python version raised to 3.9
+
+### Added
+- `exactor_accelerator.configure()` — top-level function to set API tokens programmatically
+- `exactor_accelerator.config` module — centralized configuration with env var, `.env` file, and programmatic support
+- `EXACTOR_CORE_TOKEN` environment variable support
+- `.env.example` template with all configurable tokens
+- `py.typed` marker for PEP 561 type checking support
+- GitHub Actions CI/CD pipeline (lint, test, build, publish)
+- Server dependencies split into `[server]` optional extra
+- DomainRegimeDetector for adaptive threshold adjustment
+- DomainFeatureEngine for domain-specific feature extraction
+- BatchProcessor for high-throughput processing
+- Domain-specific detectors: Fraud, Medical, Forex, Manufacturing, Security
+- Examples for all 5 domains
+
+### Changed
+- `fastapi` and `uvicorn` moved to optional `[server]` dependency group
+- Updated roadmap v2.0 to focus on niches of excellence
+- SDK module located at `exactor_accelerator/sdk.py`
+
+### Fixed
+- Improved cold start handling
+- Better regime detection for high-entropy scenarios
+
+## [1.0.0] - 2026-09-26
+
+### Added
+- Initial release of Exactor Accelerator
+- Hybrid neuro-symbolic architecture (EXACTOR + Jev)
+- Scikit-learn compatible interface
+- Multi-class and multi-label support
+- Fast-path for <1ms decisions
+- Live memory and incremental learning
+- Comprehensive documentation
+- Benchmark suite with public datasets
