@@ -254,7 +254,7 @@ Thank you for your interest in contributing to Exactor Accelerator!
 ### Environment Setup
 
 ```bash
-git clone https://github.com/username/exactor-accelerator.git
+git clone https://github.com/ExactorResearch/exactor-accelerator.git
 cd exactor-accelerator
 pip install -e .
 pip install -r requirements.txt
@@ -285,7 +285,7 @@ black exactor_accelerator/
 
 ## Reportar Issues
 
-Usa [GitHub Issues](https://github.com/username/exactor-accelerator/issues) para reportar bugs o solicitar features.
+Usa [GitHub Issues](https://github.com/ExactorResearch/exactor-accelerator/issues) para reportar bugs o solicitar features.
 ```
 
 #### 4. CHANGELOG.md (VERSION HISTORY)
@@ -488,7 +488,7 @@ setup(
     description="Hybrid neuro-symbolic classification system for high-speed decisions",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/username/exactor-accelerator",
+    url="https://github.com/ExactorResearch/exactor-accelerator",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -543,9 +543,9 @@ authors = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/username/exactor-accelerator"
-Documentation = "https://github.com/username/exactor-accelerator/docs"
-Repository = "https://github.com/username/exactor-accelerator"
+Homepage = "https://github.com/ExactorResearch/exactor-accelerator"
+Documentation = "https://github.com/ExactorResearch/exactor-accelerator/docs"
+Repository = "https://github.com/ExactorResearch/exactor-accelerator"
 
 [build-system]
 requires = ["setuptools>=45", "wheel"]
