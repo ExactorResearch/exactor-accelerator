@@ -5,6 +5,18 @@ All notable changes to Exactor Accelerator will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.10] - 2026-09-29
+
+### Documentation & Global Localization
+- **Complete English Localization**: Translated all documentation, conceptual guides, tutorials, and architectural docs into high-precision technical English.
+- **Value Proposition & Key Gains**: Added clear strategic gain metrics in documentation (sub-millisecond edge latency, $0.00 marginal inference cost, 100% regulatory auditability, zero-data cold start, and zero false negatives via rule anchoring).
+
+## [2.0.9] - 2026-09-29
+
+### Documentation & Positioning
+- **Strategic Alliance Narrative**: Positioned Exactor Accelerator as an infrastructure partner that complements TypeSafe AI (Jev) agility by bringing its declarative cognitive power to edge micro-latency (`0.05 ms`), eliminating cloud network latency overhead and optimizing token budgets.
+- **Production Benchmarks Reframing**: Updated comparative tables and value proposition across `README.md`, `COMMUNITY_RELEASE_EXPERIMENT.md`, and architectural documents to emphasize hybrid synergy, zero-data cold-start auto-distillation, and deterministic regulatory auditability.
+
 ## [2.0.8] - 2026-09-29
 
 ### Security & Sanitization

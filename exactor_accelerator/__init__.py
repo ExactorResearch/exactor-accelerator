@@ -5,7 +5,7 @@ Combines EXACTOR boolean minimization (Rust) with Jev (TypeSafe AI)
 to accelerate decisions by 4,770-24,000x with 95-100% accuracy.
 """
 
-__version__ = "2.0.8"
+__version__ = "2.0.10"
 __author__ = "Exactor Contributors"
 __license__ = "MIT"
 

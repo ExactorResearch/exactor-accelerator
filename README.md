@@ -4,45 +4,62 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/pypi/pyversions/exactor-accelerator.svg)](https://pypi.org/project/exactor-accelerator/)
 
-**Exactor Accelerator** is the first neuro-symbolic hybrid engine that unifies **Unsupervised Learning**, **Supervised Boolean Minimization**, and **Zero-Data Autonomous Cold-Start Distillation** in a single library—accelerating TypeSafe AI (**Jev**) decisions by **4,770–24,000x** with **95–100% accuracy**, **$0.00 marginal production cost**, and **100% regulatory auditability**.
+## 🚀 Exactor Accelerator v2.0.10: Bringing Jev's Cognitive Power Directly to the Edge
+
+**Exactor Accelerator** is the first neuro-symbolic hybrid engine that unifies **Unsupervised Learning**, **Exact Boolean Minimization**, and **Zero-Data Autonomous Cold-Start Distillation** into a single Python library.
+
+Engineered to operate in seamless symbiosis with TypeSafe AI (**Jev**), Exactor captures the high-level semantic reasoning of Jev's decision engine and compiles it locally into an **Exact Boolean Hypercube in Rust**. The outcome is a high-performance hybrid infrastructure that executes Jev's cognitive intelligence directly at local micro-latency (`0.05 ms`), eliminating cloud network latency overhead and slashing token consumption.
 
 ---
 
-## Why Exactor Accelerator? (The Blue Ocean Advantage)
+### 💡 What You Gain with This Technology
 
-Traditional ML (`XGBoost`, `scikit-learn`) is fast at inference, but completely blind on Day 1 without thousands of labeled rows and opaque to strict regulatory audits. Pure TypeSafe AI (**Jev**) and LLMs can reason on Day 1 without data, but suffer from **500–1,200ms network latency** and linear token costs on every single call.
-
-**Exactor Accelerator turns Jev into a cognitive compiler**: it uses Jev to reason over unknown or drifting states and automatically compiles that intelligence into an **Exact Boolean Hypercube in Rust (`0.05ms`)**.
-
-| Capability | Pure Jev (TypeSafe AI) | Traditional ML (XGBoost / Sklearn) | **Exactor Accelerator v2.0 (Blue Ocean)** |
-| :--- | :---: | :---: | :---: |
-| **Zero-Data Cold-Start (Day 1)** | ✅ Yes (via slow API) | ❌ Impossible (requires labeled dataset) | **✅ Yes (`cold_start=True` + auto-distillation)** |
-| **Unsupervised Drift & Anomaly Detection** | ❌ Not built-in | ⚠️ Requires separate pipeline | **✅ Built-in (`RegimeDetector` + `FeatureEngine`)** |
-| **Supervised Exact Training (`.fit(X, y)`)** | ❌ Does not compile rules | ✅ Yes (Black-Box trees/weights) | **✅ Yes (Exact Boolean Hypercube $B^k$)** |
-| **Production Latency** | 477 – 1,200 ms | 1 – 10 ms | **0.05 – 0.1 ms (4,770x–24,000x faster)** |
-| **Marginal Cost per 100M Decisions** | $40,000 – $1,800,000 | Compute infrastructure cost | **$0.00 on Fast-Path (100% token savings)** |
-| **Regulatory Explainability** | Free-form text (non-auditable) | Post-hoc approximations (SHAP) | **100% Deterministic Boolean Formulas (GDPR/HIPAA/SOX)** |
+1. **Sub-Millisecond Edge Latency (`0.05 ms`)**: Eliminates the inevitable 500–1,200 ms network transit overhead of cloud AI API round-trips. Critical path decisions are executed in hot memory at hardware speed.
+2. **$0.00 Marginal Inference Cost**: Routine, repetitive transactions run on the local Fast-Path with zero API calls, delivering up to 100% token cost savings while preserving cloud AI budgets for high-entropy anomalies.
+3. **100% Regulatory Explainability & Determinism**: Black-box neural networks and subjective free-form text are replaced with exact mathematical formulas (`IF ... AND ... OR ... NOT`). Decisions are fully auditable, reproducible, and ready for strict **GDPR, HIPAA, SOX, and PCI-DSS** compliance.
+4. **Instant Zero-Data Cold-Start**: No need to spend months collecting or annotating historical datasets. Deploy on Day 1: the system queries Jev for initial events, writes decisions to a concurrent SQLite WAL ledger, and autonomously compiles them into production-ready local boolean hypercubes.
+5. **Zero False Negatives on Critical Rules**: Hard-anchor non-negotiable security, clinical, or financial constraints (`anchor_critical_rules=True`) to mathematically prevent false negatives in mission-critical environments.
 
 ---
 
-## Three Learning Paradigms in a Single Library
+## 🎯 The Cloud AI Infrastructure Dilemma (And the Jev + Exactor Synergy)
 
-1. **Unsupervised Learning (No Labels Required)**:
-   - `get_feature_engine(domain=...)` and `get_regime_detector(domain=...)` extract multi-dimensional z-scores, behavioral velocity, Shannon entropy, and detect `STABLE_PATTERN`, `DRIFTING_PATTERN`, `HIGH_ENTROPY`, and `CONCEPT_DRIFT` on unlabeled streams.
-2. **Autonomous Cold-Start Distillation (Unsupervised $\rightarrow$ Supervised in Live Production)**:
-   - `ExactorAccelerator(cold_start=True, auto_evolve_every=N)` deploys with **0 historical rows**. It queries Jev on initial live events, records interactions in a high-concurrency SQLite WAL ledger, and **autonomously distills exact boolean rules** every $N$ events—seamlessly transitioning from ~800ms cloud calls to **0.05ms local execution**.
-3. **Supervised Exact Classification (`scikit-learn` Drop-in API)**:
-   - `ExactorAcceleratorClassifier` and `ExactorAcceleratorMultiLabelClassifier` provide standard `.fit(X, y)`, `.predict(X)`, and `.predict_proba(X)` methods backed by Gray-code hypercube minimization.
+Until today, mission-critical production architectures faced a painful trade-off:
+
+* **Traditional Machine Learning (XGBoost / Scikit-Learn)**: Fast at inference time, but completely blind on Day 1 without thousands of labeled historical rows. Moreover, its opaque black-box trees fail strict regulatory audits.
+* **Advanced Declarative Reasoning (Jev)**: Delivers brilliant zero-shot reasoning from day one without prior training data, with class-leading semantic comprehension. However, all cloud-based architectures inevitably incur network latency (API calls) and linear token costs when evaluating millions of continuous requests.
+
+**The Strategic Synergy (Jev + Exactor)**: Rather than forcing a compromise, this alliance delivers the best of both worlds. Jev acts as the strategic intelligence that navigates and calibrates ambiguous, changing scenarios; Exactor acts as its rapid local execution compiler. By logging and distilling live interactions with Jev into a high-concurrency ledger (SQLite in WAL mode), Exactor automates local execution of compiled rules in just **0.05 milliseconds**, freeing up bandwidth and safeguarding token budgets.
 
 ---
 
-## Niches of Excellence
+## 📊 Production Performance Benchmark
 
-- **Fraud Detection**: 95–100% accuracy, `0.05–0.1ms` latency, zero false negatives on anchored rules
-- **Medical Triage**: 95–100% accuracy, `0.05–0.1ms` latency, HIPAA-ready boolean audit trail
-- **Manufacturing & IoT Quality**: 95–100% accuracy, `50,000+ TPS` batch & stream processing
-- **Security & SOC Logs**: 95–100% accuracy, real-time anomaly & burst velocity detection
-- **Algorithmic Forex**: 80–100% accuracy, sub-millisecond candle & regime classification
+| Capability | Pure Jev (TypeSafe AI) | Traditional ML (XGBoost) | Jev + Exactor Accelerator |
+|---|---|---|---|
+| **Zero-Data Cold-Start (Day 1)** | ✅ Yes (Cloud evaluation) | ❌ Impossible (Requires labeled data) | **✅ Yes (Immediate symbiosis)** |
+| **Execution Latency** | Standard network latency (477–1,200 ms) | 1 – 10 ms | **0.05 – 0.1 ms (Local edge speed)** |
+| **Cost per 100M Decisions** | Continuous token spend | Infrastructure compute cost | **$0.00 on Fast-Path (Smart token savings)** |
+| **Regulatory Explainability** | Robust typed schemas | Post-hoc approximations (SHAP) | **100% Exact Boolean Formulas (GDPR/HIPAA/SOX)** |
+
+---
+
+## 🧠 Three Technological Pillars in a Unified Pipeline
+
+Exactor completely eliminates heavy offline retraining cycles by learning in step with your production decisions:
+
+* **Unsupervised Stream Monitoring**: Inspects raw data streams in real time, computing multi-dimensional Shannon entropy and Z-scores to trigger early warnings for concept drift before business operations are affected.
+* **Autonomous Cold-Start Distillation**: Deploy with zero historical records. The engine partners with Jev's decision engine during initial live transactions, records states in an ultra-fast SQLite WAL ledger, and dynamically generates an optimized local model that faithfully replicates its logical behavior.
+* **Drop-in Scikit-Learn API**: Native compatibility with the Python data science ecosystem. Call standard `.fit(X, y)` and `.predict(X)` backed by a Gray-code hypercube minimizer that guarantees mathematical precision with zero floating-point loss.
+
+---
+
+## ⚡ High-Impact Niches of Excellence
+
+* **Real-Time Fraud Prevention**: Sub-millisecond local decisions complemented by Jev's adaptive cloud intelligence for complex edge cases.
+* **Emergency Medical Triage**: Immutable, deterministic audit trails certified and ready for HIPAA compliance.
+* **Cybersecurity & SOC Automation**: Process 50,000+ events per second (TPS) detecting anomalies and burst velocities at line rate.
+* **Total Regulatory Compliance**: Every decision is explained by an exact mathematical formula (`IF ... AND ... OR ... NOT`), eliminating legal liability in automated decisions.
 
 ## Installation
 

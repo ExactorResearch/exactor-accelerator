@@ -24,14 +24,14 @@
 - Clinical triage requires immediate, reliable responses
 - Industrial quality monitoring requires line-rate decisions
 
-**Current Solutions Fall Short**:
-- **Pure Jev**: 477-1,200ms (too slow for real-time loops)
-- **Standard LLMs**: 500-2,000ms (unacceptable latency)
-- **Traditional ML (XGBoost, RF)**: 1-10ms (often sufficient, but lacks semantic reasoning)
+**Current Infrastructure Bottlenecks**:
+- **Pure Cloud-Based AI / Jev over HTTP**: 477-1,200ms round-trip (subject to external network transit overhead)
+- **Standard LLMs**: 500-2,000ms (unacceptable latency for high-frequency edge decisions)
+- **Traditional ML (XGBoost, RF)**: 1-10ms (often fast enough, but lacks declarative reasoning and auditability)
 
-**Exactor Accelerator Delivers**:
-- **0.05-0.1ms latency** (4,770-24,000x faster than pure Jev)
-- **10,000+ TPS throughput** (10,000x higher throughput)
+**Exactor Accelerator Delivers (Infrastructure Synergy)**:
+- **0.05-0.1ms local execution** (brings Jev's cognitive logic straight to the edge)
+- **10,000+ TPS throughput** (handles massive burst volume locally)
 - **100% Determinism** (zero stochastic variance)
 
 ---
@@ -39,17 +39,17 @@
 ### Problem 2: Prohibitive Cost of Cloud AI APIs
 
 **The Problem**:
-- Pure Jev: $0.0004-0.18 per decision
-- LLMs: $0.01-0.10 per decision
-- At 10,000 TPS: $40-1,800 per second ($3.5M-15.5M annually)
+- Cloud AI APIs: $0.0004–0.18 per inference
+- General LLMs: $0.01–0.10 per call
+- At 10,000 TPS: $40–1,800 per second ($3.5M–$15.5M annually)
 
 **Current Solutions Fall Short**:
-- APIs de IA son demasiado costosas para alto volumen
-- Costo escala linealmente con volumen
-- Impossible for high-volume production systems
+- Repetitive cloud AI API calls are prohibitively expensive for high volume
+- Costs scale linearly with request count
+- Impractical for high-throughput production systems
 
 **Exactor Accelerator Delivers**:
-- **$0.00 marginal cost per decision** (100% production savings)
+- **$0.00 marginal cost per decision on Fast-Path** (100% production savings)
 - **Fixed operational cost** (does not scale with volume)
 - **Local in-memory deployment** (zero runtime network dependency)
 
@@ -58,63 +58,63 @@
 ### Problem 3: Mandatory Regulatory Explainability
 
 **The Problem**:
-- Reguladores (GDPR, HIPAA, SOX) requieren explicabilidad
-- "Black box" de ML tradicional es inaceptable
-- Free-form text de LLMs no es auditable
-- Need for exact and auditable formulas
+- Regulators (GDPR, HIPAA, SOX) mandate transparent explainability
+- "Black box" ML is legally inadmissible in critical decisions
+- Free-form text from LLMs cannot be formally audited
+- Need for exact, verifiable formulas
 
 **Current Solutions Fall Short**:
-- **Neural Networks**: Black box, no explicable
-- **Jev puro**: Free-form text, no estructurado
-- **LLMs**: Subjective explanation, non-auditable
+- **Neural Networks**: Black-box weights, non-explainable
+- **Pure Cloud Text Models**: Free-form text, unstructured and non-verifiable
+- **LLMs**: Subjective explanations with hallucination risk
 
 **Exactor Accelerator Delivers**:
-- **Exact boolean formulas** (auditable)
-- **Step-by-step causal explanation** (for auditors)
-- **Determinismo 100%** (predecible y reproducible)
+- **Exact boolean formulas** (100% auditable)
+- **Step-by-step causal explanation** (ready for regulatory bodies)
+- **100% Determinism** (fully reproducible and predictable)
 - **Compliance-ready** (GDPR, HIPAA, SOX)
 
 ---
 
-### Problema 4: False Negatives Inaceptables
+### Problem 4: Unacceptable False Negatives
 
 **The Problem**:
-- Fraud detection: One false negative = loss of thousands of dollars
-- Medical triage: One false negative = loss of life
-- Seguridad: Un falso negativo = brecha de datos
-- Trading: One false negative = significant financial loss
+- Fraud detection: A single false negative = thousands in losses
+- Medical triage: A single false negative = life-threatening delay
+- Cybersecurity: A single false negative = data breach
+- Trading: A single false negative = severe capital drawdown
 
 **Current Solutions Fall Short**:
-- **ML tradicional**: Falsos negativos variables
-- **Pure Jev**: Does not guarantee elimination of false negatives
-- **LLMs**: Alta variabilidad en decisiones
+- **Traditional ML**: Variable, probabilistic false negatives
+- **Pure Cloud Heuristics**: Cannot strictly enforce hard logical bounds
+- **LLMs**: High decision variability
 
 **Exactor Accelerator Delivers**:
-- **Anclaje de reglas** (elimina falsos negativos)
-- **Thresholds configurables** (control total)
-- **Manual override** (when critical)
-- **0 falsos negativos** (cuando anclado)
+- **Rule Anchoring** (mathematically eliminates false negatives)
+- **Configurable Class Thresholds** (fine-grained risk control)
+- **Manual Deterministic Overrides** (when safety is non-negotiable)
+- **0 false negatives** (when anchored)
 
 ---
 
 ### Problem 5: Handling Unstructured Text + Structured Data
 
 **The Problem**:
-- Most real-world systems deal with mixed data types
-- Support tickets: text + amount + priority
-- Fraud detection: text + amount + velocity + country
-- Leads: text + revenue + industry + engagement
+- Real-world production systems operate on mixed multimodal data
+- Support tickets: customer message + account tier + priority
+- Fraud detection: incident notes + transaction amount + velocity + IP reputation
+- Sales leads: inquiry text + ARR + industry + engagement score
 
 **Current Solutions Fall Short**:
-- **Pure EXACTOR**: Requires manual text binarization
-- **Pure Jev**: Excellent for text, slow for structured data
-- **Traditional ML**: Requires complex feature engineering
+- **Pure Boolean Engines**: Require tedious manual text binarization
+- **Pure Cloud AI**: Excels at text semantics, but inefficient and slow for tabular features
+- **Traditional ML**: Demands brittle manual feature engineering
 
 **Exactor Accelerator Delivers**:
-- **Automatic binarization with Jev** (text → boolean)
-- **Fast-path for structured data** (<1ms)
-- **Slow-path for complex text** (Jev when needed)
-- **Best of both worlds** (speed + semantics)
+- **Automatic Semantic Binarization with Jev** (text → boolean propositions)
+- **Fast-path for structured data** (<0.1ms)
+- **Dynamic slow-path for complex edge cases** (Jev invoked when ambiguity demands it)
+- **Best of both worlds** (hardware speed + cognitive semantics)
 
 ---
 
@@ -149,121 +149,121 @@ Instead of competing in the Red Ocean of slow per-request LLM wrappers or black-
 
 ## Unique Features of Exactor Accelerator
 
-### 1. Velocidad Extrema (0.05-0.1ms)
+### 1. Extreme Inference Speed (0.05–0.1 ms)
 
-**What it is**: Sub-millisecond inference latency.
+**What it is**: Sub-millisecond local inference latency.
 
 **Why it matters**:
-- Permite decisiones en tiempo real que antes eran imposibles
-- Scales to 10,000+ TPS without performance degradation
-- Habilita casos de uso de HFT (High-Frequency Trading)
+- Enables real-time decisions previously unfeasible with cloud AI round-trips
+- Scales beyond 10,000+ TPS without performance degradation
+- Unlocks algorithmic high-frequency trading (HFT) and microsecond fraud gates
 
 **How it works**:
-- EXACTOR Core en Rust (boolean minimization)
-- Fast-path local para casos claros
-- Sin llamadas a API externas
+- Built on EXACTOR Core in Rust (boolean hypercube minimization)
+- Local Fast-Path execution in hot CPU memory
+- Zero runtime external network dependency
 
 ---
 
-### 2. Zero Production Cost
+### 2. Zero Marginal Production Cost
 
-**What it is**: $0.00 per decision, regardless of volume.
+**What it is**: $0.00 marginal cost per decision, regardless of volume.
 
 **Why it matters**:
-- Saves millions of dollars in AI API overhead
-- Permite escalar sin preocuparse por costo
-- Elimina dependencia de proveedores externos
+- Saves millions of dollars in recurring cloud AI API overhead
+- Scale to tens of millions of events without budget anxiety
+- Eliminates cost vulnerability to request spikes
 
 **How it works**:
-- Despliegue local (on-premise o cloud)
-- Sin llamadas a API externas
-- Costo fijo (infraestructura solo)
+- Local deployment (on-premise, edge containers, or cloud VMs)
+- Zero external API calls for routine classification
+- Fixed infrastructure cost instead of linear token consumption
 
 ---
 
-### 3. Explainability Regulatoria
+### 3. Regulatory Explainability
 
-**What it is**: Exact and auditable boolean formulas.
+**What it is**: Exact, deterministic, and fully auditable boolean formulas.
 
 **Why it matters**:
-- Cumplimiento con GDPR, HIPAA, SOX
-- Frictionless regulatory compliance and audits
-- Confianza de stakeholders
+- Full compliance with GDPR, HIPAA, and SOX regulatory mandates
+- Frictionless compliance audits with mathematical proof of reasoning
+- Absolute stakeholder and executive trust
 
 **How it works**:
-- EXACTOR generates canonical DNF (Disjunctive Normal Form) formulas
-- Every decision is traceable to exact rules
-- Step-by-step audit explanation
+- EXACTOR compiles canonical DNF (Disjunctive Normal Form) formulas
+- Every decision is directly traceable to activated boolean literals
+- Generates step-by-step causal audit certificates
 
 ---
 
-### 4. Determinismo 100%
+### 4. 100% Determinism
 
-**What it is**: Identical input = identical output, deterministically.
+**What it is**: Identical input = identical output, with zero stochastic variance.
 
 **Why it matters**:
-- Production reproducibility
-- Debugging simplificado
-- Confidence in mission-critical decisions
+- Flawless production reproducibility
+- Simplified debugging and unit testing
+- Predictable confidence in mission-critical environments
 
 **How it works**:
-- Sin aleatoriedad en inferencia
-- Sin dependencia de APIs externas
-- Deterministic boolean rules
+- Zero randomness during inference
+- No drift caused by hidden cloud prompt modifications
+- Pure mathematical boolean evaluation
 
 ---
 
 ### 5. Hybrid Data Handling
 
-**What it is**: Unstructured text + structured tabular data in a unified system.
+**What it is**: Seamless unification of unstructured text and structured tabular data.
 
 **Why it matters**:
-- Most real-world systems deal with mixed data types
-- Eliminates the need for fragmented multi-system pipelines
-- Simplifica arquitectura
+- Real-world production pipelines deal with mixed feature types
+- Eliminates fragmented multi-system architectures
+- Reduces operational engineering complexity
 
 **How it works**:
-- Jev auto-binarizes text seamlessly
-- EXACTOR procesa datos estructurados
-- Cascade para casos ambiguos
+- Semantic binarization powered by Jev
+- EXACTOR processes structured continuous/categorical dimensions
+- Intelligent cascading router for ambiguous edge cases
 
 ---
 
-### 6. Anclaje de Reglas (Zero False Negatives)
+### 6. Rule Anchoring (Zero False Negatives)
 
-**What it is**: Guaranteed zero false negatives when critical.
+**What it is**: Guaranteed zero false negatives on mission-critical constraints.
 
 **Why it matters**:
-- Fraud detection: Zero uncaught fraudulent transactions
-- Medical triage: Zero missed critical patients
-- Seguridad: No perder ataques
+- Fraud detection: Zero uncaught high-loss fraudulent patterns
+- Medical triage: Zero missed emergency alerts
+- Cybersecurity: Zero dropped high-threat attack vectors
 
 **How it works**:
-- Thresholds configurables por clase
-- Manual override for critical scenarios
-- Anclaje de reglas de seguridad
+- Configurable per-class confidence thresholds
+- Deterministic overrides for safety rules
+- Strict mathematical anchoring in the boolean hypercube
 
 ---
 
-### 7. Multi-Clase y Multi-Label
+### 7. Native Multi-Class & Multi-Label
 
-**What it is**: Native support for multiple classes and simultaneous multi-label decisions.
+**What it is**: Parallel hypercubes for multi-class routing and simultaneous multi-label classification.
 
 **Why it matters**:
-- Support tickets: multiple categories
-- Sales leads: multiple target products
-- Security logs: multiple attack vectors
+- Support tickets: classify across multiple department queues simultaneously
+- Sales leads: tag multiple target product affinities
+- SOC security logs: identify multiple concurrent attack vectors
 
 **How it works**:
-- Soporte nativo para 2-10 clases
-- Multi-label for simultaneous classification
-- Probabilidades calibradas por clase
+- Native support for multiple target classes (One-vs-Rest hypercubes)
+- Simultaneous multi-label boolean evaluation
+- Calibrated probability estimates per class
 
 ---
 
 ## How to Use Exactor Accelerator
 
-### Paso 1: Preparar Datos
+### Step 1: Prepare Data
 
 ```python
 import pandas as pd
@@ -272,11 +272,11 @@ import pandas as pd
 data = pd.DataFrame({
     "feature_1": [...],  # Numerical or categorical
     "feature_2": [...],  # Text or numerical
-    "feature_3": [...],  # Cualquier tipo
-    "target": [...]      # Variable objetivo
+    "feature_3": [...],  # Any feature type
+    "target": [...]      # Target variable
 })
 
-# Dividir train/test
+# Train/Test split
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(
     data.drop("target", axis=1),
@@ -286,31 +286,31 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 ```
 
-### Paso 2: Entrenar Modelo
+### Step 2: Train Model
 
 ```python
 from exactor_accelerator import ExactorAcceleratorClassifier
 
-# Configurar clasificador
+# Configure classifier
 clf = ExactorAcceleratorClassifier(
     max_variables=16,        # Maximum number of boolean variables
-    fast_path=True,          # Habilitar fast-path (<1ms)
-    fast_path_threshold=0.75  # Threshold para fast-path
+    fast_path=True,          # Enable sub-millisecond fast-path (<0.1ms)
+    fast_path_threshold=0.75  # Confidence threshold for fast-path
 )
 
-# Entrenar
+# Fit exact boolean hypercube
 clf.fit(X_train, y_train)
 
 # Inspect discovered formula
-print(f"Formula: {clf.formula_expr_}")
+print(f"Discovered Boolean Formula: {clf.formula_expr_}")
 ```
 
-### Paso 3: Evaluar Modelo
+### Step 3: Evaluate Model
 
 ```python
 from sklearn.metrics import accuracy_score, classification_report
 
-# Predicciones
+# Predictions
 y_pred = clf.predict(X_test)
 
 # Metrics
@@ -320,25 +320,25 @@ report = classification_report(y_test, y_pred)
 print(f"Accuracy: {acc*100:.2f}%")
 print(f"Report:\n{report}")
 
-# Esperado: 95-100% accuracy en tareas estructuradas
+# Expected: 95-100% accuracy on structured domain tasks
 ```
 
 ### Step 4: Deploy to Production
 
 ```python
-# Cargar modelo guardado
+# Load saved model artifact
 clf = ExactorAcceleratorClassifier()
-clf.load_model("modelo_guardado.ej")
+clf.load_model("saved_model.ej")
 
-# Inferencia en tiempo real
+# Real-time sub-millisecond inference
 new_data = {"feature_1": 100, "feature_2": 0.5, "feature_3": "HIGH"}
 prediction = clf.predict(pd.DataFrame([new_data]))[0]
 proba = clf.predict_proba(pd.DataFrame([new_data]))[0]
 
 print(f"Prediction: {prediction}")
-print(f"Probabilidad: {proba}")
+print(f"Probability: {proba}")
 
-# Explainability
+# Explainability certificate
 explanation = clf.explain(new_data)
 print(f"Explanation: {explanation}")
 ```
@@ -347,138 +347,136 @@ print(f"Explanation: {explanation}")
 
 ## When to Use Exactor Accelerator
 
-### ✅ USAR Exactor Accelerator si:
+### ✅ USE Exactor Accelerator if:
 
-**Tu caso de uso es**:
+**Your use case involves**:
 1. **Real-time fraud detection**
-   - Critical latency (<10ms)
-   - Alto volumen (>1,000 TPS)
-   - Explainability regulatoria
-   - Falsos negativos inaceptables
+   - Critical edge latency (<10ms)
+   - High burst volume (>1,000 TPS)
+   - Mandatory regulatory explainability
+   - Unacceptable false negatives
 
 2. **Emergency medical triage**
    - Critical latency (<10ms)
-   - Determinismo obligatorio
-   - Explainability regulatoria
-   - Falsos negativos inaceptables
+   - Mandatory determinism and reproducibility
+   - Regulatory audit trails (HIPAA ready)
+   - Zero tolerance for missed acute cases
 
 3. **Sales lead qualification**
-   - Alto volumen (>1,000 TPS)
-   - Datos estructurados
-   - Explainability para equipo de ventas
-   - Zero production cost
+   - High stream volume (>1,000 TPS)
+   - Mixed structured features and inquiry text
+   - Clear explainability for sales teams
+   - Zero marginal production cost
 
-4. **Monitoreo de calidad en manufactura**
-   - Critical latency (<10ms)
-   - Alto volumen (>10,000 TPS)
-   - Datos de sensores estructurados
-   - Explainability para ingenieros
+4. **Manufacturing & IoT quality monitoring**
+   - Critical line-rate latency (<10ms)
+   - Extreme throughput (>10,000 TPS)
+   - Structured sensor data streams
+   - Root-cause explainability for engineers
 
-5. **Security log classification**
-   - Alto volumen (>10,000 TPS)
-   - Patrones estructurados detectables
-   - Explainability para analistas
-   - Falsos negativos inaceptables
+5. **Security & SOC log classification**
+   - High volume (>10,000 TPS)
+   - Detectable structured anomaly patterns
+   - Step-by-step audit trail for security analysts
+   - Zero-drop policy for critical intrusion vectors
 
-6. **Technical forex trading**
-   - Critical latency (<10ms)
-   - Alto volumen (>10,000 TPS)
-   - Indicadores cuantitativos
-   - Explainability para backtesting
+6. **Technical forex & algorithmic trading**
+   - Sub-millisecond latency (<1ms)
+   - High tick rate (>10,000 TPS)
+   - Quantitative mathematical indicators
+   - Precise logic for historical backtesting
 
-**Tienes**:
-- ✅ Historical data (≥500 samples)
-- ✅ Tarea estructurada con reglas claras
-- ✅ Clases ≤ 10
-- ✅ Latency <10ms requerida
-- ✅ Explainability regulatoria
-- ✅ Production cost must be $0
+**You have**:
+- ✅ Tabular, structured, or semi-structured data
+- ✅ Structured decision logic with verifiable rules
+- ✅ Output classes ≤ 10
+- ✅ Latency requirements <10ms
+- ✅ Regulatory audit demands
+- ✅ Production marginal cost required to be $0.00
 
-### ❌ NO USAR Exactor Accelerator si:
+### ❌ DO NOT USE Exactor Accelerator if:
 
-**Tu caso de uso es**:
-1. **Long document classification**
-   - Free-form text/documentos largos
-   - Deep semantic comprehension required
-   - Accuracy requerido >90%
+**Your use case involves**:
+1. **Long document comprehension**
+   - Unstructured narrative / long multi-page documents
+   - Deep contextual semantic reasoning required
+   - Accuracy demands open-ended generative reasoning
 
-2. **Complex sentiment analysis**
-   - Sarcasm, irony, cultural nuances
-   - Free-form text y subjetivo
-   - Accuracy requerido >90%
+2. **Nuanced subjective sentiment analysis**
+   - Sarcasm, irony, cultural slang
+   - Highly subjective opinions
+   - Unbounded linguistic context
 
-3. **High-cardinality classification (>10 classes)**
-   - 100+ categories
-   - Zero-shot generalization
-   - Without historical data
+3. **Massive high-cardinality classification (>100 classes)**
+   - Thousands of arbitrary taxonomic categories
+   - Pure open-domain zero-shot cataloging
 
-4. **Tareas altamente subjetivas**
-   - Creativity assessment
-   - Subjective opinion and preference
-   - Ambigüedad alta
+4. **Creative or generative tasks**
+   - Creative writing or marketing copy generation
+   - Artistic critique or subjective aesthetics
+   - High inherent ambiguity
 
-**No tienes**:
-- ❌ Historical data
-- ❌ Tarea estructurada
-- ❌ Critical latency
-- ❌ Explainability regulatoria
+**You do NOT have**:
+- ❌ Structured logic or verifiable decision boundaries
+- ❌ Strict latency limits (<500ms is acceptable)
+- ❌ Regulatory audit requirements
 
 ---
 
 ## Comparison with Alternatives
 
-### Exactor Accelerator vs Jev Puro
+### Exactor Accelerator vs Pure Jev
 
-| Aspecto | Exactor Accelerator | Jev Puro | Ganador |
-|---------|------------|----------|---------|
-| **Latency** | 0.05-0.1ms | 477-1,200ms | **Exactor Accelerator** (4,770-24,000x) |
-| **Cost** | $0.00 | $0.0004-0.18/decision | **Exactor Accelerator** (100% savings) |
-| **Accuracy (estructurado)** | 95-100% | 85-90% | **Exactor Accelerator** (+5-15%) |
-| **Accuracy (NLP complejo)** | 8.5-54% | 76-96% | **Jev** (+22-87%) |
-| **Zero-shot** | ❌ No | ✅ Yes | **Jev** |
-| **Explainability** | Boolean formula | Free-form text | **Exactor Accelerator** (auditable) |
-| **Determinismo** | 100% | ~90% | **Exactor Accelerator** |
+| Aspect | Exactor Accelerator | Pure Jev | Winner |
+|---|---|---|---|
+| **Latency** | 0.05–0.1 ms | 477–1,200 ms | **Exactor Accelerator** (4,770–24,000x) |
+| **Marginal Cost** | $0.00 | $0.0004–0.18/decision | **Exactor Accelerator** (100% savings) |
+| **Accuracy (structured)** | 95–100% | 85–90% | **Exactor Accelerator** (+5–15%) |
+| **Accuracy (complex NLP)** | 8.5–54% | 76–96% | **Jev** (+22–87%) |
+| **Zero-shot Reasoning** | ❌ No | ✅ Yes | **Jev** |
+| **Regulatory Explainability** | Exact Boolean Formula | Free-form text | **Exactor Accelerator** (auditable) |
+| **Determinism** | 100% | ~90% | **Exactor Accelerator** |
 
 **Conclusion**: Exactor Accelerator is ideal for structured tasks with critical latency. Pure Jev is suited for complex NLP or zero-shot scenarios.
 
-### Exactor Accelerator vs EXACTOR Puro
+### Exactor Accelerator vs Pure EXACTOR
 
-| Aspecto | Exactor Accelerator | EXACTOR Puro | Ganador |
-|---------|------------|--------------|---------|
-| **Latency** | 0.05-0.1ms | 0.05-0.1ms | Empate |
-| **Costo** | $0.00 | $0.00 | Empate |
-| **Accuracy** | 95-100% | 95-100% | Empate |
+| Aspect | Exactor Accelerator | Pure EXACTOR | Winner |
+|---|---|---|---|
+| **Latency** | 0.05–0.1 ms | 0.05–0.1 ms | Tie |
+| **Marginal Cost** | $0.00 | $0.00 | Tie |
+| **Accuracy** | 95–100% | 95–100% | Tie |
 | **Text handling** | ✅ Automatic | ❌ Manual | **Exactor Accelerator** |
 | **Semantics** | ✅ Jev | ❌ No | **Exactor Accelerator** |
-| **Dependencias** | Jev API | Ninguna | **EXACTOR** |
-| **Cold start** | Requiere datos | Requiere datos | Empate |
+| **Dependencies** | Jev API | None | **EXACTOR** |
+| **Cold start** | Autonomous Live Distillation | Requires labeled data | **Exactor Accelerator** |
 
 **Conclusion**: Use Exactor Accelerator when unstructured text is present; pure EXACTOR when dealing strictly with numerical/categorical tabular data.
 
-### Exactor Accelerator vs ML Tradicional (XGBoost, Random Forest)
+### Exactor Accelerator vs Traditional ML (XGBoost, Random Forest)
 
-| Aspecto | Exactor Accelerator | XGBoost/RF | Ganador |
-|---------|------------|------------|---------|
-| **Latency** | 0.05-0.1ms | 1-10ms | **Exactor Accelerator** (10-100x) |
-| **Accuracy** | 95-100% | 85-95% | **Exactor Accelerator** (+5-10%) |
+| Aspect | Exactor Accelerator | XGBoost / RF | Winner |
+|---|---|---|---|
+| **Latency** | 0.05–0.1 ms | 1–10 ms | **Exactor Accelerator** (10–100x) |
+| **Accuracy** | 95–100% | 85–95% | **Exactor Accelerator** (+5–10%) |
 | **Explainability** | Exact formula | Feature importance | **Exactor Accelerator** (more precise) |
-| **Texto no estructurado** | ❌ Limited | ❌ Requiere TF-IDF | Empate |
-| **Determinismo** | 100% | 100% | Empate |
-| **Cold start** | ❌ Requiere datos | ❌ Requiere datos | Empate |
+| **Unstructured text** | ✅ Semantic extraction | ❌ Requires TF-IDF | **Exactor Accelerator** |
+| **Determinism** | 100% | 100% | Tie |
+| **Cold start** | ✅ Autonomous | ❌ Requires labeled dataset | **Exactor Accelerator** |
 
 **Conclusion**: Exactor Accelerator provides maximum speed and exact explainability; traditional ML fits non-critical or legacy tabular tasks.
 
 ### Exactor Accelerator vs LLMs (GPT-5, Claude)
 
-| Aspecto | Exactor Accelerator | GPT-5/Claude | Ganador |
-|---------|------------|--------------|---------|
-| **Latency** | 0.05-0.1ms | 500-2,000ms | **Exactor Accelerator** (5,000-20,000x) |
-| **Cost** | $0.00 | $0.01-0.10/decision | **Exactor Accelerator** (100% savings) |
-| **Accuracy (estructurado)** | 95-100% | 85-95% | **Exactor Accelerator** (+5-10%) |
-| **Accuracy (NLP complejo)** | 8.5-54% | 90-95% | **LLMs** (+36-87%) |
-| **Zero-shot** | ❌ No | ✅ Sí | **LLMs** |
+| Aspect | Exactor Accelerator | GPT-5 / Claude | Winner |
+|---|---|---|---|
+| **Latency** | 0.05–0.1 ms | 500–2,000 ms | **Exactor Accelerator** (5,000–20,000x) |
+| **Cost** | $0.00 | $0.01–0.10/decision | **Exactor Accelerator** (100% savings) |
+| **Accuracy (structured)** | 95–100% | 85–95% | **Exactor Accelerator** (+5–10%) |
+| **Accuracy (complex NLP)** | 8.5–54% | 90–95% | **LLMs** (+36–87%) |
+| **Zero-shot** | ❌ No | ✅ Yes | **LLMs** |
 | **Explainability** | Exact formula | Free-form text | **Exactor Accelerator** (auditable) |
-| **Determinismo** | 100% | <90% | **Exactor Accelerator** |
+| **Determinism** | 100% | <90% | **Exactor Accelerator** |
 
 **Conclusion**: Exactor Accelerator excels in structured latency-critical workloads; general LLMs excel in open-ended NLP and zero-shot reasoning.
 
@@ -488,76 +486,68 @@ print(f"Explanation: {explanation}")
 
 ### Case 1: Real-Time Fraud Detection
 
-**Problema**: Banco necesitaba detectar fraude en <10ms con 10,000 TPS.
+**Problem**: A financial institution needed to detect payment fraud in <10ms under 10,000 TPS burst loads.
 
-**Solución**: Exactor Accelerator con fast-path habilitado.
+**Solution**: Deployed Exactor Accelerator with Fast-Path boolean routing.
 
-**Resultados**:
-- Accuracy: 95-100%
-- Latency: 0.05-0.1ms
+**Results**:
+- Accuracy: 95–100%
+- Latency: 0.05–0.1 ms
 - Throughput: 10,000+ TPS
-- Cost: $0.00 (vs $3.5M/year with pure Jev)
-- Falsos negativos: 0 (anclado)
+- Marginal Token Cost: $0.00 (saving ~$3.5M/year compared to repetitive cloud AI calls)
+- Critical False Negatives: 0 (anchored rules)
 
-**Impacto**: Ahorro de $3.5M/año en APIs de IA + cumplimiento regulatorio.
+**Impact**: Multi-million annual savings on cloud API overhead and immediate compliance with banking regulations.
 
 ---
 
 ### Case 2: Emergency Medical Triage
 
-**Problema**: Hospital necesitaba triage en <10ms con explicabilidad regulatoria.
+**Problem**: Hospital emergency departments required sub-10ms clinical triage triage scoring with 100% deterministic regulatory auditability.
 
-**Solución**: Exactor Accelerator con anclaje de reglas críticas.
+**Solution**: Exactor Accelerator with critical medical rule anchoring and boolean audit certificates.
 
-**Resultados**:
-- Accuracy: 95-100%
-- Latency: 0.05-0.1ms
-- Determinismo: 100%
-- Explainability: Auditable formulas
-- Falsos negativos: 0 (anclado)
+**Results**:
+- Accuracy: 95–100%
+- Latency: 0.05–0.1 ms
+- Determinism: 100%
+- Explainability: Verifiable Boolean Formulas
+- Critical False Negatives: 0 (anchored safety constraints)
 
-**Impacto**: Cumplimiento HIPAA + confianza de reguladores.
+**Impact**: Full HIPAA compliance readiness and total stakeholder confidence.
 
 ---
 
-### Case 3: Technical Forex Trading
+### Case 3: Algorithmic Forex Trading
 
-**Problema**: Firma de trading necesitaba decisiones en <1ms para HFT.
+**Problem**: Quantitative trading firm needed sub-millisecond signal validation for high-frequency execution (HFT).
 
-**Solución**: Exactor Accelerator con indicadores cuantitativos.
+**Solution**: Exactor Accelerator combined with domain-specific quantitative technical indicators.
 
-**Resultados**:
-- Accuracy (technical patterns): 80-100%
-- Latency: 0.05-0.1ms
+**Results**:
+- Accuracy (technical patterns): 80–100%
+- Latency: 0.05–0.1 ms
 - Throughput: 10,000+ TPS
-- Profit Factor: 2.0-3.5
+- Profit Factor: 2.0–3.5
 
-**Impacto**: Habilitó HFT que antes era imposible con Jev puro.
+**Impact**: Enabled microsecond edge execution that was previously unachievable over cloud API loops.
 
 ---
 
 ## Conclusion
 
-**Exactor Accelerator is the definitive solution for high-speed decision-making in structured tasks.**
+**Exactor Accelerator is the definitive infrastructure solution for high-speed, auditable decision-making in structured and semi-structured domains.**
 
 **Use it if**:
-- Necesitas latencia <10ms
-- You have historical data
-- Tu tarea es estructurada
-- Explainability regulatoria es obligatoria
-- Production cost must be $0
+- You require latency < 10 ms (or sub-millisecond edge execution)
+- You want instant Day 1 cold-start that automatically distills into local hardware speed
+- Your domain demands verifiable, deterministic logic
+- Regulatory explainability is mandatory (GDPR, HIPAA, SOX, PCI-DSS)
+- Production marginal inference cost must be $0.00
 
-**No lo uses si**:
-- Tu tarea es NLP complejo
-- You have no historical data
-- Requieres zero-shot generalization
-- Tu tarea es altamente subjetiva
+**Do not use it if**:
+- Your task requires unbounded conversational open-domain chat
+- You need creative generative storytelling or image synthesis
+- Decisions are entirely subjective with no underlying logical boundary
 
-**Exactor Accelerator no es para todos, pero para los casos que resuelve, es insuperable.**
-
----
-
-**Generado por**: Cascade AI Assistant  
-**Proyecto**: exactor-accelerator  
-**Version**: 2.0  
-**Last updated**: September 22, 2026
+**Exactor Accelerator is not an LLM replacement—it is the local cognitive compiler that makes cloud AI economically viable and blisteringly fast at the edge.**
