@@ -5,6 +5,13 @@ All notable changes to Exactor Accelerator will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.8] - 2026-09-29
+
+### Security & Sanitization
+- **Repository Security Hardening**: Removed hardcoded tokens and credentials from codebase; fully transitioned to environment-based secret resolution (`DEEPSEEK_API_KEY`, `JEV_API_KEY`, `EXACTOR_CORE_TOKEN`).
+- **Intellectual Property Shielding**: Sanitized local fallback minimization engine terminology (`ExactorHypercubeReducer`) to standard Quine-McCluskey tabular combination and greedy set cover.
+- **Git Hygiene**: Added `cl.txt` and temporary artifacts to `.gitignore` and untracked sensitive local credential caches.
+
 ## [2.0.7] - 2026-09-28
 
 ### Added
