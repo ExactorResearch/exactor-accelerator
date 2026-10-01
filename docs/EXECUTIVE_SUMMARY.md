@@ -6,13 +6,15 @@
 
 ---
 
-## Overview
+## Overview: Turning Cognitive AI into Edge Muscle Memory
 
-**Exactor Accelerator** is the first neuro-symbolic hybrid system that unifies **Unsupervised Learning (Drift & Anomaly Detection)**, **Zero-Data Autonomous Cold-Start Distillation**, and **Supervised Boolean Hypercube Minimization** in a single library—combining the ultra-low latency of EXACTOR (boolean minimization in Rust/Cloud) with the semantic intelligence of Jev (TypeSafe AI).
+**Exactor Accelerator** is the first neuro-symbolic hybrid system that unifies **Unsupervised Learning (Drift & Anomaly Detection)**, **Zero-Data Autonomous Cold-Start Distillation**, and **Supervised Boolean Hypercube Minimization** into a single library. It pairs the high-level semantic reasoning of TypeSafe AI (**Jev**) with the microsecond reflexes of **EXACTOR** (boolean minimization in Rust).
+
+**The Reflex Metaphor**: Just as humans delegate slow, deliberate conscious thought (**System 2**) into automatic, sub-second muscle memory (**System 1**), Exactor captures Jev's cloud-based cognitive decisions and compiles them into a local, in-memory boolean hypercube.
 
 **Value Proposition**: Sub-millisecond decisions (`0.05–0.1ms`) with 95–100% accuracy, `$0.00` production marginal cost on the fast-path, and 100% deterministic regulatory auditability.
 
-**Blue Ocean Strategy**: Transform Jev from a slow per-request inference API (`477–1,200ms`) into a **cognitive compiler** that distills live semantic reasoning into exact in-memory boolean logic.
+**Strategic Impact**: Eliminates the 500–1,200 ms network latency tax of cloud AI calls, saves up to 100% of repetitive token spend, and provides mathematically verifiable audit certificates for strict GDPR, HIPAA, and SOX compliance.
 
 ---
 

@@ -5,6 +5,13 @@ All notable changes to Exactor Accelerator will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.11] - 2026-09-29
+
+### Documentation & Developer Experience
+- **Human Reflex Metaphor (System 1 vs System 2)**: Overhauled `README.md`, `COMMUNITY_RELEASE_EXPERIMENT.md`, and architectural documents with the human reflex metaphor—positioning Jev as the analytical brain (System 2) and Exactor as the local automatic muscle memory (System 1).
+- **Interactive Continuous Lifecycle**: Documented the 4-step decision lifecycle with an ASCII architecture diagram depicting instant Fast-Path execution, WAL ledger persistence, and hot in-memory logic compilation.
+- **Clear Business Benefits**: Highlighted tangible metrics including 100% token savings on routine events, 0.05 ms latency, mathematical regulatory auditability, and offline edge resilience.
+
 ## [2.0.10] - 2026-09-29
 
 ### Documentation & Global Localization
