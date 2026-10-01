@@ -14,7 +14,7 @@
 
 **Value Proposition**: Sub-millisecond decisions (`0.05–0.1ms`) with 95–100% accuracy, `$0.00` production marginal cost on the fast-path, and 100% deterministic regulatory auditability.
 
-**Strategic Impact**: Eliminates the 500–1,200 ms network latency tax of cloud AI calls, saves up to 100% of repetitive token spend, and provides mathematically verifiable audit certificates for strict GDPR, HIPAA, and SOX compliance.
+**Strategic Impact**: Delivers simultaneous predictions alongside the exact active Boolean rules that caused them, eliminates the 500–1,200 ms network latency tax of cloud AI calls, saves up to 100% of repetitive token spend, and provides mathematically verifiable audit certificates for strict GDPR, HIPAA, and SOX compliance.
 
 ---
 

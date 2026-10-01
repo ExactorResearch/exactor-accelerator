@@ -81,10 +81,11 @@ The system operates as a living, organic loop that continuously optimizes itself
 
 ## 🎁 Core Business Benefits
 
+* **Dual Output on Every Decision (Prediction + Causal Proof)**: When the system predicts an outcome (`predict(X)`), you immediately obtain the exact active Boolean rule that triggered it via `explain(X)`. No guessing, no statistical approximations like SHAP: you get the ground-truth deterministic condition (e.g., `(device_trust_low & velocity_1h_high & country_risk_high) ➔ FRAUD`).
 * **Radical Token Cost Savings**: Eliminates up to 100% of recurring token spend on routine decisions, protecting your AI budget for genuinely complex anomalies.
 * **Hardware-Level Speed**: Accelerates decision throughput from ~1 second down to **50–100 microseconds** (a 4,770x–24,000x speedup).
-* **100% Regulatory Explainability (Zero Black Boxes)**: When an auditor or client asks *"Why was this transaction blocked?"*, Exactor never outputs vague approximations. It provides the **exact mathematical formula** that triggered the action, ensuring full compliance with **GDPR, HIPAA, SOX, and PCI-DSS**.
-* **Offline Resilience & Fault Tolerance**: If your internet connection or third-party cloud APIs experience downtime, your server continues making autonomous, accurate decisions using its locally compiled logical memory.
+* **100% Regulatory Explainability (Zero Black Boxes)**: When an auditor, client, or compliance officer asks *"Why was this transaction blocked or flagged?"*, Exactor delivers the **verifiable mathematical formula** behind the decision, guaranteeing compliance with **GDPR (Right to Explanation), HIPAA, SOX, and PCI-DSS**.
+* **Offline Resilience & Fault Tolerance**: If your internet connection or third-party cloud APIs experience downtime, your server continues making autonomous, accurate, explainable decisions using its locally compiled logical memory.
 
 ---
 

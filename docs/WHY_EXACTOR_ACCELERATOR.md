@@ -13,6 +13,7 @@
 Just as the human brain delegates conscious, deliberate analysis (**System 2**) into automatic, sub-second muscle memory (**System 1**) through repetitive experience, Exactor continuously learns from Jev's cloud-based reasoning and compiles it into an exact local boolean hypercube.
 
 **Strategic Impact**:
+- **Dual Inference Output (Prediction + Activating Rule)**: Delivers both the forecast and the exact active Boolean rule that triggered it, establishing unambiguous causal provenance for auditors and users.
 - **Microsecond Latency**: Routine decisions execute in **0.05–0.1 ms** (4,770x–24,000x faster than cloud round-trips).
 - **$0.00 Marginal Production Cost**: Zero token burn on known patterns, eliminating millions in annual cloud API invoices.
 - **100% Deterministic Regulatory Explainability**: Every decision is certified by an exact mathematical formula (`IF/AND/OR/NOT`), ready for GDPR, HIPAA, and SOX audits.

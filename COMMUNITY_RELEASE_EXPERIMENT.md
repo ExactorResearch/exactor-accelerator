@@ -31,9 +31,10 @@ In this architecture, **Jev acts as the strategic intelligence**, calibrating am
 The result of this experiment is **Exactor Accelerator**, and early benchmarks have shown promising results:
 
 - ⚡ **Local CPU Inference:** Evaluation of routine events executes in **~0.05 to 0.5 milliseconds** with zero network calls and zero real-time token consumption.
+- 🎯 **Prediction + Instant Rule-Grounded Explanation:** Every forecast is coupled with the exact Boolean rule that triggered it (`clf.explain()`), proving why the decision occurred based strictly on the active premise (zero black-box approximations, zero hallucination).
 - 🧬 **Zero-Regex:** The engine auto-discovers language patterns during training, eliminating the need to maintain fragile manual regular expressions.
 - 🔀 **Multi-Class & Multi-Label Support:** Extended via parallel hypercubes (*One-vs-Rest*) to route across business categories simultaneously (e.g., *Fraud, Disputes, Support, Churn*).
-- 🔍 **Formal Causal Explainability (Zero Black Box):** Can generate verifiable audit certificates or natural language explanations grounded **strictly in the boolean premises that activated** (zero risk of hallucination).
+- 🔍 **Formal Causal Auditability (GDPR/HIPAA Ready):** Generates verifiable audit certificates and natural language justifications grounded strictly in the mathematical conditions that activated.
 - 🐍 **Scikit-Learn Interface:** Standard scikit-learn workflow (`fit`, `predict`, `predict_proba`).
 - 📦 **Compact Model Artifacts:** Saved as `.ea` / `.ej` files (~1.9 KB) ready for standalone deployment with FastAPI and Docker.
 
