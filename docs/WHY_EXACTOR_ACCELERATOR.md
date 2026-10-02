@@ -268,6 +268,19 @@ Instead of competing in the Red Ocean of slow per-request LLM wrappers or black-
 
 ---
 
+### 8. Modular Architecture & API Requirements (What Do You Actually Need?)
+
+You do **not** need all APIs active to run Exactor Accelerator. The system is designed with modular independence:
+
+| Component | Requirement Level | Role & Technical Justification |
+| :--- | :---: | :--- |
+| **Python Core** | **MANDATORY (Minimum)** | **100% Offline Core**: Evaluates boolean inferences locally in **0.05 ms** in RAM. Includes a built-in discrete hypercube minimizer for standalone usage without internet access. |
+| **TypeSafe AI (`Jev`) API** | **OPTIONAL (Highly Recommended)** | **The Zero-Data Cold-Start Engine**: Traditional ML is blind without thousands of historical training records. **Jev performs the initial declarative predictions from Day 1 with 0 training rows**. Exactor records these answers and autonomously compiles them into local hardware rules. |
+| **EXACTOR Core API (`exactor.tech`)** | **OPTIONAL (Highly Recommended)** | **Extreme Scale & HPC Speed**: While the internal Python engine handles small/medium matrices, the cloud API offloads heavy combinatorics to **Rust HPC clusters** capable of simplifying up to **64 variables and millions of minterms in milliseconds** with in-place differential updates. |
+| **LLM Explainer (`DeepSeek / OpenAI / Ollama`)** | **100% OPTIONAL** | **Natural Language Translator**: Decisions always produce the exact mathematical Boolean rule. The LLM simply translates that active rule into a plain-English narrative for non-technical users. It can be easily swapped for local LLMs (Ollama/vLLM) or skipped entirely in favor of built-in deterministic templates. |
+
+---
+
 ## How to Use Exactor Accelerator
 
 ### Step 1: Prepare Data

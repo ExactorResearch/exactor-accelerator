@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.11] - 2026-09-29
 
+### Architecture & Runtime Requirements
+- **Modular Tiered Architecture**: Documented minimal operational requirements across `README.md` and `docs/WHY_EXACTOR_ACCELERATOR.md`. Clarified that the Python core runs 100% offline at 0.05 ms, Jev (TypeSafe AI) acts as the Day 1 Zero-Data Cold-Start Oracle, EXACTOR Core API provides Rust HPC cluster scaling up to 64 variables and millions of minterms, and LLM explainers are 100% optional with swappable OpenAI/Ollama/vLLM endpoints.
+- **Dual Prediction Output**: Highlighted that every inference delivers both the forecast (`predict(X)`) and the exact active Boolean rule that triggered it (`explain(X)`), establishing unambiguous causal provenance.
+- **Hypercube Unit Test Suite**: Added a comprehensive 11-test suite in `tests/test_exactor_hypercube.py` verifying tabular grouping, Hamming distance merging, Don't Care expansion, standard logic gates (AND, OR, XOR), and 4-variable Multiplexer reduction.
+
 ### Documentation & Developer Experience
 - **Human Reflex Metaphor (System 1 vs System 2)**: Overhauled `README.md`, `COMMUNITY_RELEASE_EXPERIMENT.md`, and architectural documents with the human reflex metaphor—positioning Jev as the analytical brain (System 2) and Exactor as the local automatic muscle memory (System 1).
 - **Interactive Continuous Lifecycle**: Documented the 4-step decision lifecycle with an ASCII architecture diagram depicting instant Fast-Path execution, WAL ledger persistence, and hot in-memory logic compilation.

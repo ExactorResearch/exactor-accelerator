@@ -163,7 +163,27 @@ engine = ExactorAccelerator(
 )
 ```
 
-> **Note:** Without an EXACTOR Core token, the library falls back to the built-in Hypercube Gray-code Reducer engine, which provides the same deterministic boolean minimization locally.
+---
+
+## ⚙️ Architecture & Runtime Requirements: What Do You Actually Need?
+
+You do **not** need all APIs active to run `exactor-accelerator`. The library is architected with modular tiers so you can run anywhere from 100% offline edge devices to high-performance cloud clusters.
+
+| Component | Requirement Level | Role & Why It Matters |
+| :--- | :---: | :--- |
+| **Python + `exactor-accelerator`** | **MANDATORY (Minimum)** | **Zero-token offline core**: Executes local inferences in **0.05 ms** in hot RAM and includes a built-in discrete Boolean hypercube minimizer. Requires zero external network calls. |
+| **TypeSafe AI (`Jev`) API** | **OPTIONAL (Highly Recommended)** | **The Zero-Data Cold-Start Oracle**: Traditional ML (XGBoost/Scikit-Learn) fails completely on Day 1 without historical data. **Jev makes the initial intelligent predictions from the very first event** using declarative reasoning. Exactor logs these answers in SQLite WAL and distills them into local rules, letting you deploy on Day 1 with **0 training rows**. |
+| **EXACTOR Core API (`exactor.tech`)** | **OPTIONAL (Highly Recommended)** | **High-Performance Scalability**: While the built-in Python hypercube minimizer handles small-to-medium matrices locally, the cloud API connects to specialized **Rust HPC clusters** capable of minimizing massive hypercubes (up to **64 variables and millions of minterms in milliseconds**) with differential in-place updates. |
+| **LLM Explainer (`DeepSeek / OpenAI / Ollama`)** | **100% OPTIONAL** | **Human Language Translator**: The system always outputs the exact mathematical Boolean rule (`IF ... AND ... OR ... NOT`). The LLM is only used by `clf.explain(sample)` to translate those algebraic rules into narrative paragraphs for non-technical auditors. If no LLM is configured, Exactor uses its built-in deterministic text template engine. Compatible with any OpenAI-spec endpoint (DeepSeek, OpenAI, Ollama, vLLM). |
+
+### Customizing the LLM Explainer:
+You can point the explainer to any OpenAI-compatible provider:
+```bash
+# Example: Use local Ollama or vLLM without external API costs
+export DEEPSEEK_API_KEY="your-key-or-dummy"
+export DEEPSEEK_BASE_URL="http://localhost:11434/v1"
+export DEEPSEEK_MODEL="llama3"
+```
 
 ---
 
