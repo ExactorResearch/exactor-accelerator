@@ -5,6 +5,13 @@ All notable changes to Exactor Accelerator will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.12] - 2026-10-01
+
+### Architecture & Runtime Clarifications
+- **Minimal Operational Requirements**: Formally specified modular runtime tiers in documentation. Python core runs completely offline at 0.05 ms latency with zero external calls; Jev (TypeSafe AI) acts as the Day 1 Cold-Start Oracle (0 historical rows required); EXACTOR Core API provides Rust HPC cluster scaling up to 64 variables; and LLM explainers are completely optional and swappable (Ollama, vLLM, OpenAI).
+- **Dual Prediction & Causal Explanation**: Standardized output documentation ensuring every decision yields both the prediction (`predict(X)`) and the exact active Boolean rule that triggered it (`explain(X)`).
+- **Hypercube Unit Testing**: Validated `ExactorHypercubeReducer` with an 11-test suite covering Gray-code Hamming merges, Don't Cares, and canonical logic gates.
+
 ## [2.0.11] - 2026-09-29
 
 ### Architecture & Runtime Requirements
