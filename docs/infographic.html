@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exactor Accelerator - The Reflex Engine for AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0f1d;
+      --card-bg: rgba(18, 26, 47, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.25);
+      --accent: #a855f7;
+      --accent-glow: rgba(168, 85, 247, 0.25);
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.2);
+      --amber: #f59e0b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --text-sub: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    /* Header / Hero */
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, #38bdf8 0%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    /* Grid layout */
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .card-glow-blue {
+      box-shadow: 0 0 40px rgba(56, 189, 248, 0.08);
+    }
+
+    .card-glow-purple {
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.08);
+    }
+
+    /* Section Headers */
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    /* Comparison Section: The Driving Metaphor */
+    .metaphor-box {
+      margin-bottom: 36px;
+    }
+
+    .metaphor-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 18px;
+      padding: 26px;
+    }
+
+    .metaphor-card.cloud-brain {
+      background: linear-gradient(180deg, rgba(168, 85, 247, 0.08) 0%, rgba(18, 26, 47, 0.9) 100%);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .metaphor-card.muscle-reflex {
+      background: linear-gradient(180deg, rgba(56, 189, 248, 0.08) 0%, rgba(18, 26, 47, 0.9) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .metaphor-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .metaphor-tag.purple { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; }
+    .metaphor-tag.blue { background: rgba(56, 189, 248, 0.2); color: #7dd3fc; }
+
+    .metaphor-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .metaphor-desc {
+      color: var(--text-sub);
+      font-size: 0.98rem;
+      margin-bottom: 20px;
+    }
+
+    .metaphor-list {
+      list-style: none;
+      margin-top: auto;
+    }
+
+    .metaphor-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .metaphor-list li span.bullet {
+      font-weight: bold;
+    }
+
+    /* Big Metric Highlights */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .metric-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 22px 20px;
+      text-align: center;
+    }
+
+    .metric-number {
+      font-size: 2.3rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .metric-number.cyan { color: #38bdf8; }
+    .metric-number.green { color: #34d399; }
+    .metric-number.purple { color: #c084fc; }
+    .metric-number.amber { color: #fbbf24; }
+
+    .metric-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .metric-subtext {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Visual Workflow / Decision Path */
+    .flow-container {
+      margin-bottom: 36px;
+    }
+
+    .flow-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      position: relative;
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .step-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Contrast Box: Black Box vs Exactor */
+    .compare-section {
+      margin-bottom: 36px;
+    }
+
+    .compare-side {
+      padding: 24px;
+      border-radius: 16px;
+    }
+
+    .compare-traditional {
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .compare-exactor {
+      background: rgba(16, 185, 129, 0.05);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .compare-header {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .code-demo {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      margin-top: 12px;
+      line-height: 1.4;
+      overflow-x: auto;
+    }
+
+    .code-demo .highlight-green {
+      color: #34d399;
+      font-weight: bold;
+    }
+
+    .code-demo .highlight-red {
+      color: #f87171;
+    }
+
+    .code-demo .highlight-blue {
+      color: #38bdf8;
+    }
+
+    /* Benefits Grid */
+    .benefit-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .benefit-icon {
+      font-size: 1.8rem;
+    }
+
+    .benefit-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .benefit-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: var(--primary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 { font-size: 2.1rem; }
+      .card { padding: 24px 18px; }
+      .metrics-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="badge-pill">
+      <span>⚡</span> Built for High-Speed & Safe Production AI
+    </div>
+    <h1>Exactor Accelerator<br><span>The Muscle Memory Engine for AI</span></h1>
+    <p class="subtitle">
+      Turning slow, expensive cloud intelligence into instantaneous, zero-cost reflexes that explain exactly why every decision was made.
+    </p>
+  </header>
+
+  <!-- Big Numbers Bar -->
+  <div class="metrics-bar">
+    <div class="metric-item">
+      <div class="metric-number cyan">0.05 ms</div>
+      <div class="metric-label">Blink of an Eye Speed</div>
+      <div class="metric-subtext">Up to 24,000x faster than cloud AI</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-number green">$0.00</div>
+      <div class="metric-label">Zero Marginal Cost</div>
+      <div class="metric-subtext">Runs locally on your server</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-number purple">100%</div>
+      <div class="metric-label">Verifiable Rules</div>
+      <div class="metric-subtext">No black boxes or hallucinations</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-number amber">Day 1</div>
+      <div class="metric-label">Instant Cold Start</div>
+      <div class="metric-subtext">Requires zero historical training data</div>
+    </div>
+  </div>
+
+  <!-- Real World Metaphor: The Driver -->
+  <div class="card card-glow-purple metaphor-box">
+    <div class="section-title">
+      <div class="icon-circle" style="background: rgba(168, 85, 247, 0.15); color: #c084fc;">🚗</div>
+      The Simple Metaphor: Learning to Drive
+    </div>
+
+    <div class="grid grid-2">
+      <!-- Jev -->
+      <div class="metaphor-card cloud-brain">
+        <span class="metaphor-tag purple">Deep Thinking (The Analytical Brain)</span>
+        <h3 class="metaphor-title">When You Are a Beginner</h3>
+        <p class="metaphor-desc">
+          You consciously calculate every move: <em>"When do I press the clutch? When do I brake? Am I in the right lane?"</em>
+          It takes deep conscious effort and feels slow.
+        </p>
+        <ul class="metaphor-list">
+          <li><span class="bullet" style="color: #c084fc;">🧠</span> <strong>In AI: Jev (Cloud AI)</strong></li>
+          <li><span class="bullet" style="color: #c084fc;">✓</span> Analyzes brand new, novel situations</li>
+          <li><span class="bullet" style="color: #c084fc;">✓</span> Solves rare anomalies and complex logic</li>
+        </ul>
+      </div>
+
+      <!-- Exactor -->
+      <div class="metaphor-card muscle-reflex">
+        <span class="metaphor-tag blue">Muscle Memory (The Instant Reflex)</span>
+        <h3 class="metaphor-title">After 6 Months of Practice</h3>
+        <p class="metaphor-desc">
+          You drive smoothly on autopilot. You do not consciously think about gear shifts anymore; your body reacts instantly.
+        </p>
+        <ul class="metaphor-list">
+          <li><span class="bullet" style="color: #38bdf8;">⚡</span> <strong>In AI: Exactor Accelerator</strong></li>
+          <li><span class="bullet" style="color: #38bdf8;">✓</span> Learns routine habits from past actions</li>
+          <li><span class="bullet" style="color: #38bdf8;">✓</span> Reacts in 0.05 milliseconds without thinking</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- How It Works: The 4 Simple Steps -->
+  <div class="card flow-container">
+    <div class="section-title">
+      <div class="icon-circle" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">🔄</div>
+      How It Operates in 4 Simple Steps
+    </div>
+
+    <div class="flow-steps">
+      <div class="step-card">
+        <div class="step-badge">1</div>
+        <h4 class="step-title">Day One Setup</h4>
+        <p class="step-desc">
+          You don't need millions of pre-labeled rows. When a brand-new situation happens, the cloud brain (Jev) decides what to do.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">2</div>
+        <h4 class="step-title">Quietly Listens</h4>
+        <p class="step-desc">
+          Exactor records every smart decision into a lightweight local memory ledger, observing patterns in real time.
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">3</div>
+        <h4 class="step-title">Distills into Rules</h4>
+        <p class="step-desc">
+          Exactor automatically turns repeated examples into razor-sharp logical rules (e.g. <em>IF this AND that THEN do X</em>).
+        </p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge">4</div>
+        <h4 class="step-title">Instant Reflex Active</h4>
+        <p class="step-desc">
+          Future matching cases never touch the cloud again. They are resolved in 0.05 ms right on your machine for free.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Superpower: Explainability (No Black Boxes) -->
+  <div class="card compare-section card-glow-blue">
+    <div class="section-title">
+      <div class="icon-circle" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">🔍</div>
+      The Superpower: Dual Output (Decision + Proof)
+    </div>
+    <p style="color: var(--text-sub); margin-bottom: 20px;">
+      Most AI acts like a "Black Box"—it gives an answer, but nobody can truly prove why. Exactor gives you the decision AND the exact mathematical proof on every single event.
+    </p>
+
+    <div class="grid grid-2">
+      <!-- Traditional Black Box -->
+      <div class="compare-side compare-traditional">
+        <div class="compare-header" style="color: #f87171;">
+          <span>❌</span> Standard Cloud AI (Black Box)
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          "We flagged this payment as FRAUD because a deep neural network found an 87.4% statistical likelihood."
+        </p>
+        <div class="code-demo">
+          <span class="highlight-red">Result:</span> Suspicious<br>
+          <span class="highlight-red">Reason:</span> "Trust our 500-layer neural net"<br>
+          <span class="highlight-red">Audit Status:</span> Fails strict bank compliance
+        </div>
+      </div>
+
+      <!-- Exactor Transparent Box -->
+      <div class="compare-side compare-exactor">
+        <div class="compare-header" style="color: #34d399;">
+          <span>✅</span> Exactor (Exact Causal Proof)
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+          "We flagged this payment because 3 clear rules were triggered at the exact same moment."
+        </p>
+        <div class="code-demo">
+          <span class="highlight-green">Result:</span> Suspicious<br>
+          <span class="highlight-blue">Exact Rule:</span> (New_Device = True AND Country_Mismatch = True AND Transfer > $5,000)<br>
+          <span class="highlight-green">Audit Status:</span> 100% GDPR, HIPAA & Banking Approved
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core Business Benefits -->
+  <div class="section-title" style="margin-top: 10px;">
+    <div class="icon-circle" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24;">💼</div>
+    Why Business Leaders Love It
+  </div>
+
+  <div class="grid grid-3" style="margin-bottom: 40px;">
+    <div class="benefit-item">
+      <div class="benefit-icon">📉</div>
+      <div class="benefit-title">Slashing AI Server Bills</div>
+      <div class="benefit-desc">
+        Routine queries (which make up 80-95% of traffic) never hit paid cloud AI APIs, dramatically cutting monthly token costs.
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="benefit-icon">🛡️</div>
+      <div class="benefit-title">Total Legal & Audit Safety</div>
+      <div class="benefit-desc">
+        When regulators or customers ask <em>"Why was I rejected?"</em>, you can show the exact crystal-clear reason immediately.
+      </div>
+    </div>
+
+    <div class="benefit-item">
+      <div class="benefit-icon">🔌</div>
+      <div class="benefit-title">Works Even If The Internet Drops</div>
+      <div class="benefit-desc">
+        Because Exactor lives inside your server, your system keeps answering instantly even if cloud providers suffer an outage.
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <strong>Exactor Accelerator</strong> &bull; Blending High-Speed Reflexes with Deep AI Intelligence.
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>
