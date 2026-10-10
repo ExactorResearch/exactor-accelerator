@@ -121,6 +121,10 @@
           <span class="material-symbols-outlined text-sm" data-icon="history_toggle_off">history_toggle_off</span>
           4. Live Memory (WAL)
         </button>
+        <button type="button" class="tab-btn h-full flex items-center gap-1.5 px-2 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-colors" data-tab="tab-certainty-islands" onclick="switchTab('tab-certainty-islands')">
+          <span class="material-symbols-outlined text-sm text-secondary" data-icon="shield">shield</span>
+          5. Islas de Certeza 🏝️
+        </button>
       </nav>
 
       <!-- Right Trailing Controls & View Mode Switcher -->
@@ -188,6 +192,10 @@
         <button type="button" class="step-card w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-on-surface-variant hover:text-on-surface hover:bg-surface-container/40 transition-all text-xs font-medium" data-tab="tab-ledger" onclick="switchTab('tab-ledger')">
           <span class="material-symbols-outlined text-outline text-base" data-icon="history_toggle_off">history_toggle_off</span>
           <span>4. Live Memory</span>
+        </button>
+        <button type="button" class="step-card w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-left text-on-surface-variant hover:text-on-surface hover:bg-surface-container/40 transition-all text-xs font-medium" data-tab="tab-certainty-islands" onclick="switchTab('tab-certainty-islands')">
+          <span class="material-symbols-outlined text-secondary text-base" data-icon="shield">shield</span>
+          <span>5. Islas de Certeza 🏝️</span>
         </button>
       </nav>
     </div>
@@ -967,6 +975,257 @@
             </table>
           </div>
         </section>
+      </section>
+
+      <!-- =======================================================================
+           TAB PANE 5: TOPOLOGICAL CERTAINTY ISLANDS (ISLAS DE CERTEZA)
+           ======================================================================= -->
+      <section class="tab-pane space-y-6 hidden" id="tab-certainty-islands">
+        
+        <!-- Hero & Domain Selector Banner -->
+        <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-outline-variant/30 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-secondary flex items-center justify-center animate-pulse"></span>
+                <h3 class="text-base font-bold text-primary flex items-center gap-2">
+                  <span>Islas de Certeza Topológicas (Certainty Islands Engine)</span>
+                  <span class="text-xs px-2 py-0.5 rounded bg-secondary/20 text-secondary border border-secondary/40 font-mono">100% Determinista</span>
+                </h3>
+              </div>
+              <p class="text-xs text-on-surface-variant mt-1">
+                Guardarraíles neuro-simbólicos de orden topológico: filtran casos deterministas triviales en <span class="font-mono text-secondary">&lt;10μs</span>, vetan violaciones físicas y delegan la ambigüedad al modelo probabilístico con trazabilidad bilingüe auditable.
+              </p>
+            </div>
+            <div class="flex items-center gap-2 self-start md:self-auto">
+              <span class="text-[11px] font-mono text-primary-container px-2.5 py-1 rounded bg-surface-container-high border border-primary-container/30">
+                O(1) Memory · Fail-Safe
+              </span>
+            </div>
+          </div>
+
+          <!-- Domain Switcher Pills -->
+          <div class="space-y-2">
+            <label class="block text-xs font-mono uppercase text-on-surface-variant">Selecciona el Dominio de Invariantes:</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+              <button type="button" class="btn-island-domain p-2.5 rounded-lg bg-surface-container-high border border-primary-container text-left transition-all active-domain group" data-domain="financial" onclick="selectIslandDomain('financial')">
+                <div class="text-lg mb-0.5">💳</div>
+                <div class="text-xs font-bold text-primary-container group-hover:text-primary">Financiero / Fraude</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">Sobregiros · Geo-Saltos</div>
+              </button>
+
+              <button type="button" class="btn-island-domain p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" data-domain="medical" onclick="selectIslandDomain('medical')">
+                <div class="text-lg mb-0.5">🏥</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Salud / Medical Triage</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">Vitales · Hipoxia · Sepsis</div>
+              </button>
+
+              <button type="button" class="btn-island-domain p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" data-domain="forex" onclick="selectIslandDomain('forex')">
+                <div class="text-lg mb-0.5">📈</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Forex / Trading Cuantitativo</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">Spread · Margen · Volatilidad</div>
+              </button>
+
+              <button type="button" class="btn-island-domain p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" data-domain="security" onclick="selectIslandDomain('security')">
+                <div class="text-lg mb-0.5">🛡️</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Ciberseguridad / SOC</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">Brute Force · CIDR Privado</div>
+              </button>
+
+              <button type="button" class="btn-island-domain p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group" data-domain="general" onclick="selectIslandDomain('general')">
+                <div class="text-lg mb-0.5">⚙️</div>
+                <div class="text-xs font-bold text-on-surface group-hover:text-primary-container">Industrial IoT / Turbinas</div>
+                <div class="text-[10px] text-on-surface-variant font-mono">Presión · Temperatura Límites</div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Invariants Catalog Cards -->
+        <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4">
+          <div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-primary-container text-base" data-icon="view_list">view_list</span>
+              <h4 class="text-xs font-bold font-mono uppercase text-on-surface">Invariantes Topológicos Activos (<span id="island-domain-label" class="text-secondary">financial</span>)</h4>
+            </div>
+            <span class="text-[11px] font-mono text-on-surface-variant" id="island-count-badge">3 Invariantes Registrados</span>
+          </div>
+
+          <!-- Dynamic Grid for Registered Invariants -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="island-invariants-grid">
+            <!-- Populated dynamically via JS -->
+            <div class="p-3 rounded-lg bg-surface-container-lowest/80 border border-outline-variant/30 animate-pulse">
+              <div class="h-4 bg-surface-container-high rounded w-3/4 mb-2"></div>
+              <div class="h-3 bg-surface-container rounded w-full"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Sandbox Evaluator (Split View) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          
+          <!-- Left Column: Input Sandbox & Sample Controls -->
+          <div class="lg:col-span-6 space-y-4">
+            <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4">
+              <div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-secondary text-base" data-icon="terminal">terminal</span>
+                  <h4 class="text-xs font-bold font-mono uppercase text-on-surface">Sandbox de Evaluación</h4>
+                </div>
+                <span class="text-[10px] font-mono text-on-surface-variant">Payload JSON en Tiempo Real</span>
+              </div>
+
+              <!-- Quick Preset Buttons -->
+              <div>
+                <label class="block text-[11px] font-mono text-on-surface-variant mb-1.5">Cargar Escenarios de Prueba:</label>
+                <div class="grid grid-cols-2 gap-2" id="island-sample-presets">
+                  <!-- Injected by JS based on domain -->
+                </div>
+              </div>
+
+              <!-- JSON Payload Editor -->
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between text-xs font-mono">
+                  <label for="input-island-payload" class="text-on-surface-variant">Datos de Entrada (JSON):</label>
+                  <button type="button" class="text-primary-container hover:underline text-[11px]" onclick="formatIslandPayloadJson()">Formatear JSON</button>
+                </div>
+                <textarea id="input-island-payload" rows="9" class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-lg p-3 text-xs font-mono text-primary-container focus:border-primary-container focus:outline-none transition-colors" placeholder='{"amount": 1500, "balance": 3000, "velocity_kmh": 25}'></textarea>
+              </div>
+
+              <!-- Parameters Bar -->
+              <div class="p-3 rounded-lg bg-surface-container-lowest/80 border border-outline-variant/30 grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
+                <div>
+                  <div class="flex justify-between text-[11px] text-on-surface-variant mb-1">
+                    <span>Probabilidad Modelo Base:</span>
+                    <span class="text-primary-container font-bold" id="lbl-island-threshold">0.50</span>
+                  </div>
+                  <input type="range" id="range-island-threshold" min="0" max="1" step="0.05" value="0.50" oninput="document.getElementById('lbl-island-threshold').textContent = parseFloat(this.value).toFixed(2)" class="w-full accent-primary-container cursor-pointer">
+                </div>
+                <div class="flex items-center gap-2 sm:justify-end">
+                  <label class="flex items-center gap-2 cursor-pointer text-[11px] text-on-surface hover:text-primary">
+                    <input type="checkbox" id="chk-island-strict" class="rounded bg-surface-container border-outline-variant text-primary-container focus:ring-0">
+                    <span>Modo Estricto (Lanza Error en Veto)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Run Button -->
+              <button type="button" class="w-full py-3 px-4 rounded-xl bg-primary-container hover:bg-primary-container/90 text-on-primary-container font-mono text-xs font-bold tracking-wide flex items-center justify-center gap-2 glow-cyan transition-all active:scale-95 shadow-lg" id="btn-eval-island" onclick="evaluateIslandSample()">
+                <span class="material-symbols-outlined text-base" data-icon="bolt">bolt</span>
+                <span>Evaluar Invariantes Topológicos</span>
+              </button>
+            </div>
+
+            <!-- Python Wrapper Code Preview Box -->
+            <div class="cyber-glass rounded-xl p-4 border border-outline-variant/40 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-on-surface-variant">
+                <span class="flex items-center gap-1.5 text-secondary font-bold">
+                  <span class="material-symbols-outlined text-sm" data-icon="code">code</span>
+                  Integración con 1 solo decorador: @certainty_guard
+                </span>
+                <span class="text-[10px] bg-surface-container-high px-2 py-0.5 rounded">Python SDK</span>
+              </div>
+              <pre class="p-3 rounded-lg bg-surface-container-lowest border border-outline-variant/30 text-[11px] font-mono text-on-surface-variant overflow-x-auto whitespace-pre-wrap"><code class="text-secondary">from</code> exactor_accelerator <code class="text-secondary">import</code> certainty_guard
+
+<code class="text-primary-container">@certainty_guard</code>(domain=<code class="text-primary">"financial"</code>, fail_safe_on_veto=<code class="text-tertiary-fixed">True</code>)
+<code class="text-secondary">def</code> <code class="text-primary-fixed">process_payment</code>(amount: float, balance: float, **kwargs):
+    <code class="text-outline"># Solo se ejecuta si pasa los invariantes topológicos</code>
+    <code class="text-secondary">return</code> ml_model.predict([amount, balance])</pre>
+            </div>
+          </div>
+
+          <!-- Right Column: Evaluation Live Results -->
+          <div class="lg:col-span-6 space-y-4">
+            
+            <!-- Result Gauge & Traffic Light Ribbon -->
+            <div class="cyber-glass rounded-xl p-5 border border-outline-variant/40 space-y-4" id="island-result-card">
+              <div class="flex items-center justify-between border-b border-outline-variant/30 pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-primary-container text-base" data-icon="analytics">analytics</span>
+                  <h4 class="text-xs font-bold font-mono uppercase text-on-surface">Diagnóstico Topológico</h4>
+                </div>
+                <div id="island-traffic-badge" class="px-2.5 py-1 rounded-full text-xs font-mono font-bold flex items-center gap-1.5 bg-surface-container text-on-surface-variant border border-outline-variant/40">
+                  <span>⚪ STANDBY</span>
+                </div>
+              </div>
+
+              <!-- Metrics Summary Cards -->
+              <div class="grid grid-cols-3 gap-2 text-center font-mono">
+                <div class="p-2.5 rounded-lg bg-surface-container-lowest/90 border border-outline-variant/30">
+                  <div class="text-[10px] text-on-surface-variant uppercase">Categoría</div>
+                  <div class="text-xs font-bold text-on-surface mt-1" id="res-island-category">-</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-surface-container-lowest/90 border border-outline-variant/30">
+                  <div class="text-[10px] text-on-surface-variant uppercase">Certeza</div>
+                  <div class="text-xs font-bold text-secondary mt-1" id="res-island-certainty">-</div>
+                </div>
+                <div class="p-2.5 rounded-lg bg-surface-container-lowest/90 border border-outline-variant/30">
+                  <div class="text-[10px] text-on-surface-variant uppercase">Latencia Guard</div>
+                  <div class="text-xs font-bold text-primary-container mt-1" id="res-island-latency">&lt;10 μs</div>
+                </div>
+              </div>
+
+              <!-- Bilingual Natural Language Explanation Box -->
+              <div class="p-4 rounded-xl bg-surface-container-lowest/90 border border-outline-variant/40 space-y-3">
+                <div class="flex items-center justify-between border-b border-outline-variant/20 pb-2">
+                  <span class="text-xs font-bold font-mono text-primary flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-sm text-secondary" data-icon="translate">translate</span>
+                    Explicación en Lenguaje Natural
+                  </span>
+                  
+                  <!-- Language Toggle Switch -->
+                  <div class="flex p-0.5 bg-surface-container border border-outline-variant/40 rounded-lg text-[10px] font-mono">
+                    <button type="button" class="px-2 py-0.5 rounded text-primary-container font-bold bg-surface-container-high transition-all" id="btn-lang-es" onclick="switchIslandLang('es')">🇪🇸 ES</button>
+                    <button type="button" class="px-2 py-0.5 rounded text-on-surface-variant hover:text-on-surface transition-all" id="btn-lang-en" onclick="switchIslandLang('en')">🇬🇧 EN</button>
+                  </div>
+                </div>
+
+                <!-- Text Paragraphs -->
+                <div class="text-xs text-on-surface space-y-2 leading-relaxed font-sans" id="island-explanation-container">
+                  <p class="text-on-surface-variant italic">Presiona "Evaluar Invariantes Topológicos" o selecciona un escenario de prueba para generar la explicación automática.</p>
+                </div>
+              </div>
+
+              <!-- Mathematical LaTeX Deduction Proof -->
+              <div class="p-4 rounded-xl bg-surface-container-lowest/90 border border-outline-variant/40 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold font-mono text-tertiary-fixed flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-sm text-tertiary-fixed" data-icon="functions">functions</span>
+                    Deducción Formal Matemática (LaTeX)
+                  </span>
+                  <button type="button" class="text-[10px] font-mono text-primary-container hover:underline" onclick="copyIslandLatex()">Copiar LaTeX</button>
+                </div>
+                <div class="p-3 rounded-lg bg-surface-container border border-outline-variant/30 text-xs font-mono text-tertiary-fixed-dim overflow-x-auto whitespace-pre-wrap" id="island-latex-proof">
+                  % Esperando evaluación...
+                </div>
+              </div>
+
+              <!-- Invariants Evaluation Breakdown Table -->
+              <div class="space-y-2">
+                <span class="text-[11px] font-mono uppercase text-on-surface-variant block">Evaluación Detallada de Invariantes:</span>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left font-mono text-[11px] border-collapse" id="table-island-breakdown">
+                    <thead>
+                      <tr class="border-b border-outline-variant/40 text-on-surface-variant text-[10px] uppercase">
+                        <th class="py-1.5 px-2">ID</th>
+                        <th class="py-1.5 px-2">Invariante</th>
+                        <th class="py-1.5 px-2">Resultado</th>
+                        <th class="py-1.5 px-2">Acción</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-outline-variant/20 text-on-surface" id="tbody-island-breakdown">
+                      <tr><td colspan="4" class="py-2 text-center text-on-surface-variant">Sin evaluación reciente</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
       </section>
 
     </main>

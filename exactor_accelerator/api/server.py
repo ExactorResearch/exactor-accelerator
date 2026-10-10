@@ -485,7 +485,39 @@ def trigger_differential_update(req: DifferentialUpdateRequest):
         return res
     except Exception as e:
         logger.error(f"Differential update error: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+class CertaintyEvaluationRequest(BaseModel):
+    domain: Optional[str] = "financial"
+    sample: Dict[str, Any]
+    default_threshold: Optional[float] = 0.75
+    strict_mode: Optional[bool] = True
+
+
+@app.get("/api/certainty-islands/list")
+def list_certainty_islands(domain: str = Query("financial")):
+    """Returns the list of active Certainty Islands for a specific domain."""
+    from ..certainty_islands import get_certainty_islands_engine
+    engine = get_certainty_islands_engine(domain=domain)
+    return {
+        "domain": domain,
+        "islands": engine.list_islands()
+    }
+
+
+@app.post("/api/certainty-islands/evaluate")
+def evaluate_certainty_islands(req: CertaintyEvaluationRequest):
+    """Evaluates an input sample against Certainty Islands."""
+    try:
+        from ..certainty_islands import get_certainty_islands_engine
+        engine = get_certainty_islands_engine(
+            domain=req.domain or "financial",
+            default_threshold=req.default_threshold or 0.75,
+            strict_mode=req.strict_mode if req.strict_mode is not None else True
+        )
+        result = engine.evaluate(req.sample)
+        return result.to_dict()
+    except Exception as e:
+        logger.error(f"Certainty Islands evaluation error: {e}")
+        raise HTTPException(status_code=400, detail=str(e))
 
 
 # Static frontend hosting

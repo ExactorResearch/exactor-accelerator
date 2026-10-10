@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadJevSchema();
   refreshLedgerTable();
   fillLiveEventPreset('fraud_high');
+  selectIslandDomain('financial');
 
   // Initialize View Mode (Business by default)
   const savedMode = localStorage.getItem("exactor_accelerator_view_mode") || "business";
@@ -1343,3 +1344,479 @@ async function saveTokensConfiguration() {
     if (msgEl) msgEl.textContent = `Error: ${err.message}`;
   }
 }
+
+// ----------------------------------------------------------------------------
+// CERTAINTY ISLANDS ENGINE (TOPOLOGICAL ZERO-COST GUARDRAILS & EXPLAINABILITY)
+// ----------------------------------------------------------------------------
+
+let currentIslandDomain = "financial";
+let currentIslandResult = null;
+let currentIslandLang = "es";
+
+const ISLAND_PRESETS = {
+  financial: [
+    {
+      id: "fin_normal",
+      label: "🟢 Transacción Normal",
+      desc: "amount: $120, balance: $1,500, vel: 15km/h",
+      payload: { amount: 120.0, balance: 1500.0, velocity_kmh: 15.0, is_verified: true, country_mismatch: false }
+    },
+    {
+      id: "fin_overdraft",
+      label: "🔴 Sobregiro Ilegal (Veto)",
+      desc: "amount: $5,000 > balance: $200",
+      payload: { amount: 5000.0, balance: 200.0, velocity_kmh: 10.0, is_verified: true }
+    },
+    {
+      id: "fin_geoleap",
+      label: "🔴 Geo-Salto Imposible (Veto)",
+      desc: "vel: 1,850 km/h (Física imposible)",
+      payload: { amount: 80.0, balance: 2000.0, velocity_kmh: 1850.0, minutes_since_last_tx: 5.0 }
+    },
+    {
+      id: "fin_high_unverified",
+      label: "🟡 Alto Monto Sin Verificar (Escalar)",
+      desc: "amount: $25,000 no verificado",
+      payload: { amount: 25000.0, balance: 50000.0, is_verified: false, velocity_kmh: 20.0 }
+    }
+  ],
+  medical: [
+    {
+      id: "med_normal",
+      label: "🟢 Signos Normales",
+      desc: "SpO2: 98%, FC: 72 bpm, PAS: 118",
+      payload: { spo2: 98.0, heart_rate: 72.0, systolic_bp: 118.0, temperature: 36.6 }
+    },
+    {
+      id: "med_hypoxia",
+      label: "🔴 Hipoxia Severa (Veto UCI)",
+      desc: "SpO2: 45% (Crítico / No alta)",
+      payload: { spo2: 45.0, heart_rate: 80.0, systolic_bp: 110.0 }
+    },
+    {
+      id: "med_brady",
+      label: "🔴 Paro Inminente (Veto)",
+      desc: "FC: 18 bpm (Bradicardia extrema)",
+      payload: { spo2: 92.0, heart_rate: 18.0, systolic_bp: 60.0 }
+    },
+    {
+      id: "med_sepsis",
+      label: "🟡 Sospecha Sepsis (Escalar)",
+      desc: "FC: 118 bpm, Temp: 39.4°C",
+      payload: { spo2: 93.0, heart_rate: 118.0, temperature: 39.4, systolic_bp: 95.0 }
+    }
+  ],
+  forex: [
+    {
+      id: "fx_normal",
+      label: "🟢 Trade Normal en Spread",
+      desc: "spread: 1.2 pips, margen: 350%",
+      payload: { spread_pips: 1.2, margin_level_pct: 350.0, lot_size: 0.5, is_news_event: false }
+    },
+    {
+      id: "fx_spread_veto",
+      label: "🔴 Spread Abusivo (Veto)",
+      desc: "spread: 18.5 pips > max: 6.0",
+      payload: { spread_pips: 18.5, margin_level_pct: 250.0, lot_size: 1.0 }
+    },
+    {
+      id: "fx_margin_veto",
+      label: "🔴 Margen Insuficiente (Veto)",
+      desc: "margen: 45% < stopout 50%",
+      payload: { spread_pips: 1.0, margin_level_pct: 45.0, lot_size: 2.0 }
+    },
+    {
+      id: "fx_inst_escalate",
+      label: "🟡 Lote Institucional (Escalar)",
+      desc: "lote: 25.0 en cuenta estándar",
+      payload: { spread_pips: 1.5, margin_level_pct: 120.0, lot_size: 25.0 }
+    }
+  ],
+  security: [
+    {
+      id: "sec_normal",
+      label: "🟢 Acceso Válido LAN",
+      desc: "CIDR privado, 0 fallos",
+      payload: { failed_attempts: 0, is_private_cidr: true, geo_country: "CL", is_admin_account: false }
+    },
+    {
+      id: "sec_brute_veto",
+      label: "🔴 Ataque Brute Force (Veto)",
+      desc: "25 intentos fallidos",
+      payload: { failed_attempts: 25, is_private_cidr: false, geo_country: "RU" }
+    },
+    {
+      id: "sec_tor_veto",
+      label: "🔴 Nodo TOR Bloqueado (Veto)",
+      desc: "is_tor_exit_node: true",
+      payload: { failed_attempts: 1, is_tor_exit_node: true, is_private_cidr: false }
+    },
+    {
+      id: "sec_admin_escalate",
+      label: "🟡 Admin Remoto (Escalar)",
+      desc: "Root login desde WAN pública",
+      payload: { failed_attempts: 2, is_admin_account: true, is_private_cidr: false }
+    }
+  ],
+  general: [
+    {
+      id: "gen_normal",
+      label: "🟢 Operación Nominal",
+      desc: "temp: 65°C, presión: 85 psi",
+      payload: { temperature_c: 65.0, pressure_psi: 85.0, vibration_g: 0.2 }
+    },
+    {
+      id: "gen_temp_veto",
+      label: "🔴 Sobrecalentamiento (Veto)",
+      desc: "temp: 195°C > máx 160°C",
+      payload: { temperature_c: 195.0, pressure_psi: 80.0, vibration_g: 0.3 }
+    },
+    {
+      id: "gen_press_veto",
+      label: "🔴 Sobrepresión Peligrosa (Veto)",
+      desc: "presión: 220 psi > máx 150 psi",
+      payload: { temperature_c: 70.0, pressure_psi: 220.0, vibration_g: 0.4 }
+    },
+    {
+      id: "gen_vib_escalate",
+      label: "🟡 Vibración Anómala (Escalar)",
+      desc: "vibración: 1.8g (Falla de rodamiento)",
+      payload: { temperature_c: 92.0, pressure_psi: 120.0, vibration_g: 1.8 }
+    }
+  ]
+};
+
+async function selectIslandDomain(domain) {
+  currentIslandDomain = domain;
+
+  // Update domain pills active state
+  document.querySelectorAll(".btn-island-domain").forEach((btn) => {
+    if (btn.dataset.domain === domain) {
+      btn.className = "btn-island-domain p-2.5 rounded-lg bg-surface-container-high border border-primary-container text-left transition-all active-domain group";
+      const titleEl = btn.querySelector(".text-xs");
+      if (titleEl) {
+        titleEl.classList.remove("text-on-surface");
+        titleEl.classList.add("text-primary-container");
+      }
+    } else {
+      btn.className = "btn-island-domain p-2.5 rounded-lg bg-surface-container-high/50 hover:bg-surface-container-high border border-outline-variant/40 hover:border-primary-container text-left transition-all group";
+      const titleEl = btn.querySelector(".text-xs");
+      if (titleEl) {
+        titleEl.classList.remove("text-primary-container");
+        titleEl.classList.add("text-on-surface");
+      }
+    }
+  });
+
+  const labelEl = document.getElementById("island-domain-label");
+  if (labelEl) labelEl.textContent = domain;
+
+  // Render Sample Presets Buttons
+  renderIslandPresets(domain);
+
+  // Load registered invariants from server
+  await loadIslandInvariants(domain);
+
+  // Load first sample preset by default
+  const presets = ISLAND_PRESETS[domain];
+  if (presets && presets.length > 0) {
+    loadIslandSamplePreset(presets[0]);
+  }
+}
+
+function renderIslandPresets(domain) {
+  const container = document.getElementById("island-sample-presets");
+  if (!container) return;
+
+  const presets = ISLAND_PRESETS[domain] || [];
+  container.innerHTML = presets.map((p) => `
+    <button type="button" class="p-2 rounded-lg bg-surface-container-high/40 hover:bg-surface-container-high border border-outline-variant/30 hover:border-primary-container text-left transition-all text-xs group" onclick="loadIslandPresetById('${p.id}')">
+      <div class="font-bold text-on-surface group-hover:text-primary-container truncate">${p.label}</div>
+      <div class="text-[10px] text-on-surface-variant font-mono truncate">${p.desc}</div>
+    </button>
+  `).join("");
+}
+
+function loadIslandPresetById(presetId) {
+  const presets = ISLAND_PRESETS[currentIslandDomain] || [];
+  const found = presets.find(p => p.id === presetId);
+  if (found) {
+    loadIslandSamplePreset(found);
+  }
+}
+
+function loadIslandSamplePreset(presetObj) {
+  const payloadEl = document.getElementById("input-island-payload");
+  if (payloadEl) {
+    payloadEl.value = JSON.stringify(presetObj.payload, null, 2);
+  }
+}
+
+function formatIslandPayloadJson() {
+  const payloadEl = document.getElementById("input-island-payload");
+  if (!payloadEl) return;
+  try {
+    const obj = JSON.parse(payloadEl.value);
+    payloadEl.value = JSON.stringify(obj, null, 2);
+  } catch (err) {
+    alert("Error de sintaxis JSON: " + err.message);
+  }
+}
+
+async function loadIslandInvariants(domain) {
+  const grid = document.getElementById("island-invariants-grid");
+  const countBadge = document.getElementById("island-count-badge");
+  if (!grid) return;
+
+  try {
+    const res = await fetch(`${API_BASE}/api/certainty-islands/list?domain=${domain}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const islands = data.islands || [];
+
+    if (countBadge) {
+      countBadge.textContent = `${islands.length} Invariantes Registrados`;
+    }
+
+    if (islands.length === 0) {
+      grid.innerHTML = `<div class="col-span-3 py-6 text-center text-on-surface-variant text-xs font-mono">No hay invariantes registrados para este dominio.</div>`;
+      return;
+    }
+
+    grid.innerHTML = islands.map(isl => {
+      let badgeBg = "bg-primary-container/20 text-primary-container border-primary-container/40";
+      let actionIcon = "verified";
+      if (isl.action === "VETO_REJECT") {
+        badgeBg = "bg-error-container/40 text-error border-error/40";
+        actionIcon = "cancel";
+      } else if (isl.action === "FAST_PATH") {
+        badgeBg = "bg-secondary/20 text-secondary border-secondary/40";
+        actionIcon = "bolt";
+      } else if (isl.action === "ORACLE_ESCALATE" || isl.action === "HUMAN_ESCALATE") {
+        badgeBg = "bg-tertiary-container/30 text-tertiary-fixed border-tertiary-fixed/40";
+        actionIcon = "warning";
+      }
+
+      return `
+        <div class="p-3 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/40 space-y-2 hover:border-primary-container/60 transition-all flex flex-col justify-between">
+          <div class="space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold text-primary">${isl.id}</span>
+              <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border flex items-center gap-1 ${badgeBg}">
+                <span class="material-symbols-outlined text-xs" data-icon="${actionIcon}">${actionIcon}</span>
+                ${isl.action}
+              </span>
+            </div>
+            <h5 class="text-xs font-bold text-on-surface">${isl.name}</h5>
+            <p class="text-[11px] text-on-surface-variant leading-tight">${isl.description}</p>
+          </div>
+          <div class="pt-2 border-t border-outline-variant/20 font-mono text-[10px] text-on-surface-variant flex items-center justify-between">
+            <span class="text-primary-container truncate">${isl.latex_formula || isl.predicate_code}</span>
+            <span class="text-secondary font-bold shrink-0 ml-2">Certeza: 1.0</span>
+          </div>
+        </div>
+      `;
+    }).join("");
+
+  } catch (err) {
+    console.error("Error loading certainty islands:", err);
+    if (grid) {
+      grid.innerHTML = `<div class="col-span-3 p-4 text-xs font-mono text-error">Error al cargar invariantes: ${err.message}</div>`;
+    }
+  }
+}
+
+async function evaluateIslandSample() {
+  const btn = document.getElementById("btn-eval-island");
+  const payloadEl = document.getElementById("input-island-payload");
+  const thresholdEl = document.getElementById("range-island-threshold");
+  const strictEl = document.getElementById("chk-island-strict");
+
+  let sample = {};
+  try {
+    sample = JSON.parse(payloadEl.value || "{}");
+  } catch (err) {
+    alert("Error en el formato JSON: " + err.message);
+    return;
+  }
+
+  const defaultThreshold = parseFloat(thresholdEl?.value || "0.5");
+  const strictMode = strictEl?.checked || false;
+
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = `<span class="material-symbols-outlined text-base animate-spin" data-icon="sync">sync</span><span>Evaluando Invariantes Topológicos...</span>`;
+  }
+
+  const startTime = performance.now();
+
+  try {
+    const res = await fetch(`${API_BASE}/api/certainty-islands/evaluate`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        domain: currentIslandDomain,
+        sample: sample,
+        default_threshold: defaultThreshold,
+        strict_mode: strictMode
+      })
+    });
+
+    const elapsed = (performance.now() - startTime).toFixed(1);
+    const data = await res.json();
+    currentIslandResult = data;
+    renderIslandEvaluationResult(data, elapsed);
+
+  } catch (err) {
+    console.error("Error evaluating island sample:", err);
+    alert("Error al evaluar certeza: " + err.message);
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = `<span class="material-symbols-outlined text-base" data-icon="bolt">bolt</span><span>Evaluar Invariantes Topológicos</span>`;
+    }
+  }
+}
+
+function renderIslandEvaluationResult(data, elapsedMs) {
+  if (!data) return;
+
+  // Traffic Light Badge
+  const trafficBadge = document.getElementById("island-traffic-badge");
+  const catEl = document.getElementById("res-island-category");
+  const certEl = document.getElementById("res-island-certainty");
+  const latEl = document.getElementById("res-island-latency");
+
+  if (catEl) catEl.textContent = data.category || "UNKNOWN";
+  if (certEl) {
+    certEl.textContent = data.is_deterministic ? "100% (Invariante)" : `${((data.confidence || 0.5) * 100).toFixed(0)}% (Modelo)`;
+  }
+  if (latEl) latEl.textContent = `${elapsedMs || "<10"} ms`;
+
+  if (trafficBadge) {
+    const badgeText = data.traffic_light_badge || "⚪ STANDBY";
+    let badgeClass = "px-2.5 py-1 rounded-full text-xs font-mono font-bold flex items-center gap-1.5 border ";
+    if (badgeText.includes("FAST-PATH")) {
+      badgeClass += "bg-secondary/20 text-secondary border-secondary/50 glow-emerald";
+    } else if (badgeText.includes("VETO-REJECT")) {
+      badgeClass += "bg-error-container/40 text-error border-error/50";
+    } else if (badgeText.includes("ORACLE-ESCALATE")) {
+      badgeClass += "bg-tertiary-container/30 text-tertiary-fixed border-tertiary-fixed/50 glow-violet";
+    } else {
+      badgeClass += "bg-surface-container text-on-surface-variant border-outline-variant/40";
+    }
+    trafficBadge.className = badgeClass;
+    trafficBadge.innerHTML = `<span>${badgeText}</span>`;
+  }
+
+  // Natural Language Explanation Render
+  renderIslandExplanationText(data);
+
+  // LaTeX Proof Render
+  const latexEl = document.getElementById("island-latex-proof");
+  if (latexEl) {
+    latexEl.textContent = data.latex_proof || "% Sin deducción generada.";
+  }
+
+  // Invariant Breakdown Table
+  const tbody = document.getElementById("tbody-island-breakdown");
+  if (tbody) {
+    const checks = data.evaluated_invariants || [];
+    if (checks.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="4" class="py-2 text-center text-on-surface-variant">Ningún invariante evaluado.</td></tr>`;
+    } else {
+      tbody.innerHTML = checks.map(chk => {
+        const passedBadge = chk.passed
+          ? `<span class="text-secondary font-bold flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="check_circle">check_circle</span> Cumplido</span>`
+          : `<span class="text-error font-bold flex items-center gap-1"><span class="material-symbols-outlined text-xs" data-icon="cancel">cancel</span> Violado</span>`;
+
+        let actColor = "text-on-surface";
+        if (chk.action === "VETO_REJECT") actColor = "text-error";
+        if (chk.action === "FAST_PATH") actColor = "text-secondary";
+        if (chk.action === "ORACLE_ESCALATE") actColor = "text-tertiary-fixed";
+
+        return `
+          <tr class="hover:bg-surface-container-high/30">
+            <td class="py-1.5 px-2 text-primary-container font-mono font-bold">${chk.id}</td>
+            <td class="py-1.5 px-2 text-on-surface">${chk.name}</td>
+            <td class="py-1.5 px-2">${passedBadge}</td>
+            <td class="py-1.5 px-2 font-mono ${actColor}">${chk.action}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+  }
+}
+
+function renderIslandExplanationText(data) {
+  const container = document.getElementById("island-explanation-container");
+  if (!container || !data) return;
+
+  const explObj = currentIslandLang === "en" ? data.explanation_en : data.explanation_es;
+
+  if (!explObj) {
+    container.innerHTML = `<p class="text-on-surface-variant italic">Explicación no disponible.</p>`;
+    return;
+  }
+
+  let statusBadge = "bg-surface-container text-on-surface-variant";
+  if (data.category === "FAST_PATH") statusBadge = "bg-secondary/20 text-secondary border border-secondary/40";
+  if (data.category === "VETO_REJECT") statusBadge = "bg-error-container/40 text-error border border-error/40";
+  if (data.category === "ORACLE_ESCALATE") statusBadge = "bg-tertiary-container/30 text-tertiary-fixed border border-tertiary-fixed/40";
+
+  container.innerHTML = `
+    <div class="p-2.5 rounded-lg bg-surface-container-high/40 border border-outline-variant/30 space-y-1.5">
+      <div class="flex items-center justify-between">
+        <h5 class="font-bold text-xs text-primary">${explObj.title || "Diagnóstico"}</h5>
+        <span class="text-[10px] font-mono px-2 py-0.5 rounded font-bold ${statusBadge}">${data.category}</span>
+      </div>
+      <p class="text-xs text-on-surface">${explObj.summary || ""}</p>
+    </div>
+    <div class="text-[11px] text-on-surface-variant font-mono space-y-1 pt-1">
+      <div class="flex items-center gap-1.5 text-secondary">
+        <span class="material-symbols-outlined text-xs" data-icon="policy">policy</span>
+        <span class="font-bold">Recomendación:</span> ${explObj.recommendation || "N/A"}
+      </div>
+      <div>
+        <span class="text-outline">Razón Técnica:</span> ${explObj.technical_reason || "N/A"}
+      </div>
+    </div>
+  `;
+}
+
+function switchIslandLang(lang) {
+  currentIslandLang = lang;
+  const btnEs = document.getElementById("btn-lang-es");
+  const btnEn = document.getElementById("btn-lang-en");
+
+  if (lang === "es") {
+    if (btnEs) {
+      btnEs.className = "px-2 py-0.5 rounded text-primary-container font-bold bg-surface-container-high transition-all";
+    }
+    if (btnEn) {
+      btnEn.className = "px-2 py-0.5 rounded text-on-surface-variant hover:text-on-surface transition-all";
+    }
+  } else {
+    if (btnEn) {
+      btnEn.className = "px-2 py-0.5 rounded text-primary-container font-bold bg-surface-container-high transition-all";
+    }
+    if (btnEs) {
+      btnEs.className = "px-2 py-0.5 rounded text-on-surface-variant hover:text-on-surface transition-all";
+    }
+  }
+
+  if (currentIslandResult) {
+    renderIslandExplanationText(currentIslandResult);
+  }
+}
+
+function copyIslandLatex() {
+  const latexEl = document.getElementById("island-latex-proof");
+  if (!latexEl) return;
+  navigator.clipboard.writeText(latexEl.textContent).then(() => {
+    alert("✓ Código LaTeX copiado al portapapeles.");
+  }).catch(err => {
+    console.error("Error copying LaTeX:", err);
+  });
+}
+

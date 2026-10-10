@@ -25,6 +25,8 @@ from .certainty_islands import (
     CertaintyIslandDefinition,
     IslandCategory,
     IslandEvaluationResult,
+    CertaintyVetoException,
+    certainty_guard,
     get_certainty_islands_engine,
 )
 
@@ -44,6 +46,8 @@ __all__ = [
     "CertaintyIslandDefinition",
     "IslandCategory",
     "IslandEvaluationResult",
+    "CertaintyVetoException",
+    "certainty_guard",
     "get_certainty_islands_engine",
     # Model persistence
     "save_model",
