@@ -20,6 +20,13 @@ from .model_persistence import save_model, load_model, log_to_mlflow, log_to_wan
 from .sdk import ExactorAccelerator
 from .feature_engine import get_feature_engine, DomainFeatureEngine
 from .regime_detector import get_regime_detector, DomainRegimeDetector
+from .certainty_islands import (
+    CertaintyIslandsEngine,
+    CertaintyIslandDefinition,
+    IslandCategory,
+    IslandEvaluationResult,
+    get_certainty_islands_engine,
+)
 
 
 __all__ = [
@@ -33,6 +40,11 @@ __all__ = [
     "DomainFeatureEngine",
     "get_regime_detector",
     "DomainRegimeDetector",
+    "CertaintyIslandsEngine",
+    "CertaintyIslandDefinition",
+    "IslandCategory",
+    "IslandEvaluationResult",
+    "get_certainty_islands_engine",
     # Model persistence
     "save_model",
     "load_model",
