@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exactor-engram-memory"
+version = "0.1.0"
+authors = [
+  { name = "Exactor Research", email = "contact@exactor.tech" },
+]
+description = "Deterministic Neuro-Symbolic Associative Memory of Objects (Images, Photos, and Data Segments) powered by Exactor boolean minimization"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.21.0",
+    "pillow>=9.0.0",
+    "requests>=2.25.0",
+    "pydantic>=1.10.0",
+]
+
+[project.optional-dependencies]
+server = [
+    "fastapi>=0.95.0",
+    "uvicorn>=0.20.0",
+    "python-multipart>=0.0.6",
+]
+dev = [
+    "pytest>=7.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+exactor-engram = "exactor_engram.api.server:main"
+
+[tool.setuptools.packages.find]
+include = ["exactor_engram*"]

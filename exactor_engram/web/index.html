@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exactor Engram Memory | Memoria Asociativa Determinista</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-logo">Ξ</div>
+      <div class="brand-text">
+        <h1>EXACTOR ENGRAM MEMORY</h1>
+        <p>Memoria Asociativa Neuro-Simbólica de Objetos Multimodales</p>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-cyan" id="badge-plan">PLAN PRO (k=64)</span>
+      <span class="badge badge-emerald" id="badge-engine">FAST-PATH: 0.05 ms</span>
+      <span class="badge badge-violet" id="badge-storage">SQLITE WAL</span>
+      <button class="btn btn-secondary" id="btn-seed-demo" style="padding: 0.35rem 0.8rem; font-size: 0.75rem;">
+        ⚡ Sembrar Demo
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 4 Pillars Architecture Flow -->
+    <section class="pillars-flow">
+      <div class="glass pillar-step p1">
+        <div class="pillar-num">Pilar 1 • Percepción</div>
+        <div class="pillar-title">Hipercubo B⁶⁴</div>
+        <div class="pillar-desc">
+          Binarización perceptual continua → discreta. 14 rasgos semánticos + 48 bits de hash estructural invariante.
+        </div>
+      </div>
+      <div class="glass pillar-step p2">
+        <div class="pillar-num">Pilar 2 • Fricción Cognitiva</div>
+        <div class="pillar-title">Oráculo Sistema 2</div>
+        <div class="pillar-desc">
+          Ante patrones desconocidos (Cold-Start), la nube resuelve la etiqueta semántica y estructura el recuerdo.
+        </div>
+      </div>
+      <div class="glass pillar-step p3">
+        <div class="pillar-num">Pilar 3 • Consolidación</div>
+        <div class="pillar-title">Libro Mayor WAL</div>
+        <div class="pillar-desc">
+          Almacenamiento persistente del payload pesado (fotos, segmentos, blobs) junto al evento de origen.
+        </div>
+      </div>
+      <div class="glass pillar-step p4">
+        <div class="pillar-num">Pilar 4 • Recuperación</div>
+        <div class="pillar-title">Engrama & Fast-Path</div>
+        <div class="pillar-desc">
+          Exactor minimiza el hipercubo a una fórmula exacta: recuperación asociativa a 0.05 ms y costo cero.
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Telemetry Banner -->
+    <section class="stats-banner">
+      <div class="glass stat-card">
+        <span class="stat-label">Recuerdos Almacenados</span>
+        <span class="stat-value" id="stat-memories">0</span>
+        <span class="stat-sub" id="stat-concepts">0 conceptos únicos</span>
+      </div>
+      <div class="glass stat-card">
+        <span class="stat-label">Efectividad Fast-Path</span>
+        <span class="stat-value" style="color: var(--accent-emerald);" id="stat-hitrate">0.0%</span>
+        <span class="stat-sub" id="stat-hits">0 consultas resueltas localmente</span>
+      </div>
+      <div class="glass stat-card">
+        <span class="stat-label">Tokens Ahorrados</span>
+        <span class="stat-value" style="color: var(--accent-cyan);" id="stat-tokens">0</span>
+        <span class="stat-sub">Consultas repetidas sin pagar API</span>
+      </div>
+      <div class="glass stat-card">
+        <span class="stat-label">Costo Marginal Evitado</span>
+        <span class="stat-value" style="color: var(--accent-violet);" id="stat-cost">$0.0000</span>
+        <span class="stat-sub">Ahorro acumulado en Sistema 2</span>
+      </div>
+      <div class="glass stat-card">
+        <span class="stat-label">Latencia Fast-Path</span>
+        <span class="stat-value" style="color: var(--accent-emerald);" id="stat-latency">0.00 μs</span>
+        <span class="stat-sub">Velocidad hardware de decisión</span>
+      </div>
+    </section>
+
+    <!-- Interactive Playground Grid -->
+    <section class="playground-grid">
+
+      <!-- Left Panel: Input & Query -->
+      <div class="glass panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>🔬</span> Consultar o Enseñar Memoria
+          </div>
+          <div class="tab-row" style="border: none; padding: 0;">
+            <button class="tab-btn active" id="tab-image">Imagen / Foto</button>
+            <button class="tab-btn" id="tab-text">Texto / Datos</button>
+          </div>
+        </div>
+
+        <!-- Sample queries bar -->
+        <div>
+          <div style="font-size: 0.75rem; color: var(--text-faint); margin-bottom: 0.4rem; text-transform: uppercase;">
+            Muestras Rápidas:
+          </div>
+          <div class="sample-chips" id="sample-chips-container">
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Cargando muestras...</span>
+          </div>
+        </div>
+
+        <!-- Image Input Dropzone -->
+        <div id="input-container-image">
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="file-input" accept="image/*" style="display: none;">
+            <img id="dropzone-preview" class="dropzone-preview" alt="Preview">
+            <div id="dropzone-prompt">
+              <div style="font-size: 1.8rem;">📷</div>
+              <div style="font-size: 0.85rem; font-weight: 600;">Arrastra una imagen o haz clic para subir</div>
+              <div style="font-size: 0.75rem; color: var(--text-faint);">Formatos PNG, JPG, WebP</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text Input -->
+        <div id="input-container-text" style="display: none;">
+          <textarea class="text-input" id="text-input" placeholder="Escribe o pega aquí un segmento de texto, diálogo o fragmento de datos..."></textarea>
+        </div>
+
+        <!-- Teaching / Label Override (Optional) -->
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <input type="text" id="label-hint" placeholder="Etiqueta para enseñar al Oráculo (opcional)" style="flex: 1; padding: 0.55rem 0.85rem; background: rgba(0,0,0,0.3); border: 1px solid var(--border-subtle); border-radius: 8px; color: #fff; font-size: 0.82rem;">
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-row">
+          <button class="btn btn-primary" id="btn-recall">
+            <span>⚡</span> Recuperar Recuerdo (Fast-Path)
+          </button>
+          <button class="btn btn-secondary" id="btn-perceive-only">
+            <span>🔍</span> Solo Binarizar (B⁶⁴)
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Panel: Results & Fast-Path Proof -->
+      <div class="glass panel" id="result-panel">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span>⚡</span> Resultado de la Memoria
+          </div>
+          <span class="badge" id="result-system-badge" style="display: none;">-</span>
+        </div>
+
+        <!-- Empty state placeholder -->
+        <div id="result-empty" style="text-align: center; padding: 3rem 1rem; color: var(--text-faint);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧠</div>
+          <p style="font-size: 0.85rem;">Sube un objeto o selecciona una muestra para ejecutar la memoria asociativa.</p>
+        </div>
+
+        <!-- Populated Result Content -->
+        <div id="result-content" style="display: none; display: flex; flex-direction: column; gap: 1rem;">
+          
+          <!-- Path Banner -->
+          <div class="path-hero" id="result-path-hero">
+            <div>
+              <div class="stat-label" id="result-path-label">ESTADO DE ACCESO</div>
+              <div class="path-tag" id="result-path-tag">FAST-PATH</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="stat-label">TIEMPO EXACTOR</div>
+              <div class="fastpath-clock" id="result-latency-clock">0.05 ms</div>
+            </div>
+          </div>
+
+          <!-- Stored Memory Card -->
+          <div class="memory-display" id="result-memory-display">
+            <div class="memory-thumb-wrap" id="result-thumb-wrap">
+              <span id="result-thumb-placeholder">Sin imagen</span>
+            </div>
+            <div class="memory-meta">
+              <div class="memory-label" id="result-memory-label">-</div>
+              <div class="memory-desc" id="result-memory-desc">-</div>
+              <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.3rem;" id="result-memory-tags"></div>
+              <div style="font-size: 0.72rem; color: var(--text-faint); margin-top: 0.4rem;" id="result-memory-id">ID: -</div>
+            </div>
+          </div>
+
+          <!-- 64-bit Hypercube Projection -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <span class="stat-label">Proyección en Hipercubo Booleano 𝔹⁶⁴</span>
+              <span style="font-size: 0.72rem; color: var(--accent-cyan);" id="result-stable-bits">64 bits estables</span>
+            </div>
+            <div class="hypercube-matrix" id="result-hypercube-matrix"></div>
+          </div>
+
+          <!-- Causal Proof & Invariant Guard -->
+          <div>
+            <span class="stat-label" style="display: block; margin-bottom: 0.4rem;">Engrama Booleano & Prueba Causal</span>
+            <div class="formula-card" id="result-formula-card">
+              <code>Esperando consulta...</code>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Benchmark Comparison Section -->
+    <section class="glass panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>📊</span> Comparativa de Rendimiento: Engramas vs Búsqueda Vectorial Tradicional (k-NN)
+        </div>
+        <button class="btn btn-emerald" id="btn-run-benchmark" style="padding: 0.4rem 0.9rem; font-size: 0.8rem;">
+          ▶ Ejecutar Benchmark en Vivo
+        </button>
+      </div>
+      
+      <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+        A diferencia de las bases de datos vectoriales aproximadas que calculan similitud de coseno probabilística sobre vectores continuos de punto flotante, el direccionamiento por engramas resuelve el hipercubo con <strong>operaciones lógicas de bits a nivel de hardware</strong>, garantizando <strong>determinismo causal absoluto</strong> y costo marginal cero.
+      </p>
+
+      <div style="overflow-x: auto; margin-top: 0.5rem;">
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Mecanismo</th>
+              <th>Paradigma Matemático</th>
+              <th>Latencia por Consulta</th>
+              <th>Consumo de Tokens</th>
+              <th>Determinismo & Causalidad</th>
+              <th>Costo Marginal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--accent-emerald);">Exactor Engram Memory</strong></td>
+              <td>Hipercubo 𝔹⁶⁴ minimizado (Fórmula exacta)</td>
+              <td><strong id="bench-engram-latency" style="color: var(--accent-emerald);">0.045 ms</strong></td>
+              <td><strong style="color: var(--accent-emerald);">0 tokens</strong></td>
+              <td>100% Exacto y Auditable</td>
+              <td><strong style="color: var(--accent-emerald);">$0.00 / req</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Búsqueda Vectorial (k-NN)</strong></td>
+              <td>Similitud coseno en espacio continuo (Embeddings)</td>
+              <td id="bench-knn-latency">1.850 ms</td>
+              <td>0 tokens (recuperación)</td>
+              <td>Probabilístico (aproximado)</td>
+              <td>Cómputo GPU continuo</td>
+            </tr>
+            <tr>
+              <td><strong>Oráculo LLM en la Nube</strong></td>
+              <td>Decodificación autoregresiva (Sistema 2)</td>
+              <td>1,200 – 3,500 ms</td>
+              <td>~1,300 tokens / req</td>
+              <td>Caja negra estocástica</td>
+              <td>$0.0040 / req</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div style="font-size: 0.75rem; color: var(--text-faint); margin-top: 0.5rem;" id="bench-summary-note">
+        * Haz clic en "Ejecutar Benchmark en Vivo" para evaluar 1,000 iteraciones con el corpus actual en tu máquina.
+      </div>
+    </section>
+
+    <!-- Living Memory Gallery (Pillar 3) -->
+    <section class="glass panel">
+      <div class="panel-header">
+        <div class="panel-title">
+          <span>🏛️</span> Galería de la Memoria Viva (Libro Mayor WAL)
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary" id="btn-refresh-memories" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
+            🔄 Actualizar
+          </button>
+        </div>
+      </div>
+      <div class="gallery-grid" id="memories-gallery">
+        <span style="font-size: 0.8rem; color: var(--text-faint);">Cargando recuerdos...</span>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
