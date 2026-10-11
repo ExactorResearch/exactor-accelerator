@@ -5,9 +5,12 @@
 
 ---
 
-## 1. Executive Summary & Architectural Paradigm
+## 1. Executive Summary & Architectural Paradigm: The "Muscle Memory" of AI
 
-The **Exactor Accelerator** platform bridges the fundamental gap in modern Artificial Intelligence between two paradigms that have traditionally remained disconnected:
+The **Exactor Accelerator** platform acts as the **"Muscle Memory" (System 1)** for cognitive Artificial Intelligence systems (**System 2**). It compiles complex, high-latency cloud reasoning into deterministic local boolean reflexes that execute at hardware speed ($0.05\text{ ms}$) at zero marginal API cost.
+
+> *For marketing, business development, and executive positioning, consult the [Commercial Narrative & Positioning Guide](docs/COMMERCIAL_POSITIONING_GUIDE.md).*
+
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
