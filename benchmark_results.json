@@ -1,0 +1,116 @@
+{
+  "timestamp": "2026-10-11T14:51:07Z",
+  "platform": {
+    "os": "win32",
+    "python": "3.14.0",
+    "numpy": "2.4.0"
+  },
+  "corpus_summary": {
+    "total_memories": 165,
+    "concepts": 11,
+    "clusters": 11,
+    "engram_version": 165,
+    "hypercube_k": 64
+  },
+  "latency_stats": {
+    "queries": 5000,
+    "engram": {
+      "mean_us": 13.871,
+      "median_p50_us": 12.9,
+      "p95_us": 23.4,
+      "p99_us": 37.401,
+      "accuracy": 1.0
+    },
+    "vector_knn": {
+      "mean_us": 12.662,
+      "median_p50_us": 10.3,
+      "p95_us": 20.6,
+      "p99_us": 36.5,
+      "accuracy": 1.0
+    },
+    "speedup_factor": 0.91
+  },
+  "perturbation_robustness": [
+    {
+      "perturbation": "Identico (0% ruido)",
+      "trials": 100,
+      "engram_accuracy": 1.0,
+      "knn_accuracy": 0.99
+    },
+    {
+      "perturbation": "Ruido Gaussiano leve (5%)",
+      "trials": 100,
+      "engram_accuracy": 1.0,
+      "knn_accuracy": 0.99
+    },
+    {
+      "perturbation": "Ruido Gaussiano moderado (12%)",
+      "trials": 100,
+      "engram_accuracy": 1.0,
+      "knn_accuracy": 0.98
+    },
+    {
+      "perturbation": "Rotacion angular moderada (+10 deg)",
+      "trials": 100,
+      "engram_accuracy": 0.93,
+      "knn_accuracy": 0.99
+    },
+    {
+      "perturbation": "Rotacion angular severa (-18 deg)",
+      "trials": 100,
+      "engram_accuracy": 0.88,
+      "knn_accuracy": 0.8
+    },
+    {
+      "perturbation": "Difuminado optico (Blur sigma=1.5)",
+      "trials": 100,
+      "engram_accuracy": 1.0,
+      "knn_accuracy": 0.99
+    }
+  ],
+  "open_world_rejection": {
+    "trials": 100,
+    "engram_rejection_rate": 0.05,
+    "engram_false_positive_rate": 0.95,
+    "knn_false_positive_rate_thr_80": 1.0,
+    "note": "La guarda invariante de Exactor rechaza automáticamente objetos no vistos, derivándolos al Oráculo en vez de alucinar."
+  },
+  "economic_projection": [
+    {
+      "queries": 10000,
+      "cloud_tokens_spent": 13000000,
+      "cloud_cost_usd": 40.0,
+      "exactor_cost_usd": 0.0,
+      "net_savings_usd": 40.0,
+      "latency_hours_cloud": 4.2,
+      "latency_hours_exactor": 0.0
+    },
+    {
+      "queries": 100000,
+      "cloud_tokens_spent": 130000000,
+      "cloud_cost_usd": 400.0,
+      "exactor_cost_usd": 0.0,
+      "net_savings_usd": 400.0,
+      "latency_hours_cloud": 41.7,
+      "latency_hours_exactor": 0.001
+    },
+    {
+      "queries": 1000000,
+      "cloud_tokens_spent": 1300000000,
+      "cloud_cost_usd": 4000.0,
+      "exactor_cost_usd": 0.0,
+      "net_savings_usd": 4000.0,
+      "latency_hours_cloud": 416.7,
+      "latency_hours_exactor": 0.013
+    },
+    {
+      "queries": 10000000,
+      "cloud_tokens_spent": 13000000000,
+      "cloud_cost_usd": 40000.0,
+      "exactor_cost_usd": 0.0,
+      "net_savings_usd": 40000.0,
+      "latency_hours_cloud": 4166.7,
+      "latency_hours_exactor": 0.125
+    }
+  ]
+}
