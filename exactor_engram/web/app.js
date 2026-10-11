@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTabs();
   initDropzone();
   initActions();
+  initModal();
   loadStats();
   loadSamples();
   loadMemories();
@@ -267,9 +268,17 @@ function renderRecallResult(data) {
     memDisplay.style.display = "grid";
     document.getElementById("result-memory-label").innerText = (data.memory.label || data.label || "").toUpperCase();
     document.getElementById("result-memory-desc").innerText = data.memory.description || "Recuerdo consolidado en la memoria viva.";
-    document.getElementById("result-memory-id").innerText = `ID: ${data.memory.id} • Modos: ${data.memory.modality} • Usos: ${data.memory.recall_count}`;
+    const memId = data.memory.id;
+    const idBadge = document.getElementById("result-memory-id");
+    idBadge.innerHTML = `<span>🆔 ID: <strong style="text-decoration: underline; color: var(--accent-cyan);">${memId}</strong></span> <span style="font-size:0.68rem; color:var(--accent-emerald);">• Clic para ver objeto</span>`;
+    idBadge.onclick = () => openMemoryModal(memId);
+    idBadge.title = `Haz clic sobre el ID [${memId}] para ver el objeto almacenado en el Libro Mayor WAL`;
 
     const thumbWrap = document.getElementById("result-thumb-wrap");
+    thumbWrap.style.cursor = "pointer";
+    thumbWrap.onclick = () => openMemoryModal(memId);
+    thumbWrap.title = `Haz clic para ver el objeto almacenado [${memId}] en el Libro Mayor`;
+
     if (data.memory.thumbnail_url) {
       thumbWrap.innerHTML = `<img src="${data.memory.thumbnail_url}" alt="Thumbnail">`;
     } else if (data.memory.text_preview) {
@@ -448,11 +457,15 @@ async function loadMemories() {
         <div>
           <div style="font-size: 0.85rem; font-weight: 700; color: #fff;">${(m.label || "").toUpperCase()}</div>
           <div style="font-size: 0.72rem; color: var(--text-muted);">${m.description || m.modality}</div>
-          <div style="font-size: 0.68rem; color: var(--text-faint); margin-top: 0.3rem;">Usos: ${m.recall_count} • ${m.size_bytes} bytes</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.68rem; margin-top: 0.35rem;">
+            <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 600;">ID: ${m.id}</span>
+            <span style="color: var(--text-faint);">${m.recall_count} usos</span>
+          </div>
         </div>
       `;
 
-      card.addEventListener("click", () => inspectMemory(m.id));
+      card.title = `Haz clic para ver el objeto almacenado [${m.id}]`;
+      card.addEventListener("click", () => openMemoryModal(m.id));
       gallery.appendChild(card);
     });
   } catch (err) {
@@ -460,12 +473,151 @@ async function loadMemories() {
   }
 }
 
-async function inspectMemory(memId) {
+// -----------------------------------------------------------------------------
+// Modal Inspector for Memory Objects (Pilar 3)
+// -----------------------------------------------------------------------------
+
+function initModal() {
+  const overlay = document.getElementById("memory-modal-overlay");
+  const btnClose = document.getElementById("btn-close-modal");
+
+  if (btnClose) {
+    btnClose.addEventListener("click", closeMemoryModal);
+  }
+
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) closeMemoryModal();
+    });
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMemoryModal();
+  });
+}
+
+function closeMemoryModal() {
+  const overlay = document.getElementById("memory-modal-overlay");
+  if (overlay) overlay.style.display = "none";
+}
+
+async function openMemoryModal(memId) {
+  const overlay = document.getElementById("memory-modal-overlay");
+  const modalBody = document.getElementById("modal-body");
+  if (!overlay || !modalBody) return;
+
+  overlay.style.display = "flex";
+  modalBody.innerHTML = `
+    <div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-muted);">
+      <div style="font-size: 2.2rem; margin-bottom: 0.6rem;">⏳</div>
+      <div style="font-size: 0.9rem;">Recuperando objeto almacenado <code>${memId}</code> desde el Libro Mayor WAL...</div>
+    </div>
+  `;
+
   try {
     const res = await fetch(`/api/memories/${memId}`);
+    if (!res.ok) throw new Error("No se encontró la memoria en la base de datos.");
     const m = await res.json();
-    alert(`Recuerdo [${m.id}]\nEtiqueta: ${m.label}\nModalidad: ${m.modality}\nTamaño: ${m.size_bytes} bytes\nAlmacenamiento: ${m.storage}\nRecuperado: ${m.recall_count} veces`);
+
+    let visualSection = "";
+    if (m.modality === "image") {
+      visualSection = `
+        <div style="background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid var(--border-subtle); padding: 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;">
+          <img src="/api/memories/${m.id}/thumbnail" alt="${m.label}" style="max-height: 240px; max-width: 100%; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.7); object-fit: contain;">
+          <div style="font-size: 0.72rem; color: var(--text-faint);">Payload Binario Persistido • ${m.size_bytes.toLocaleString()} bytes • Formato ${m.mime || "image/png"}</div>
+        </div>
+      `;
+    } else {
+      let textSnippet = m.text_preview || "";
+      try {
+        const textRes = await fetch(`/api/memories/${m.id}/payload`);
+        if (textRes.ok) {
+          textSnippet = await textRes.text();
+        }
+      } catch (err) {
+        console.warn("Could not fetch full text payload:", err);
+      }
+
+      visualSection = `
+        <div style="background: rgba(0,0,0,0.5); border-radius: 10px; border: 1px solid var(--border-subtle); padding: 1rem;">
+          <div style="font-size: 0.72rem; color: var(--text-faint); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em;">Contenido de Texto Almacenado:</div>
+          <div style="font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.5; max-height: 180px; overflow-y: auto; white-space: pre-wrap; color: var(--text-main); background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 6px;">${escapeHtml(textSnippet)}</div>
+        </div>
+      `;
+    }
+
+    const formattedDate = m.created_at ? (isNaN(Date.parse(m.created_at)) ? new Date(Number(m.created_at) * 1000).toLocaleString() : new Date(m.created_at).toLocaleString()) : "-";
+
+    modalBody.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+        <div>
+          <div style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.01em;">${(m.label || "").toUpperCase()}</div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem;">${m.description || "Recuerdo consolidado en memoria asociativa."}</div>
+        </div>
+        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+          <span class="badge badge-cyan">${(m.modality || "objeto").toUpperCase()}</span>
+          <span class="badge badge-emerald">${m.storage || "SQLITE WAL"}</span>
+        </div>
+      </div>
+
+      ${visualSection}
+
+      <!-- Detailed Attributes Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; background: rgba(0,0,0,0.3); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
+        <div>
+          <div class="stat-label">ID de Objeto</div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700;">${m.id}</div>
+        </div>
+        <div>
+          <div class="stat-label">Tamaño en WAL</div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #fff;">${m.size_bytes.toLocaleString()} bytes</div>
+        </div>
+        <div>
+          <div class="stat-label">Accesos / Hits</div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-emerald); font-weight: 700;">${m.recall_count} recuperaciones</div>
+        </div>
+        <div>
+          <div class="stat-label">Fecha de Consolidación</div>
+          <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">${formattedDate}</div>
+        </div>
+      </div>
+
+      <!-- SHA-256 Hash Causal Invariant -->
+      <div>
+        <div class="stat-label" style="margin-bottom: 0.3rem;">Firma Causal Invariante (SHA-256)</div>
+        <div style="background: rgba(0,0,0,0.4); padding: 0.55rem 0.8rem; border-radius: 6px; font-family: var(--font-mono); font-size: 0.72rem; word-break: break-all; color: var(--text-muted); border: 1px solid var(--border-subtle);">
+          ${m.sha256 || "-"}
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 0.25rem; flex-wrap: wrap;">
+        <a href="/api/memories/${m.id}/payload" target="_blank" download class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">
+          💾 Descargar Archivo Original
+        </a>
+        <button class="btn btn-primary" onclick="closeMemoryModal()" style="font-size: 0.8rem; padding: 0.5rem 1.25rem;">
+          Cerrar
+        </button>
+      </div>
+    `;
+
   } catch (err) {
-    console.error(err);
+    modalBody.innerHTML = `
+      <div style="text-align: center; padding: 2rem; color: var(--accent-rose);">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚠️</div>
+        <div style="font-size: 0.85rem;">Error al recuperar el objeto: ${err.message}</div>
+        <button class="btn btn-secondary" onclick="closeMemoryModal()" style="margin-top: 1rem;">Cerrar</button>
+      </div>
+    `;
   }
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }

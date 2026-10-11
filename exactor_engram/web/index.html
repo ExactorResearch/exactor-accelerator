@@ -168,7 +168,7 @@
         </div>
 
         <!-- Populated Result Content -->
-        <div id="result-content" style="display: none; display: flex; flex-direction: column; gap: 1rem;">
+        <div id="result-content" class="result-content" style="display: none;">
           
           <!-- Path Banner -->
           <div class="path-hero" id="result-path-hero">
@@ -191,7 +191,7 @@
               <div class="memory-label" id="result-memory-label">-</div>
               <div class="memory-desc" id="result-memory-desc">-</div>
               <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.3rem;" id="result-memory-tags"></div>
-              <div style="font-size: 0.72rem; color: var(--text-faint); margin-top: 0.4rem;" id="result-memory-id">ID: -</div>
+              <div class="memory-id-badge" id="result-memory-id" title="Haz clic sobre el ID para ver el objeto almacenado en el Libro Mayor">🆔 ID: -</div>
             </div>
           </div>
 
@@ -232,7 +232,7 @@
         A diferencia de las bases de datos vectoriales aproximadas que calculan similitud de coseno probabilística sobre vectores continuos de punto flotante, el direccionamiento por engramas resuelve el hipercubo con <strong>operaciones lógicas de bits a nivel de hardware</strong>, garantizando <strong>determinismo causal absoluto</strong> y costo marginal cero.
       </p>
 
-      <div style="overflow-x: auto; margin-top: 0.5rem;">
+      <div class="table-responsive">
         <table class="benchmark-table">
           <thead>
             <tr>
@@ -296,6 +296,24 @@
     </section>
 
   </main>
+
+  <!-- Memory Object Inspector Modal -->
+  <div class="modal-overlay" id="memory-modal-overlay">
+    <div class="glass modal-content" id="memory-modal-card">
+      <div class="panel-header" style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.85rem;">
+        <div class="panel-title" style="font-size: 1.1rem;">
+          <span>🏛️</span> Recuerdo Almacenado en Libro Mayor WAL
+        </div>
+        <button class="btn btn-secondary" id="btn-close-modal" style="padding: 0.3rem 0.75rem; font-size: 0.8rem;">
+          ✕ Cerrar
+        </button>
+      </div>
+      
+      <div id="modal-body" style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1rem;">
+        <!-- Populated dynamically via openMemoryModal() -->
+      </div>
+    </div>
+  </div>
 
   <script src="/static/app.js"></script>
 </body>
