@@ -15,14 +15,20 @@ except ImportError:
 # Ensure package is on sys.path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+# Reconfigure stdout/stderr for Windows console compatibility
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 
 def main():
     host = os.environ.get("HOST", "127.0.0.1")
     port = int(os.environ.get("PORT", 8080))
     print("=" * 75)
-    print(f" 🧠 EXACTOR ENGRAM MEMORY - Memoria Asociativa Determinista")
+    print(f" [*] EXACTOR ENGRAM MEMORY - Memoria Asociativa Determinista")
     print(f" Dashboard interactivo: http://{host}:{port}")
-    print(f" Documentación OpenAPI: http://{host}:{port}/docs")
+    print(f" Documentacion OpenAPI: http://{host}:{port}/docs")
     print("=" * 75)
 
     uvicorn.run(

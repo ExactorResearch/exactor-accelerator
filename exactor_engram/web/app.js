@@ -481,10 +481,13 @@ async function loadMemories(forceReload = false) {
 
     try {
       const res = await fetch("/api/memories?limit=200");
-      allMemoriesCache = await res.json();
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      allMemoriesCache = Array.isArray(data) ? data : [];
     } catch (err) {
       console.error("Error al cargar recuerdos:", err);
-      if (gallery) gallery.innerHTML = `<span style="font-size: 0.8rem; color: var(--accent-rose);">Error al conectar con la base de datos WAL.</span>`;
+      if (gallery) gallery.innerHTML = `<span style="font-size: 0.8rem; color: var(--accent-rose);">Error al conectar con la base de datos WAL (${err.message}). Verifica que el servidor esté activo.</span>`;
+      if (countBadge) countBadge.innerText = "Error";
       return;
     }
   }
