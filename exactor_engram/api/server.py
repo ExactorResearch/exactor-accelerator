@@ -180,9 +180,20 @@ async def teach_api(
 
 
 @app.get("/api/memories")
-def list_memories(label: Optional[str] = Query(None), limit: int = Query(100)):
+def list_memories(
+    label: Optional[str] = Query(None),
+    modality: Optional[str] = Query(None),
+    q: Optional[str] = Query(None),
+    limit: int = Query(100),
+):
     mem = get_memory_instance()
-    return mem.ledger.list_memories(label=label, limit=limit)
+    return mem.ledger.list_memories(label=label, modality=modality, query=q, limit=limit)
+
+
+@app.get("/api/concepts")
+def list_concepts():
+    mem = get_memory_instance()
+    return mem.ledger.list_concepts()
 
 
 @app.get("/api/memories/{mem_id}")

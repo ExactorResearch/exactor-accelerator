@@ -221,24 +221,49 @@ class MemoryLedger:
             r = c.execute("SELECT thumbnail FROM memories WHERE id = ?", (mem_id,)).fetchone()
         return r[0] if r else None
 
-    def list_memories(self, label: Optional[str] = None, limit: int = 200) -> List[Dict[str, Any]]:
+    def list_memories(
+        self,
+        label: Optional[str] = None,
+        modality: Optional[str] = None,
+        query: Optional[str] = None,
+        limit: int = 200,
+    ) -> List[Dict[str, Any]]:
         q = (
             "SELECT id, created_at, modality, mime, filename, size_bytes, storage, text_preview, label, "
-            "description, recall_count, code_care FROM memories"
+            "description, recall_count, code_care FROM memories WHERE 1=1"
         )
-        args: tuple = ()
+        args: list = []
         if label:
-            q += " WHERE label = ?"
-            args = (label,)
+            q += " AND label = ?"
+            args.append(label)
+        if modality:
+            q += " AND modality = ?"
+            args.append(modality)
+        if query:
+            q += " AND (label LIKE ? OR description LIKE ? OR id LIKE ?)"
+            like_term = f"%{query}%"
+            args.extend([like_term, like_term, like_term])
         q += " ORDER BY created_at DESC LIMIT ?"
+        args.append(limit)
         with self._conn() as c:
-            rows = c.execute(q, args + (limit,)).fetchall()
+            rows = c.execute(q, tuple(args)).fetchall()
         out = []
         for r in rows:
             d = dict(r)
             d["stable_bits"] = int(d.pop("code_care"), 16).bit_count()
             out.append(d)
         return out
+
+    def list_concepts(self) -> List[Dict[str, Any]]:
+        q = """
+            SELECT label, modality, COUNT(*) as count, SUM(recall_count) as total_recalls
+            FROM memories
+            GROUP BY label
+            ORDER BY count DESC, label ASC
+        """
+        with self._conn() as c:
+            rows = c.execute(q).fetchall()
+        return [dict(r) for r in rows]
 
     def touch_recall(self, mem_id: str) -> None:
         with self._lock, self._conn() as c:

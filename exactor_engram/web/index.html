@@ -284,12 +284,49 @@
         <div class="panel-title">
           <span>🏛️</span> Galería de la Memoria Viva (Libro Mayor WAL)
         </div>
-        <div style="display: flex; gap: 0.5rem;">
+        <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+          <span class="badge badge-cyan" id="gallery-count-badge">Cargando...</span>
           <button class="btn btn-secondary" id="btn-refresh-memories" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;">
             🔄 Actualizar
           </button>
         </div>
       </div>
+
+      <!-- Concept Filters & Search Bar -->
+      <div class="gallery-filter-bar">
+        <!-- Concept Dropdown -->
+        <div style="display: flex; gap: 0.5rem; align-items: center; flex: 1.2; min-width: 250px;">
+          <label for="concept-select-filter" style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; white-space: nowrap;">
+            Concepto:
+          </label>
+          <select id="concept-select-filter" class="concept-dropdown">
+            <option value="">Todos los conceptos (Cargando...)</option>
+          </select>
+        </div>
+
+        <!-- Modality Filter Buttons (Todos | Imagen | Texto) -->
+        <div class="modality-filter-group" id="modality-filter-group">
+          <button class="modality-filter-btn active" data-modality="">Todos</button>
+          <button class="modality-filter-btn" data-modality="image">🖼️ Fotos/Imágenes</button>
+          <button class="modality-filter-btn" data-modality="text">📄 Textos</button>
+        </div>
+
+        <!-- Search input for live typing -->
+        <div style="min-width: 200px; flex: 1;">
+          <input type="text" id="gallery-search-input" placeholder="🔍 Buscar por etiqueta, ID o texto..." class="gallery-search">
+        </div>
+      </div>
+
+      <!-- Quick Concept Filter Pills (Top concepts) -->
+      <div>
+        <div style="font-size: 0.72rem; color: var(--text-faint); margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.05em;">
+          Filtros Rápidos por Concepto:
+        </div>
+        <div class="concept-pills-row" id="concept-pills-container">
+          <!-- Populated dynamically: [Todos (57)], [cuadrado azul (9)], [cuadrado amarillo (6)], ... -->
+        </div>
+      </div>
+
       <div class="gallery-grid" id="memories-gallery">
         <span style="font-size: 0.8rem; color: var(--text-faint);">Cargando recuerdos...</span>
       </div>

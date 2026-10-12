@@ -3,6 +3,12 @@
 let currentFile = null;
 let currentMode = "image"; // "image" | "text"
 
+// Memory Gallery Filter State
+let allMemoriesCache = [];
+let currentConceptFilter = "";
+let currentModalityFilter = "";
+let currentSearchQuery = "";
+
 document.addEventListener("DOMContentLoaded", () => {
   initTabs();
   initDropzone();
@@ -134,7 +140,8 @@ function initActions() {
   document.getElementById("btn-perceive-only").addEventListener("click", () => executePerceive());
   document.getElementById("btn-seed-demo").addEventListener("click", handleSeedDemo);
   document.getElementById("btn-run-benchmark").addEventListener("click", handleRunBenchmark);
-  document.getElementById("btn-refresh-memories").addEventListener("click", loadMemories);
+  document.getElementById("btn-refresh-memories").addEventListener("click", () => loadMemories(true));
+  initFilterControls();
 }
 
 async function executeRecall(allowOracle = true) {
@@ -429,48 +436,242 @@ async function handleSeedDemo() {
   }
 }
 
-async function loadMemories() {
-  const gallery = document.getElementById("memories-gallery");
-  try {
-    const res = await fetch("/api/memories?limit=30");
-    const memories = await res.json();
-    gallery.innerHTML = "";
+// -----------------------------------------------------------------------------
+// Gallery Filters & Concepts (Pilar 3)
+// -----------------------------------------------------------------------------
 
-    if (!memories || memories.length === 0) {
-      gallery.innerHTML = `<span style="font-size: 0.8rem; color: var(--text-faint);">No hay recuerdos en el libro mayor WAL todavía. Haz clic en "⚡ Sembrar Demo" o consulta un objeto.</span>`;
+function initFilterControls() {
+  const selectFilter = document.getElementById("concept-select-filter");
+  if (selectFilter) {
+    selectFilter.addEventListener("change", (e) => {
+      currentConceptFilter = e.target.value;
+      updateActivePill();
+      applyMemoryFilters();
+    });
+  }
+
+  const modalityGroup = document.getElementById("modality-filter-group");
+  if (modalityGroup) {
+    modalityGroup.querySelectorAll(".modality-filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        modalityGroup.querySelectorAll(".modality-filter-btn").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentModalityFilter = btn.dataset.modality || "";
+        applyMemoryFilters();
+      });
+    });
+  }
+
+  const searchInput = document.getElementById("gallery-search-input");
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      currentSearchQuery = e.target.value.toLowerCase().trim();
+      applyMemoryFilters();
+    });
+  }
+}
+
+async function loadMemories(forceReload = false) {
+  const gallery = document.getElementById("memories-gallery");
+  const countBadge = document.getElementById("gallery-count-badge");
+  
+  if (allMemoriesCache.length === 0 || forceReload) {
+    if (gallery) gallery.innerHTML = `<span style="font-size: 0.8rem; color: var(--text-faint);">Cargando recuerdos del Libro Mayor WAL...</span>`;
+    if (countBadge) countBadge.innerText = "Cargando...";
+
+    try {
+      const res = await fetch("/api/memories?limit=200");
+      allMemoriesCache = await res.json();
+    } catch (err) {
+      console.error("Error al cargar recuerdos:", err);
+      if (gallery) gallery.innerHTML = `<span style="font-size: 0.8rem; color: var(--accent-rose);">Error al conectar con la base de datos WAL.</span>`;
       return;
     }
-
-    memories.forEach((m) => {
-      const card = document.createElement("div");
-      card.className = "glass gallery-card";
-
-      let visualHtml = "";
-      if (m.modality === "image") {
-        visualHtml = `<img class="gallery-thumb" src="/api/memories/${m.id}/thumbnail" alt="${m.label}">`;
-      } else {
-        visualHtml = `<div class="gallery-text-box">${(m.text_preview || "").slice(0, 140)}...</div>`;
-      }
-
-      card.innerHTML = `
-        ${visualHtml}
-        <div>
-          <div style="font-size: 0.85rem; font-weight: 700; color: #fff;">${(m.label || "").toUpperCase()}</div>
-          <div style="font-size: 0.72rem; color: var(--text-muted);">${m.description || m.modality}</div>
-          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.68rem; margin-top: 0.35rem;">
-            <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 600;">ID: ${m.id}</span>
-            <span style="color: var(--text-faint);">${m.recall_count} usos</span>
-          </div>
-        </div>
-      `;
-
-      card.title = `Haz clic para ver el objeto almacenado [${m.id}]`;
-      card.addEventListener("click", () => openMemoryModal(m.id));
-      gallery.appendChild(card);
-    });
-  } catch (err) {
-    gallery.innerHTML = `<span style="font-size: 0.8rem; color: var(--text-faint);">Error al cargar recuerdos.</span>`;
   }
+
+  updateConceptControls();
+  applyMemoryFilters();
+}
+
+function updateConceptControls() {
+  const conceptCounts = {};
+  allMemoriesCache.forEach((m) => {
+    const lbl = m.label || "sin etiqueta";
+    conceptCounts[lbl] = (conceptCounts[lbl] || 0) + 1;
+  });
+
+  const sortedConcepts = Object.entries(conceptCounts)
+    .map(([label, count]) => ({ label, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+
+  // Populate Dropdown
+  const selectFilter = document.getElementById("concept-select-filter");
+  if (selectFilter) {
+    const previousVal = currentConceptFilter;
+    selectFilter.innerHTML = `<option value="">Todos los conceptos (${allMemoriesCache.length} recuerdos)</option>`;
+    sortedConcepts.forEach((c) => {
+      const opt = document.createElement("option");
+      opt.value = c.label;
+      opt.innerText = `${c.label} (${c.count} ejemplares)`;
+      selectFilter.appendChild(opt);
+    });
+    selectFilter.value = previousVal;
+  }
+
+  // Populate Quick Pills Row
+  const pillsContainer = document.getElementById("concept-pills-container");
+  if (pillsContainer) {
+    pillsContainer.innerHTML = "";
+
+    // "Todos" pill
+    const allPill = document.createElement("div");
+    allPill.className = `concept-pill ${!currentConceptFilter ? "active" : ""}`;
+    allPill.dataset.concept = "";
+    allPill.innerHTML = `<span>Todos</span> <span class="concept-pill-badge">${allMemoriesCache.length}</span>`;
+    allPill.addEventListener("click", () => setConceptFilter(""));
+    pillsContainer.appendChild(allPill);
+
+    // Top concepts pills (up to 14)
+    sortedConcepts.slice(0, 14).forEach((c) => {
+      const pill = document.createElement("div");
+      pill.className = `concept-pill ${currentConceptFilter === c.label ? "active" : ""}`;
+      pill.dataset.concept = c.label;
+      pill.innerHTML = `<span>${c.label}</span> <span class="concept-pill-badge">${c.count}</span>`;
+      pill.addEventListener("click", () => setConceptFilter(c.label));
+      pillsContainer.appendChild(pill);
+    });
+  }
+}
+
+function setConceptFilter(concept) {
+  currentConceptFilter = concept;
+  const selectFilter = document.getElementById("concept-select-filter");
+  if (selectFilter) selectFilter.value = concept;
+  updateActivePill();
+  applyMemoryFilters();
+}
+
+function updateActivePill() {
+  const pills = document.querySelectorAll(".concept-pill");
+  pills.forEach((p) => {
+    if (p.dataset.concept === currentConceptFilter) {
+      p.classList.add("active");
+    } else {
+      p.classList.remove("active");
+    }
+  });
+}
+
+function applyMemoryFilters() {
+  const gallery = document.getElementById("memories-gallery");
+  const countBadge = document.getElementById("gallery-count-badge");
+  if (!gallery) return;
+
+  const filtered = allMemoriesCache.filter((m) => {
+    // 1. Concept filter
+    if (currentConceptFilter && m.label !== currentConceptFilter) {
+      return false;
+    }
+    // 2. Modality filter
+    if (currentModalityFilter && m.modality !== currentModalityFilter) {
+      return false;
+    }
+    // 3. Search query filter
+    if (currentSearchQuery) {
+      const labelMatch = (m.label || "").toLowerCase().includes(currentSearchQuery);
+      const descMatch = (m.description || "").toLowerCase().includes(currentSearchQuery);
+      const idMatch = (m.id || "").toLowerCase().includes(currentSearchQuery);
+      const textMatch = (m.text_preview || "").toLowerCase().includes(currentSearchQuery);
+      if (!labelMatch && !descMatch && !idMatch && !textMatch) {
+        return false;
+      }
+    }
+    return true;
+  });
+
+  // Update badge
+  if (countBadge) {
+    if (currentConceptFilter || currentModalityFilter || currentSearchQuery) {
+      countBadge.innerText = `${filtered.length} de ${allMemoriesCache.length} recuerdos`;
+      countBadge.className = "badge badge-cyan";
+    } else {
+      countBadge.innerText = `${allMemoriesCache.length} recuerdos`;
+      countBadge.className = "badge badge-emerald";
+    }
+  }
+
+  // Render cards
+  gallery.innerHTML = "";
+
+  if (filtered.length === 0) {
+    gallery.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 2.5rem 1rem; color: var(--text-muted); background: rgba(0,0,0,0.25); border-radius: 8px; border: 1px dashed var(--border-subtle);">
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔍</div>
+        <div style="font-size: 0.9rem; font-weight: 600; color: #fff;">No se encontraron recuerdos coincidentes</div>
+        <div style="font-size: 0.78rem; color: var(--text-faint); margin-top: 0.25rem;">
+          Filtros activos: Concepto = "${currentConceptFilter || "Todos"}" • Modalidad = "${currentModalityFilter || "Todas"}" ${currentSearchQuery ? `• Búsqueda = "${currentSearchQuery}"` : ""}
+        </div>
+        <button class="btn btn-secondary" onclick="resetGalleryFilters()" style="margin-top: 0.85rem; font-size: 0.75rem; padding: 0.4rem 0.85rem;">
+          Limpiar Filtros
+        </button>
+      </div>
+    `;
+    return;
+  }
+
+  filtered.forEach((m) => {
+    const card = document.createElement("div");
+    card.className = "glass gallery-card";
+
+    let visualHtml = "";
+    if (m.modality === "image") {
+      visualHtml = `<img class="gallery-thumb" src="/api/memories/${m.id}/thumbnail" alt="${m.label}">`;
+    } else {
+      visualHtml = `<div class="gallery-text-box">${escapeHtml((m.text_preview || "").slice(0, 140))}...</div>`;
+    }
+
+    card.innerHTML = `
+      ${visualHtml}
+      <div>
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.4rem;">
+          <div style="font-size: 0.84rem; font-weight: 700; color: #fff; overflow-wrap: break-word;">${(m.label || "").toUpperCase()}</div>
+          <span class="badge ${m.modality === 'image' ? 'badge-cyan' : 'badge-violet'}" style="font-size: 0.62rem; padding: 0.15rem 0.45rem;">${m.modality === 'image' ? 'FOTO' : 'TEXTO'}</span>
+        </div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.2rem;">${escapeHtml(m.description || m.modality)}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.68rem; margin-top: 0.4rem; padding-top: 0.35rem; border-top: 1px solid var(--border-subtle);">
+          <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 600;">🆔 ${m.id}</span>
+          <span style="color: var(--accent-emerald);">${m.recall_count} usos</span>
+        </div>
+      </div>
+    `;
+
+    card.title = `Haz clic sobre este recuerdo para ver el objeto almacenado [${m.id}] en el Libro Mayor`;
+    card.addEventListener("click", () => openMemoryModal(m.id));
+    gallery.appendChild(card);
+  });
+}
+
+function resetGalleryFilters() {
+  currentConceptFilter = "";
+  currentModalityFilter = "";
+  currentSearchQuery = "";
+
+  const selectFilter = document.getElementById("concept-select-filter");
+  if (selectFilter) selectFilter.value = "";
+
+  const searchInput = document.getElementById("gallery-search-input");
+  if (searchInput) searchInput.value = "";
+
+  const modalityGroup = document.getElementById("modality-filter-group");
+  if (modalityGroup) {
+    modalityGroup.querySelectorAll(".modality-filter-btn").forEach((b) => {
+      if (!b.dataset.modality) b.classList.add("active");
+      else b.classList.remove("active");
+    });
+  }
+
+  updateActivePill();
+  applyMemoryFilters();
 }
 
 // -----------------------------------------------------------------------------
