@@ -418,6 +418,21 @@ python -m pytest tests/ -v
 
 ---
 
+## 📅 Enterprise Evaluation & Demo Scheduling
+
+Ready to transform your mission-critical AI workloads into sub-millisecond, deterministic boolean reflexes?
+
+- **Schedule a 15-Minute Technical Architecture Review:** [Book Directly on Cal.com](https://cal.com/exactor-tech)
+- **Submit Enterprise Evaluation Request:** [Open Tally / Typeform Assessment](https://tally.so/r/w2xD4P)
+- **Direct Commercial Inquiries:** [`contact@exactor.tech`](mailto:contact@exactor.tech)
+
+### Explore Live Interactive Demos
+- 🛡️ **[Exactor WAF Guardian](https://waf.exactor.ai)** — Sub-millisecond (0.05 ms) inline cybersecurity filtering.
+- 🧩 **[Exactor Sudoku Arena](https://sudoku.exactor.ai)** — Combinatorial constraint propagation vs cloud LLM reasoning.
+- 💣 **[Exactor Minesweeper](https://minesweeper.exactor.ai)** — Neuro-symbolic SAT fast-path vs pure JEV dual race.
+
+---
+
 ## License
 
 Dual-licensed under either of:
@@ -432,3 +447,4 @@ at your option.
 ## 🏁 Call to Action
 
 > **"Experience certainty on your own infrastructure. Start today with zero historical data and watch your system develop its own reflexes in real time."**
+
