@@ -5,6 +5,20 @@ All notable changes to Exactor Accelerator will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Security
+- **Removed hardcoded Jev API key** from `jev_sdk.py`; credentials now come only from explicit arguments or `JEV_API_KEY`/`TYPESAFE_API_KEY` env vars.
+
+### Changed
+- **DeepSeek explainer kill-switch**: when `DEEPSEEK_API_KEY` is absent or the API returns 401/402/403 (e.g. insufficient balance), the explainer is disabled for the process and `engine.explain()` returns `""` instead of retrying or emitting fallback prose.
+- **Honest documentation for release**: rewrote `README.md` with measured benchmark numbers, real quickstart, explicit configuration requirements, and honest fit/no-fit guidance. Added `docs/BENCHMARK_RESULTS.md` with reproducible measurements (structured fraud benchmark: Exactor 78% acc / 13 ms vs Jev 56.7% / 1256 ms; public NLP datasets reported separately with their limitations). Marked `docs/COMPARATIVE_BENCHMARK_REPORT.md` as partially superseded.
+
+### Fixed
+- **EXACTOR Bridge correctness**: The Rust `exactor` binding output is now parsed into evaluatable `HypercubeTerm`s, converted from its LSB-first minterm convention, and **verified exhaustively** against the ON/DC sets before use; unverifiable or incorrect covers fall back to the local hypercube engine. Cloud API results are now internally consistent (terms, formula, and counts always come from the same source; cloud metrics kept in `stats`).
+- **Removed silent cloud account registration**: `ExactorBridge` no longer auto-registers ephemeral accounts on exactor.tech; cloud calls require an explicit `EXACTOR_CORE_TOKEN`/`api_key` and are skipped with a warning otherwise.
+- **Test suite actually runs**: root-level `test_*.py` files moved into `tests/` (previously excluded by `testpaths`), added root `conftest.py` for helper imports, and restored missing bilingual response aliases in `ExactorAccelerator` (`formula_activa`, `categoria_ganadora`, `distribucion_probabilidades`, `certeza_probabilistica`, `total_clases`, `explicacion`, `ahorro_tokens_pct`, `formula_booleana`, `variables_descubiertas`).
+
 ## [2.0.12] - 2026-10-01
 
 ### Architecture & Runtime Clarifications

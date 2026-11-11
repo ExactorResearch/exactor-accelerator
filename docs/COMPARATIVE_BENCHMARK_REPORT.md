@@ -1,5 +1,7 @@
 # Comparative Benchmark Report: Pure Jev vs Exactor Accelerator
 
+> ⚠️ **PARTIALLY SUPERSEDED** — Several figures in this document (speedup multiples, "100% accuracy", "0.05 ms", public-Jev comparisons) were marketing estimates, not reproducible measurements. The **authoritative, reproducible results** are in [`BENCHMARK_RESULTS.md`](BENCHMARK_RESULTS.md). Sections below are kept for historical context; treat unverified numbers with skepticism.
+
 **Fecha**: 22 de September de 2026  
 **Project**: Exactor Accelerator (Hybrid Neuro-Symbolic) vs Pure Jev (TypeSafe AI)
 
@@ -393,31 +395,32 @@ Exactor Accelerator significantly outperforms pure Jev in **inference latency** 
 **Datasets**: Banking77 (77 clases), SST-2 (2 clases), AG News (4 clases)  
 **Configuration**: 500 training samples, 200 evaluation samples
 
-| Dataset | Modelo | Accuracy | Precision Macro | Recall Macro | F1 Macro | Latency Promedio | Throughput |
-|---------|--------|----------|-----------------|--------------|----------|-------------------|------------|
-| **Banking77** | Exactor Accelerator | 8.5% | 11.1% | 8.7% | 7.8% | 50.5 ms | 20 TPS |
-| **Banking77** | Jev Puro | N/A | N/A | N/A | N/A | 1,326 ms | N/A |
-| **SST-2** | Exactor Accelerator | 54.0% | 52.1% | 51.5% | 48.4% | 2.38 ms | 420 TPS |
-| **SST-2** | Jev Puro | N/A | N/A | N/A | N/A | 1,554 ms | N/A |
-| **AG News** | Exactor Accelerator | 22.5% | 26.8% | 25.1% | 15.9% | 7.16 ms | 140 TPS |
-| **AG News** | Jev Puro | N/A | N/A | N/A | N/A | 1,271 ms | N/A |
+| Dataset | Modelo | Accuracy | Latency Promedio | P95 | Throughput | Notas |
+|---------|--------|----------|-------------------|-----|------------|-------|
+| **Banking77** | Exactor Accelerator | 8.5% | 109.1 ms | 192.5 ms | 9.2 TPS | 70 clases, NLP |
+| **Banking77** | Jev Puro | 0.0%* | 1140 ms | 1367 ms | ~0.9 TPS | *Solo 5/70 clases ofrecidas — no comparable |
+| **SST-2** | Exactor Accelerator | 54.0% | 5.85 ms | 10.9 ms | 171 TPS | |
+| **SST-2** | Jev Puro | **96.7%** | 1179 ms | 1602 ms | ~0.8 TPS | Comparación justa (2/2 clases) |
+| **AG News** | Exactor Accelerator | 22.0% | 13.5 ms | 22.0 ms | 74 TPS | ~azar (baseline 25%) |
+| **AG News** | Jev Puro | 20.0% | 1179 ms | 1433 ms | ~0.8 TPS | ~azar también |
+
+*Números actualizados con la corrida real del benchmark corregido (ver `BENCHMARK_RESULTS.md`). Los valores anteriores de "Jev Puro" eran placeholders (0.0 hardcodeado).*
 
 **Results Analysis**:
 
 **Ventajas de Exactor Accelerator**:
-- **Velocidad**: 26-653x faster que Jev puro (2.38ms vs 1,554ms en SST-2)
-- **Throughput**: 140-420 TPS vs ~0.7 TPS de Jev puro
+- **Velocidad**: 26-200x faster que Jev puro en los datasets públicos
+- **Throughput**: 74-171 TPS vs ~0.8 TPS de Jev puro
 - **Costo**: Cero (local) vs costo API de Jev
 
 **Limitaciones de Exactor Accelerator**:
-- **Accuracy bajo en NLP complejo**: 8.5% (Banking77), 22.5% (AG News), 54% (SST-2)
+- **Accuracy bajo en NLP complejo**: 8.5% (Banking77), 22% (AG News), 54% (SST-2)
 - **Requires more samples**: 500 samples are insufficient for 77 classes (Banking77)
 - **Engineered for structured tasks**: Not intended for unconstrained open-domain semantic comprehension
 
 **Comparison with Public Jev**:
-- Jev in public benchmarks: 76-96% on Banking77, 95.7% on SST-2, 91.3% on AG News
-- Exactor Accelerator: 8.5-54% en mismos datasets
-- **Conclusion**: Exactor Accelerator is not intended to displace Jev in open-domain NLP classification
+- En SST-2 (única comparación justa multi-clase), **Jev Pure gana 96.7% vs 54%** — en NLP no estructurado el oráculo LLM es claramente superior en precisión.
+- **Conclusion**: Exactor Accelerator no está diseñado para desplazar a Jev en clasificación NLP abierta; su nicho son decisiones estructuradas con patrones recurrentes (ver `BENCHMARK_RESULTS.md` §1).
 
 **Casos donde Exactor Accelerator NO debe usarse**:
 - ❌ High-cardinality text classification (>10 classes)

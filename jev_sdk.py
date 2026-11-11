@@ -37,7 +37,6 @@ class Jev:
             or api_key
             or os.environ.get("TYPESAFE_API_KEY")
             or os.environ.get("JEV_API_KEY")
-            or "apikey_2136a0413bf997ac4ec9a91de83af1c62313_efb552d850790681de75cf82480fd31f78023e40f844eba0f1b84a4c47fb576e"
         )
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout

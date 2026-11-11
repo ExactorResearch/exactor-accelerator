@@ -158,7 +158,10 @@ class ExactorAccelerator:
                 "is_multiclass": False,
                 "classes": self.classes,
                 "boolean_formula": result.get("formula_expr"),
+                "formula_booleana": result.get("formula_expr"),
+                "variables_descubiertas": result.get("variables"),
                 "explanation": result.get("explanation"),
+                "explicacion": result.get("explanation"),
                 "discovered_variables": result.get("variables"),
                 "rule_clauses": result.get("xor_clauses"),
                 "calibrated_jev_questions": result.get("jev_questions_count"),
@@ -193,8 +196,11 @@ class ExactorAccelerator:
                 "is_multiclass": True,
                 "classes": self.classes,
                 "formulas_per_class": self.class_formulas,
+                "formula_booleana": self.class_formulas,
                 "discovered_variables": sorted(list(variables_all)),
+                "variables_descubiertas": sorted(list(variables_all)),
                 "total_classes": len(self.classes),
+                "total_clases": len(self.classes),
             }
 
     # -------------------------------------------------------------------------
@@ -234,7 +240,9 @@ class ExactorAccelerator:
                 "query_id": data["query_id"],
                 "route": data.get("route", "FAST_PATH_LOCAL" if fast_path else "JEV_ORACLE"),
                 "token_savings_pct": data.get("ahorro_tokens_pct", 0.0),
+                "ahorro_tokens_pct": data.get("ahorro_tokens_pct", 0.0),
                 "active_formula": data.get("formula_expr"),
+                "formula_activa": data.get("formula_expr"),
                 # Spanish compatibility aliases
                 "accion": data["chosen_action"],
                 "etiqueta": data["friendly_label"],
@@ -281,14 +289,21 @@ class ExactorAccelerator:
 
             return {
                 "winning_class": winning_class,
+                "categoria_ganadora": winning_class,
                 "probability_distribution": proba_dict,
+                "distribucion_probabilidades": proba_dict,
                 "boolean_match_classes": exact_matches,
                 "decision": winning_res.decision_status,
                 "action": winning_res.chosen_action,
                 "label": str(winning_class),
+                "etiqueta": str(winning_class),
+                "accion": winning_res.chosen_action,
+                "formula_activa": self.class_formulas.get(winning_class),
                 "probabilistic_certainty": proba_dict[winning_class],
+                "certeza_probabilistica": proba_dict[winning_class],
                 "exact_boolean_evaluation": winning_res.exact_boolean_evaluation,
                 "latency_ms": round(latency_ms, 2),
+                "latencia_ms": round(latency_ms, 2),
                 "query_id": winning_res.query_id,
             }
 

@@ -25,6 +25,18 @@ class DeepSeekExplainer:
         self.base_url = (base_url or os.getenv("DEEPSEEK_BASE_URL", "https://api.deepseek.com")).rstrip("/")
         self.model = model or os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
         self.timeout = timeout
+        self._disabled = False
+
+    def _unavailable(self, reason: str, active_list: list, start_t: float) -> Dict[str, Any]:
+        """Response returned when the explainer is skipped (no key or API rejected access)."""
+        return {
+            "success": False,
+            "model": "unavailable",
+            "explanation": "",
+            "latency_ms": round((time.perf_counter() - start_t) * 1000.0, 2),
+            "active_propositions": active_list,
+            "error": reason,
+        }
 
     def generate_explanation(
         self,
@@ -38,11 +50,20 @@ class DeepSeekExplainer:
     ) -> Dict[str, Any]:
         """
         Calls DeepSeek LLM to generate an executive audit explanation.
+        Skipped entirely (no API call, empty explanation) when no API key is
+        configured or the provider rejected access (401/402/403).
         """
         start_t = time.perf_counter()
-        
+
         # Filter only active (1) propositions
         active_list = [p for p, v in active_propositions.items() if v == 1]
+
+        if self._disabled or not self.api_key:
+            return self._unavailable(
+                "DEEPSEEK_API_KEY not configured" if not self.api_key else "DeepSeek explainer disabled",
+                active_list,
+                start_t,
+            )
 
         # Categorize clearly for DeepSeek prompt
         act_upper = chosen_action.upper()
@@ -117,6 +138,15 @@ MANDATORY GUIDELINES:
                     "latency_ms": elapsed_ms,
                     "active_propositions": active_list,
                 }
+            elif resp.status_code in (401, 402, 403):
+                # Auth/billing rejection (e.g. insufficient balance): disable
+                # the explainer permanently instead of retrying every call.
+                self._disabled = True
+                logger.warning(
+                    f"DeepSeek API rejected access ({resp.status_code}); "
+                    "explanations disabled for this session."
+                )
+                return self._unavailable(f"DeepSeek API error {resp.status_code}", active_list, start_t)
             else:
                 logger.warning(f"DeepSeek API error {resp.status_code}: {resp.text}")
                 return self._fallback_explanation(event_state, active_list, chosen_action, exact_eval, criterio_prob, start_t)

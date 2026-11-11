@@ -102,7 +102,7 @@ def run_benchmark():
     test_samples = df_test.to_dict(orient="records")
     
     # Evaluamos submuestra de red para Jev Puro y Full para no saturar API en test batch
-    sample_size_full = 15
+    sample_size_full = 30
     
     print(f"  -> Ejecutando Benchmark Instantáneo ExactorAccelerator Fast-Path (N={len(test_samples)})...")
     for sample in test_samples:

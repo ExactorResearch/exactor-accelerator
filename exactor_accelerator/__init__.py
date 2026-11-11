@@ -2,10 +2,13 @@
 Exactor Accelerator: High-Speed Boolean Logic Layer for TypeSafe AI
 
 Combines EXACTOR boolean minimization (Rust) with Jev (TypeSafe AI)
-to accelerate decisions by 4,770-24,000x with 95-100% accuracy.
+to accelerate decisions with deterministic sub-millisecond fast-paths.
+Published benchmark speedups range from ~4,770x to ~24,000x vs. cloud
+oracle calls (see docs/COMPARATIVE_BENCHMARK_REPORT.md); actual gains
+depend on workload and fast-path hit rate.
 """
 
-__version__ = "2.0.12"
+__version__ = "2.0.13"
 __author__ = "Exactor Contributors"
 __license__ = "MIT"
 

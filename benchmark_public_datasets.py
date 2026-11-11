@@ -233,59 +233,64 @@ class PublicDatasetBenchmark:
         jev = Jev()
         latencies = []
         predictions = []
-        
-        print(f"\nEvaluando {len(test_sample)} muestras con Pure Jev...")
-        
+
+        # Determinar choices una sola vez (etiquetas reales del dataset).
+        # Se guardan pares (str_label, label_original) para mapear la
+        # respuesta de Jev (string) de vuelta al dtype original.
+        unique_labels = list(test_df['categoria'].unique())
+        if len(unique_labels) == 2:
+            label_pairs = [(str(c), c) for c in unique_labels]
+        else:
+            # Multi-clase: limitar a las 5 clases más frecuentes por velocidad/costo
+            top5 = test_df['categoria'].value_counts().head(5).index
+            label_pairs = [(str(c), c) for c in top5]
+        choices = [p[0] for p in label_pairs]
+        choice_to_label = dict(label_pairs)
+
+        print(f"\nEvaluando {len(test_sample)} muestras con Pure Jev (choices: {len(choices)})...")
+
         for i, row in test_sample.iterrows():
             state = {'texto': row['texto']}
-            
-            # Determinar número de clases
-            num_classes = test_df['categoria'].nunique()
-            
-            if num_classes == 2:
-                # Binary classification
-                choices = ["positive", "negative"] if dataset_name == "SST-2" else list(test_df['categoria'].unique())[:2]
-            else:
-                # Multi-class (limitar a top 5 para velocidad)
-                choices = list(test_df['categoria'].unique())[:5]
-            
+
             t_start = time.time()
             try:
                 res = jev.choose(
                     state=state,
                     instruction=f"Classify this text into one of these categories: {choices}",
-                    choices={str(c): str(c) for c in choices}
+                    choices={c: c for c in choices}
                 )
-                pred = res.get('action', choices[0])
+                pred = res.get('action') or choices[0]
             except Exception as e:
                 print(f"  Error en muestra {i}: {e}")
-                pred =Choices[0]
-            
+                pred = choices[0]
+
             lat = (time.time() - t_start) * 1000.0
             latencies.append(lat)
-            predictions.append(pred)
-        
-        # Calcular accuracy (aproximado)
+            predictions.append(choice_to_label.get(str(pred), pred))
+
+        # Accuracy real contra etiquetas verdaderas
         y_true_sample = test_sample['categoria'].values
-        # Mapear predicciones a labels reales (simplificado)
-        acc = 0.0  # Placeholder, requiere mapeo complejo
-        
+        y_pred_sample = np.array(predictions)
+        acc = float(accuracy_score(y_true_sample, y_pred_sample)) if len(predictions) else 0.0
+
         avg_lat = np.mean(latencies)
         p95_lat = np.percentile(latencies, 95)
-        
+
         results = {
             'dataset': dataset_name,
             'model': 'Jev Pure',
             'avg_latency_ms': avg_lat,
             'p95_latency_ms': p95_lat,
-            'accuracy': acc,  # Placeholder
+            'accuracy': acc,
             'num_classes': test_df['categoria'].nunique(),
+            'choices_offered': len(choices),
             'test_samples': len(test_sample),
         }
-        
+
         print(f"\n{'='*60}")
         print(f"RESULTADOS JEV PURO: {dataset_name}")
         print(f"{'='*60}")
+        print(f"Accuracy: {acc*100:.2f}%")
         print(f"Latencia Promedio: {avg_lat:.2f} ms")
         print(f"Latencia P95: {p95_lat:.2f} ms")
         print(f"Muestras evaluadas: {len(test_sample)}")
