@@ -146,11 +146,15 @@ Copy `.env.example` to `.env` and fill in what you need. Without any keys the en
 
 ---
 
-## Real-world example
+## Examples & demos
 
-The same Boolean-decision approach powers **[SATGuardian](https://exactorresearch.github.io/satguardian/)** — a self-hosted Rust WAF that evaluates security rules as 128-bit Boolean cubes (~0.5 ms p50) and emits a reproducible proof for every block. Measured head-to-head vs Aegis + OWASP CRS on the CRS v4.30 attack suite: 82.0% vs 80.7% recall, with 92.9% union coverage — each engine catches what the other misses. Cloud review is strictly opt-in and returns *proposals*, never silent rule changes.
+| Project | What it shows |
+|---|---|
+| **[SATGuardian](https://exactorresearch.github.io/satguardian/)** | **Production WAF** (Rust): security rules as 128-bit Boolean cubes, ~0.5 ms p50, auditable proof per block. Measured 82.0% vs 80.7% recall vs Aegis+OWASP CRS on the CRS v4.30 suite, with 92.9% union coverage. Cloud review is opt-in and returns proposals only. |
+| **[exactor-minesweeper](https://github.com/ExactorResearch/exactor-minesweeper)** | System 1 vs System 2 in real time: deterministic tiles resolved locally at CPU speed, ambiguous 50/50 states escalated to the cloud oracle. [Live demo](https://minesweeper.exactor.ai) |
+| **[exactor-sudoku-arena](https://github.com/ExactorResearch/exactor-sudoku-arena)** | Constraint satisfaction (NP-complete): deductive Boolean solving with zero constraint violations vs probabilistic LLM guessing. [Live demo](https://sudoku.exactor.ai) |
 
-SATGuardian demonstrates the intended deployment regime: **structured, high-volume decisions with hard audit requirements** — exactly where the Boolean fast-path beats per-request LLM calls on both latency and cost.
+SATGuardian demonstrates the intended deployment regime: **structured, high-volume decisions with hard audit requirements** — exactly where the Boolean fast-path beats per-request LLM calls on both latency and cost. The arenas isolate the same property interactively: recurring structure resolved locally, oracle reserved for genuine ambiguity.
 
 ---
 
