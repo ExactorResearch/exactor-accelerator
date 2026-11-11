@@ -73,7 +73,7 @@ The Boolean minimization layer was fuzz-tested exhaustively (all $2^k$ cube poin
 - Local Python hypercube engine: **0 failures / 400 random functions**.
 - Rust `exactor` binding (PyPI `exactor==0.1.0`): produces invalid covers in ~50% of random cases (including don't-care and parity-like functions). The bridge **verifies every Rust output exhaustively** (all ON minterms covered, no OFF-care minterm covered) and falls back to the local engine on failure: **0 failures / 400**, with Rust accepted in 134 cases where verified correct.
 
-> The Rust binding defect should be reported upstream. Until fixed, users get correct results via automatic fallback — at the cost of the Rust path being used only ~1/3 of the time on random functions.
+> The Rust binding defect should be reported upstream. Until fixed, users get correct results via automatic fallback — at the cost of the Rust path being used only ~1/3 of the time on random functions. Minimal reproductions and details: [`RUST_BINDING_KNOWN_ISSUES.md`](RUST_BINDING_KNOWN_ISSUES.md).
 
 **Related production deployment**: [SATGuardian](https://exactorresearch.github.io/satguardian/) (Rust WAF) applies the same Boolean-cube decision approach to security rules — ~0.5 ms p50 per request, auditable proof per block, measured 82.0% recall vs 80.7% for Aegis+OWASP CRS on the CRS v4.30 suite.
 
