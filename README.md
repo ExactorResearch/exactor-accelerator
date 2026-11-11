@@ -146,6 +146,14 @@ Copy `.env.example` to `.env` and fill in what you need. Without any keys the en
 
 ---
 
+## Real-world example
+
+The same Boolean-decision approach powers **[SATGuardian](https://exactorresearch.github.io/satguardian/)** — a self-hosted Rust WAF that evaluates security rules as 128-bit Boolean cubes (~0.5 ms p50) and emits a reproducible proof for every block. Measured head-to-head vs Aegis + OWASP CRS on the CRS v4.30 attack suite: 82.0% vs 80.7% recall, with 92.9% union coverage — each engine catches what the other misses. Cloud review is strictly opt-in and returns *proposals*, never silent rule changes.
+
+SATGuardian demonstrates the intended deployment regime: **structured, high-volume decisions with hard audit requirements** — exactly where the Boolean fast-path beats per-request LLM calls on both latency and cost.
+
+---
+
 ## When to use it — and when not to
 
 **Good fit:**

@@ -75,6 +75,8 @@ The Boolean minimization layer was fuzz-tested exhaustively (all $2^k$ cube poin
 
 > The Rust binding defect should be reported upstream. Until fixed, users get correct results via automatic fallback — at the cost of the Rust path being used only ~1/3 of the time on random functions.
 
+**Related production deployment**: [SATGuardian](https://exactorresearch.github.io/satguardian/) (Rust WAF) applies the same Boolean-cube decision approach to security rules — ~0.5 ms p50 per request, auditable proof per block, measured 82.0% recall vs 80.7% for Aegis+OWASP CRS on the CRS v4.30 suite.
+
 ---
 
 ## 4. Reproduction
