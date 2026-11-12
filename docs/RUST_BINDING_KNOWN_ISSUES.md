@@ -1,8 +1,10 @@
 # Rust `exactor` binding: status and mitigation
 
-**Status**: **fixed in `exactor` v0.2.0** — the binding now runs on the
-correct `exactor-core` v1 engine.
-**Source**: `exactor-core` (GitLab `exactorresearch/exactor/exactor-core`),
+**Status**: **RESOLVED** — `exactor-core-v128` itself was repaired (commit
+`dfc6be4`): its `reducir()` pipeline is now a faithful port of the
+fuzz-verified v1 algorithm running on scalable `BitVec` keys (>64 variables
+supported). `exactor-py` v0.2.0+ depends on the fixed `exactor-core-v128`.
+**Source**: `exactor-core-v128` (GitLab `exactorresearch/exactor/exactor-core-v128`),
 binding crate `exactor-py`.
 
 ## Root cause (confirmed)
@@ -22,9 +24,26 @@ The bug was **not** in the minimization algorithm itself — it was in the
 A `HashMap`→`BTreeMap` change in v128 improved determinism but did not fix
 correctness.
 
-## Fix shipped in `exactor` v0.2.0
+## Fix shipped upstream in `exactor-core-v128` + `exactor-py` v0.2.0
 
-`exactor-py` now depends on **`exactor-core` (v1)** instead of v128:
+The core defect was repaired in `exactor-core-v128` (not worked around):
+
+- `src/function/reduction.rs` — replaced with a faithful port of the
+  proven `exactor-core` v1 `reducir()` algorithm, keeping
+  `BTreeMap<BitVec>` keys so arbitrary variable width is preserved.
+- `src/algorithm.rs` — reversed `etiquetas` (the engine reads bit `j`
+  LSB-first while `Term`/SOP is MSB-first), decode **all** `Verdad` values
+  per result function, expand XOR labels into SOP cubes, and re-add
+  uncovered minterms as full cubes (same safe repair as v1).
+- `src/utility.rs` — `modify_gray_code_with_indices` no longer returns a
+  zero `BitVec` when the differing positions cover every bit (a guard that
+  was only valid for fixed `u64` width and broke legitimate merges).
+- `src/export.rs` (`to_blif`) — emit one term node per `Verdad` value.
+- `src/validation.rs` — MSB-first variable mapping (`variables[i]` =
+  bitvec index `n-1-i`).
+
+`exactor-py` now depends on **`exactor-core-v128`** again (the fixed
+scalable engine), wrapping u64 minterms with `Utility::u64_to_bitvec`:
 
 - Public contract: `variables[0]` is the **most significant bit** of the u64
   minterm (standard SOP/minterm-index notation — same convention used by
@@ -35,9 +54,17 @@ correctness.
   **Quine-McCluskey** fallback handles practical sizes (n ≤ 16,
   ≤ 20k points); otherwise `ValueError` is raised — never a wrong answer.
 
-### Verification results (v0.2.0)
+### Verification results
 
-- `exactor-core` v1 engine fuzz (Rust): **0 failures / 1200 random
+- `exactor-core-v128` regression suite (`tests/known_defects.rs`): **6/6**,
+  including 600-function exhaustive fuzz — **0 invalid covers**.
+- `validation_suite`: **6/6**, including the 64-variable checkerboard
+  (scaling beyond u64 preserved via BitVec keys).
+- `exactor-py` Rust tests: **6/6** on the v128 backend.
+- Bridge fuzz (`ExactorBridge`): **900/900** random functions served by the
+  Rust engine and accepted after exhaustive verification.
+- Earlier evidence: `exactor-core` v1 engine fuzz — **0 failures / 1200
+  random
   functions** (n=1–6, with/without don't-cares), exhaustive `2^n` evaluation.
 - Binding unit tests: single minterm, XOR (2 cubes), tautology, random
   covers, QM cases — **6/6 pass**.

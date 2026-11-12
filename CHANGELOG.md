@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed
-- **Rust `exactor` binding repaired (`exactor` v0.2.0)**: root cause was the `exactor-core-v128` BitVec port inverting the minterm convention (LSB-first vs the engine's MSB-first design), producing invalid covers. The binding now uses the fuzz-verified `exactor-core` v1 engine with MSB-first minterms (same convention as the bridge — conversion removed), keeps exhaustive output verification, and adds a Quine-McCluskey fallback. Fuzz: 0 failures / 1200 functions on the engine; bridge serves 900/900 cases from Rust. See `docs/RUST_BINDING_KNOWN_ISSUES.md`.
+- **`exactor-core-v128` minimization defect fixed upstream + binding re-pointed (`exactor` v0.2.0)**: the v128 BitVec port produced invalid covers (~78% of random functions: tautologies dropped, Hamming-distance-2 merges covering OFF points). The core was repaired by porting the fuzz-verified `exactor-core` v1 `reducir()` pipeline onto scalable `BitVec` keys (no u64 truncation — >64 variables still supported), plus fixes in gray-code merge guards, BLIF export, and MSB-first validation. `exactor-py` now depends on the fixed `exactor-core-v128` again. Regression evidence: `known_defects` 6/6 (600-function fuzz, 0 invalid covers), `validation_suite` 6/6 (incl. 64-var checkerboard), binding 6/6, bridge 900/900. The bridge still verifies every engine output exhaustively and falls back to Quine-McCluskey on any failure. See `docs/RUST_BINDING_KNOWN_ISSUES.md`.
 
 ### Security
 - **Removed hardcoded Jev API key** from `jev_sdk.py`; credentials now come only from explicit arguments or `JEV_API_KEY`/`TYPESAFE_API_KEY` env vars.
