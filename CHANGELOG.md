@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- **Rust `exactor` binding repaired upstream (`exactor` v0.1.1)**: `simplify_logic` now uses a verified Quine-McCluskey minimizer for practical inputs (n ≤ 16, ≤ 20k points) and exhaustively verifies the proprietary engine's output on larger inputs, raising `ValueError` instead of returning incorrect covers. Fuzz: 0 failures / 1800 random functions; bridge acceptance rose from ~33% to 100% of practical cases. See `docs/RUST_BINDING_KNOWN_ISSUES.md`.
+
 ### Security
 - **Removed hardcoded Jev API key** from `jev_sdk.py`; credentials now come only from explicit arguments or `JEV_API_KEY`/`TYPESAFE_API_KEY` env vars.
 
