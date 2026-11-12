@@ -150,20 +150,6 @@ class ExactorBridge:
         return None
 
     @staticmethod
-    def _msb_to_lsb_minterm(minterm: int, num_vars: int) -> int:
-        """
-        Converts a minterm index from the local MSB-first convention
-        (variable i occupies bit position num_vars-1-i) to the LSB-first
-        convention used by the Rust exactor-core binding (variable i
-        occupies bit position i).
-        """
-        converted = 0
-        for i in range(num_vars):
-            if (minterm >> (num_vars - 1 - i)) & 1:
-                converted |= 1 << i
-        return converted
-
-    @staticmethod
     def _parse_product_terms(raw_terms: List[str], variables: List[str]) -> Optional[List[HypercubeTerm]]:
         """
         Converts espresso-style product term strings (e.g. "~a & b", "1")
@@ -277,9 +263,10 @@ class ExactorBridge:
         if self._has_rust_core and self._rust_module:
             try:
                 num_vars = len(variables)
-                rust_minterms = [self._msb_to_lsb_minterm(m, num_vars) for m in minterms]
-                rust_dont_cares = [self._msb_to_lsb_minterm(d, num_vars) for d in dont_cares]
-                rust_res = self._rust_module.simplify_logic(variables, rust_minterms, rust_dont_cares)
+                # The Rust binding (exactor>=0.2.0, exactor-core v1) uses the
+                # same MSB-first convention as this bridge: variable i is bit
+                # num_vars-1-i of the u64 minterm integer. No conversion needed.
+                rust_res = self._rust_module.simplify_logic(variables, minterms, dont_cares)
                 raw_terms = rust_res.get("terms", [])
                 stats = rust_res.get("statistics", {})
 
